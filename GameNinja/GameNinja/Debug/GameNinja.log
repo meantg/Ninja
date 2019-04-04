@@ -1,0 +1,4 @@
+﻿  Game.cpp
+e:\bai tap\nam 2\gameeee\ninjagame\gameninja\gameninja\game.cpp(51): warning C4018: '>=': signed/unsigned mismatch
+e:\bai tap\nam 2\gameeee\ninjagame\gameninja\gameninja\game.cpp(54): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+  GameNinja.vcxproj -> E:\Bai tap\Nam 2\Gameeee\NinjaGame\GameNinja\Debug\GameNinja.exe
