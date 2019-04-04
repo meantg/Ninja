@@ -1,5 +1,9 @@
 ﻿#include "Game.h"
 
+
+Game *Game::_instance = NULL;
+
+
 void Game::GameInit()
 {
 	auto d3d = Direct3DCreate9(D3D_SDK_VERSION);
@@ -52,11 +56,39 @@ void Game::GameRun()
 		{
 			frameStart = now;
 			Update(dt);
-			//Render();
+			Render();
 		}
 		else
 		{
 			Sleep(tickPerFrame - dt);
 		}
 	}
+}
+
+void Game::Render()
+{
+	auto scene = SceneManager::GetInstance()->GetCurScene();
+	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, scene->GetBackColor(), 0.0f, 0);
+
+	if (d3ddev->BeginScene())
+	{
+		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+		scene->Render();
+		spriteHandler->End();
+		d3ddev->EndScene();
+	}
+	d3ddev->Present(NULL, NULL, NULL, NULL);
+}
+
+void Game::GameStartUp()
+{
+	TextureManager::GetInstance()->StartUp();
+	SpriteManager::GetInstance()->StartUp();
+	AnimationManager::GetInstance()->StartUp();
+}
+
+Game *Game::GetInstance()
+{
+	if (_instance == NULL) _instance = new Game();
+	return _instance;
 }

@@ -1,18 +1,20 @@
-#define GAME_NAME "NINJAGAME"
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
-
 #include <d3d9.h>
 #include <d3dx9.h>
+#include "Game.h"
+#include "GameGlobal.h"
+#include "PlayScene.h"
 
 HINSTANCE mHInstance;
 HWND InitWindow(HINSTANCE hInstance, int cmdShow);
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-bool isGameRunning = true;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int cmdShow)
 {
 	HWND hWnd = InitWindow(hInstance, cmdShow);
+	Game::GetInstance()->GameInit();
+	Game::GetInstance()->GameStartUp();
+	Game::GetInstance()->GameRun();
 	return 0;
 }
 
@@ -32,14 +34,14 @@ HWND InitWindow(HINSTANCE hInstance, int cmdShow)
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wc.lpszMenuName = NULL;
-	wc.lpszClassName = GAME_NAME;
+	wc.lpszClassName = WIN_NAME;
 	wc.hIconSm = NULL;
 
 	RegisterClassEx(&wc);
 	//WS_OVERLAPPEDWINDOW <=> WS_EX_TOPMOST | WS_POPUP | WS_VISIBLE
 	HWND hWnd = CreateWindow(
-		GAME_NAME,
-		GAME_NAME,
+		WIN_NAME,
+		WIN_NAME,
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
