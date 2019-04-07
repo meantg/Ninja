@@ -1,8 +1,4 @@
 ﻿  Game.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 d:\nes\gameninja\gameninja\gameglobal.h(57): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
-  WindowInit.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\nes\gameninja\gameninja\gameglobal.h(57): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
-  Generating Code...
   GameNinja.vcxproj -> D:\NES\GameNinja\Debug\GameNinja.exe

@@ -2,13 +2,11 @@
 
 
 Game *Game::_instance = NULL;
-
-
 Game::Game()
 {
-	gAnimationManager = new AnimationManager();
-	gTextureManager = new TextureManager();
-	gSpriteManager = new SpriteManager();
+	gAnimationManager = AnimationManager::GetInstance();
+	gTextureManager =TextureManager::GetInstance();
+	gSpriteManager = SpriteManager::GetInstance();
 }
 
 void Game::GameInit(HINSTANCE hInstance, int cmdShow)
@@ -127,9 +125,9 @@ void Game::GameRun()
 
 void Game::GameStartUp()
 {
-	TextureManager::GetInstance()->StartUp();
-	SpriteManager::GetInstance()->StartUp();
-	AnimationManager::GetInstance()->StartUp();
+	gTextureManager->StartUp();
+	gSpriteManager->StartUp();
+	gAnimationManager->StartUp();
 }
 
 LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
