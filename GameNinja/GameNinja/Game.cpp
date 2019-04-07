@@ -4,8 +4,51 @@
 Game *Game::_instance = NULL;
 
 
-void Game::GameInit()
+Game::Game()
 {
+	gAnimationManager = new AnimationManager();
+	gTextureManager = new TextureManager();
+	gSpriteManager = new SpriteManager();
+}
+
+void Game::GameInit(HINSTANCE hInstance, int cmdShow)
+{
+	// Tạo Window
+	WNDCLASSEX wc;
+	wc.cbSize = sizeof(WNDCLASSEX);
+
+	wc.style = CS_HREDRAW | CS_VREDRAW;
+	wc.hInstance = hInstance;
+
+	wc.lpfnWndProc = (WNDPROC)WndProc;
+	wc.cbClsExtra = 0;
+	wc.cbWndExtra = 0;
+	wc.hIcon = NULL;
+
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	wc.lpszMenuName = NULL;
+	wc.lpszClassName = WIN_NAME;
+	wc.hIconSm = NULL;
+
+	RegisterClassEx(&wc);
+	//WS_OVERLAPPEDWINDOW <=> WS_EX_TOPMOST | WS_POPUP | WS_VISIBLE
+	HWND hWnd = CreateWindow(
+		WIN_NAME,
+		WIN_NAME,
+		WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT,
+		CW_USEDEFAULT,
+		SCREEN_WIDTH,
+		SCREEN_HEIGHT,
+		NULL,
+		NULL,
+		hInstance,
+		NULL);
+	ShowWindow(hWnd, cmdShow);
+	UpdateWindow(hWnd);
+
+	// Tạo thiết bị D3D
 	auto d3d = Direct3DCreate9(D3D_SDK_VERSION);
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
@@ -28,6 +71,8 @@ void Game::GameInit()
 
 	// Tạo Sprite Handler
 	D3DXCreateSprite(d3ddev, &spriteHandler);
+
+	
 }
 
 void Game::GameRun()
@@ -52,39 +97,65 @@ void Game::GameRun()
 		auto now = GetTickCount();
 		auto dt = now - frameStart;
 
-		if (dt >= tickPerFrame)
-		{
-			frameStart = now;
-			Update(dt);
-			Render();
-		}
-		else
-		{
-			Sleep(tickPerFrame - dt);
-		}
+		//if (dt >= tickPerFrame)
+		//{
+		//	frameStart = now;
+		//	//Update(dt);
+		//	//Render();
+		//}
+		//else
+		//{
+		//	Sleep(tickPerFrame - dt);
+		//}
 	}
 }
 
-void Game::Render()
-{
-	auto scene = SceneManager::GetInstance()->GetCurScene();
-	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, scene->GetBackColor(), 0.0f, 0);
-
-	if (d3ddev->BeginScene())
-	{
-		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-		scene->Render();
-		spriteHandler->End();
-		d3ddev->EndScene();
-	}
-	d3ddev->Present(NULL, NULL, NULL, NULL);
-}
+//void Game::Render()
+//{
+//	auto scene = SceneManager::GetInstance()->GetCurScene();
+//	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, scene->GetBackColor(), 0.0f, 0);
+//
+//	if (d3ddev->BeginScene())
+//	{
+//		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+//		scene->Render();
+//		spriteHandler->End();
+//		d3ddev->EndScene();
+//	}
+//	d3ddev->Present(NULL, NULL, NULL, NULL);
+//}
 
 void Game::GameStartUp()
 {
 	TextureManager::GetInstance()->StartUp();
 	SpriteManager::GetInstance()->StartUp();
 	AnimationManager::GetInstance()->StartUp();
+}
+
+LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+	case WM_DESTROY:
+		isGameRunning = false;
+		PostQuitMessage(0);
+		break;
+
+	case WM_LBUTTONDOWN:
+
+		break;
+
+	case WM_KEYDOWN:
+
+		break;
+
+	case WM_KEYUP:
+
+		break;
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
 }
 
 Game *Game::GetInstance()

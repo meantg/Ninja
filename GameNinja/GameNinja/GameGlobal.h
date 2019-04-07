@@ -33,11 +33,8 @@
 #define NINJA_JUMP_ATK			8
 
 
-extern HWND hWnd; // window handle
-extern HINSTANCE hInstance; // The hien
 extern LPD3DXSPRITE spriteHandler; //con tro sprite
 extern LPDIRECT3DDEVICE9 d3ddev; //con tro den thiet bi
-extern int width, height; // thuoc tinh cua window
 extern LPDIRECT3DSURFACE9 backBuffer; //
 extern LPDIRECT3DSURFACE9 surface;
 extern bool isGameRunning;
