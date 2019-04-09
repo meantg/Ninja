@@ -7,10 +7,10 @@ class SceneManager
 private:
 	PlayScene * _curScene;							
 	static SceneManager * _instance;
-	std::unordered_map<int, PlayScene> scenes;
+	/*unordered_map<int, PlayScene> scenes;*/
 public:
 	SceneManager();
-	~SceneManager(); 
+
 	void StartUp();
 	void ShutDown();
 

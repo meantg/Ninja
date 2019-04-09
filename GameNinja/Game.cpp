@@ -95,33 +95,38 @@ void Game::GameRun()
 		auto now = GetTickCount();
 		auto dt = now - frameStart;
 
-		//if (dt >= tickPerFrame)
-		//{
-		//	frameStart = now;
-		//	//Update(dt);
-		//	//Render();
-		//}
-		//else
-		//{
-		//	Sleep(tickPerFrame - dt);
-		//}
+		if (dt >= tickPerFrame)
+		{
+			frameStart = now;
+			Update(dt);
+			Render();
+		}
+		else
+		{
+			Sleep(tickPerFrame - dt);
+		}
 	}
 }
 
-//void Game::Render()
-//{
-//	auto scene = SceneManager::GetInstance()->GetCurScene();
-//	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, scene->GetBackColor(), 0.0f, 0);
-//
-//	if (d3ddev->BeginScene())
-//	{
-//		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-//		scene->Render();
-//		spriteHandler->End();
-//		d3ddev->EndScene();
-//	}
-//	d3ddev->Present(NULL, NULL, NULL, NULL);
-//}
+void Game::Update(int dt)
+{
+	SceneManager::GetInstance()->GetCurScene()->Update(dt);
+}
+
+void Game::Render()
+{
+	auto scene = SceneManager::GetInstance()->GetCurScene();
+	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, scene->GetBackColor(), 0.0f, 0);
+
+	if (d3ddev->BeginScene())
+	{
+		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+		scene->Render();
+		spriteHandler->End();
+		d3ddev->EndScene();
+	}
+	d3ddev->Present(NULL, NULL, NULL, NULL);
+}
 
 void Game::GameStartUp()
 {

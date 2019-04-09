@@ -6,6 +6,8 @@
 #include "Animation.h"
 #include "AnimationManager.h"
 
+using namespace std;
+
 class Object
 {
 protected:

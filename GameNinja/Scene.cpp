@@ -4,7 +4,6 @@
 Scene::Scene()
 {
 	_backColor = D3DCOLOR_XRGB(255, 255, 255);
-	LoadResources();
 };
 
 // Lấy màu nền

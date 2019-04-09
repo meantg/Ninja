@@ -61,6 +61,12 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>FrameWork\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h">
@@ -95,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
       <Filter>FrameWork\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>FrameWork\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
