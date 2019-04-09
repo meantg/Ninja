@@ -106,4 +106,7 @@
       <Filter>FrameWork\Player</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\GameUIT-master\Load Bitmap\Ninja.png" />
+  </ItemGroup>
 </Project>

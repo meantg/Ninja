@@ -157,6 +157,9 @@
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\GameUIT-master\Load Bitmap\Ninja.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
