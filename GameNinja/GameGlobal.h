@@ -55,4 +55,8 @@ extern enum State
 	THROWING,			//10
 	CLIMBING,			//11	
 };					
-	
+
+extern enum TypeObject
+{
+	PLAYER,
+};

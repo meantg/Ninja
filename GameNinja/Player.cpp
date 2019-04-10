@@ -1,5 +1,26 @@
 #include "Player.h"
 
+
+
+Player::Player(AnimationManager *gAnimationManager)
+{
+	player->AddAnimation(101);
+	player->AddAnimation(102);
+	player->AddAnimation(103);
+	player->AddAnimation(104);
+	player->AddAnimation(105);
+	player->AddAnimation(106);
+	player->AddAnimation(107);
+	player->AddAnimation(108);
+	player->AddAnimation(109);
+
+	player->SetPosition(10.0f, 100.0f);
+}
+
+Player::~Player()
+{
+}
+
 void Player::Update(DWORD dt)
 {
 

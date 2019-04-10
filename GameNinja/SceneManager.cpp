@@ -12,14 +12,14 @@ void SceneManager::StartUp()
 }
 
 // Thay thế Scene hiện có bằng Scene khác (dùng cho chuyển cảnh)
-void SceneManager::ReplaceScene(PlayScene * scene)
+void SceneManager::ReplaceScene(Scene * scene)
 {
 	delete _curScene;
 	_curScene = scene;
 }
 
 // Get Scene hiện tại
-PlayScene * SceneManager::GetCurScene()
+Scene * SceneManager::GetCurScene()
 {
 	return _curScene;
 }

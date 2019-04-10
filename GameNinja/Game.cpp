@@ -1,13 +1,17 @@
 ﻿#include "Game.h"
-
+#include "PlayScene.h"
 
 Game *Game::_instance = NULL;
+
+
 Game::Game()
 {
+	gSceneManager = SceneManager::GetInstance();
 	gAnimationManager = AnimationManager::GetInstance();
 	gTextureManager =TextureManager::GetInstance();
 	gSpriteManager = SpriteManager::GetInstance();
 }
+
 
 void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 {
@@ -31,7 +35,7 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 
 	RegisterClassEx(&wc);
 	//WS_OVERLAPPEDWINDOW <=> WS_EX_TOPMOST | WS_POPUP | WS_VISIBLE
-	HWND hWnd = CreateWindow(
+	hWnd = CreateWindow(
 		WIN_NAME,
 		WIN_NAME,
 		WS_OVERLAPPEDWINDOW,
@@ -69,7 +73,7 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 
 	// Tạo Sprite Handler
 	D3DXCreateSprite(d3ddev, &spriteHandler);
-
+	gSceneManager->ReplaceScene(new PlayScene(gAnimationManager));
 	
 }
 
@@ -110,12 +114,12 @@ void Game::GameRun()
 
 void Game::Update(int dt)
 {
-	SceneManager::GetInstance()->GetCurScene()->Update(dt);
+	gSceneManager->GetCurScene()->Update(dt);
 }
 
 void Game::Render()
 {
-	auto scene = SceneManager::GetInstance()->GetCurScene();
+	auto scene = gSceneManager->GetCurScene();
 	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, scene->GetBackColor(), 0.0f, 0);
 
 	if (d3ddev->BeginScene())

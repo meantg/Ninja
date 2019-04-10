@@ -2,10 +2,12 @@
 #include "GameGlobal.h"
 Player *player;
 
-PlayScene::PlayScene()
+PlayScene::PlayScene(AnimationManager* gAnimationManager)
 {
+	player = new Player();
 	_backColor = D3DCOLOR_XRGB(0, 255, 255);
 	_timeCounter = 0;
+	animations = gAnimationManager;
 }
 
 PlayScene::~PlayScene()

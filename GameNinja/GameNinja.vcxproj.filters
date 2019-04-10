@@ -34,9 +34,6 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>FrameWork</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>FrameWork</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>FrameWork\Graphics\src</Filter>
     </ClCompile>
@@ -67,6 +64,9 @@
     <ClCompile Include="PlayScene.cpp">
       <Filter>FrameWork</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>FrameWork\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h">
@@ -76,9 +76,6 @@
       <Filter>FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
       <Filter>FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
@@ -103,6 +100,9 @@
       <Filter>FrameWork\Game</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
+      <Filter>FrameWork\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
       <Filter>FrameWork\Player</Filter>
     </ClInclude>
   </ItemGroup>

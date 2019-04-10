@@ -4,13 +4,13 @@
 class AnimationManager
 {
 	static AnimationManager * _instance;
-	unordered_map<State, LPANIMATION> animations;
+	unordered_map<TypeObject, LPANIMATION> oAnimations;
 public:
 	void StartUp();
 	void ShutDown();
 
-	void Add(State _state, LPANIMATION ani);
-	LPANIMATION Get(State _state);
+	void Add(TypeObject _state, LPANIMATION ani);
+	LPANIMATION Get(TypeObject _state);
 
 	static AnimationManager * GetInstance();
 };

@@ -18,14 +18,14 @@ void AnimationManager::StartUp()
 	// Anim-Idle [0]
 	ani = new Animation(100);
 	ani->Add(00000);
-	animations->Add(STANDING, ani);
+	animations->Add(PLAYER, ani);
 
 	// Anim-Attack-Standing [1]
 	ani = new Animation(100);
 	ani->Add(00001);
 	ani->Add(00002);
 	ani->Add(00003);
-	animations->Add(ATTACKING_STAND, ani);
+	animations->Add(PLAYER, ani);
 
 	// Anim-Throwing [2]
 	ani = new Animation(100);
@@ -77,12 +77,12 @@ void AnimationManager::StartUp()
 	animations->Add(JUMPING_ATK, ani);
 }
 
-void AnimationManager::Add(State _state, LPANIMATION ani)
+void AnimationManager::Add(TypeObject _state, LPANIMATION ani)
 {
 	animations[_state] = ani;
 }
 
-LPANIMATION AnimationManager::Get(State _state)
+LPANIMATION AnimationManager::Get(TypeObject _state)
 {
 	return animations[_state];
 }

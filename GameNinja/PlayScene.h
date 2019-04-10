@@ -11,7 +11,7 @@ private:
 	float _timeCounter;								// Counter nhằm Update Scene sau một khoảng thời gian
 public:
 
-	PlayScene();		// Load các resources cần thiết để khởi tạo Scene
+	PlayScene(AnimationManager *gAnimationManager);		// Load các resources cần thiết để khởi tạo Scene
 	~PlayScene();
 
 	virtual void Update(float dt);							// Update các thông số các đối tượng trong Scene

@@ -7,12 +7,12 @@ class Player : public Object
 protected:
 	float vx, vy, nx, width, height;
 	LPANIMATION _curanimation;
-	unordered_map<State, LPANIMATION> _animations;
+	unordered_map<State, LPANIMATION> pAnimations;
 	State _state;
 	bool isReverse = false;
 
 public:
-	Player();
+	Player(AnimationManager *gAnimationManager);
 	~Player();
 
 	void Allow(State state, bool flag);

@@ -17,11 +17,10 @@ private:
 	LPDIRECTINPUTDEVICE8 didv8;
 	BYTE keyStates[256];
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFERD_SIZE];
-	//SceneManager *gSceneManager;
-	AnimationManager *gAnimationManager;
-	TextureManager *gTextureManager;
-	SpriteManager *gSpriteManager;
-
+	AnimationManager * gAnimationManager;
+	TextureManager * gTextureManager;
+	SpriteManager * gSpriteManager;
+	SceneManager *gSceneManager;
 public:
 	Game();
 	//void InitKeyboard(LPKEYEVENTHANDLER handler, HINSTANCE hInstance);
