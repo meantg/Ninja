@@ -33,9 +33,9 @@ void TextureManager::Add(int id, LPCSTR filePath, D3DCOLOR transparentColor)
 	textures[id] = texture;
 }
 
-LPDIRECT3DTEXTURE9 TextureManager::GetTexture(int _state)
+LPDIRECT3DTEXTURE9 TextureManager::GetTexture(int id)
 {
-	return textures[_state];
+	return textures[id];
 }
 
 TextureManager * TextureManager::GetInstance()

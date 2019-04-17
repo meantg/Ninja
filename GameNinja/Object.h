@@ -20,7 +20,7 @@ protected:
 public:
 	void SetPosition(float x, float y) { this->x = x; this->y = y; }
 	void SetState(State _state) { this->_curState = _state; }
-	void AddAnimation(State _state);
+	virtual void AddAnimation(State _state);
 
 	Object();
 

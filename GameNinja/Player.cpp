@@ -2,19 +2,19 @@
 
 
 
-Player::Player(AnimationManager *gAnimationManager)
+Player::Player()
 {
-	player->AddAnimation(101);
-	player->AddAnimation(102);
-	player->AddAnimation(103);
-	player->AddAnimation(104);
-	player->AddAnimation(105);
-	player->AddAnimation(106);
-	player->AddAnimation(107);
-	player->AddAnimation(108);
-	player->AddAnimation(109);
+	this->AddAnimation(STANDING);
+	this->AddAnimation(ATTACKING_STAND);
+	this->AddAnimation(THROWING);
+	this->AddAnimation(CLIMBING);
+	this->AddAnimation(RUNNING);
+	this->AddAnimation(SITTING);
+	this->AddAnimation(ATTACKING_SIT);
+	this->AddAnimation(JUMPING);
+	this->AddAnimation(JUMPING_ATK);
 
-	player->SetPosition(10.0f, 100.0f);
+	this->SetPosition(10.0f, 100.0f);
 }
 
 Player::~Player()
@@ -44,6 +44,12 @@ void Player::Render()
 	State ani = _curState;
 	animations[ani]->FlipHorizontal(isReverse);
 	animations[ani]->Render(x, y);
+}
+
+void Player::AddAnimation(State _state)
+{
+	LPANIMATION ani = AnimationManager::GetInstance()->Get(PLAYER, _state);
+	animations[_state] = ani;
 }
 
 void Player::SetState(State state)

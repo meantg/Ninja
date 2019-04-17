@@ -7,19 +7,18 @@ class Player : public Object
 protected:
 	float vx, vy, nx, width, height;
 	LPANIMATION _curanimation;
-	unordered_map<State, LPANIMATION> pAnimations;
 	State _state;
 	bool isReverse = false;
-
+	
 public:
-	Player(AnimationManager *gAnimationManager);
+	Player();
 	~Player();
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);
 	void Render();
+	void AddAnimation(State _state);
 	void SetState(State state);
-
 
 	void SetWidth(float _width) { width = _width; }
 	void SetHeight(float _height) { height = _height; }

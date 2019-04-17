@@ -7,6 +7,7 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int cmdShow)
 {
 	Game *game = Game::GetInstance();
+	
 	game->GameInit(hInstance, cmdShow);
 	game->GameStartUp();
 	game->GameRun();

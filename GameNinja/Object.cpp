@@ -20,8 +20,6 @@ void Object::Render()
 
 void Object::AddAnimation(State _state)
 {
-	LPANIMATION ani = AnimationManager::GetInstance()->Get(_state);
-	animations[_state] = ani;
 }
 
 Object::~Object(){}

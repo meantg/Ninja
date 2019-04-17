@@ -17,7 +17,6 @@ CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEX
 //Voi (x,y) la trung tam cua Sprite
 void CSprite::Draw(float x, float y, bool _isFlipHorizontal)
 {
-	LPD3DXSPRITE spriteHandler = nullptr;
 	//Tao rect de ve Sprite
 
 	D3DXVECTOR3 p(x, y, 0);

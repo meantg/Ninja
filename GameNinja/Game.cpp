@@ -73,7 +73,7 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 
 	// Tạo Sprite Handler
 	D3DXCreateSprite(d3ddev, &spriteHandler);
-	gSceneManager->ReplaceScene(new PlayScene(gAnimationManager));
+	
 	
 }
 
@@ -137,6 +137,7 @@ void Game::GameStartUp()
 	gTextureManager->StartUp();
 	gSpriteManager->StartUp();
 	gAnimationManager->StartUp();
+	gSceneManager->ReplaceScene(new PlayScene(gAnimationManager));
 }
 
 LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
