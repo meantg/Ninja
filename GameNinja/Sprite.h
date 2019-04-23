@@ -16,6 +16,7 @@ protected:
 	LPDIRECT3DTEXTURE9 texture;
 
 	bool _isFlipVertical, _isFlipHorizontal;
+
 public:
 	CSprite() {};
 	CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex);
@@ -25,6 +26,12 @@ public:
 
 	//bool isFlipVertical();
 	bool isFlipHorizontal();
+
+	void SetWidth(int width);
+	int GetWidth();
+
+	void SetHeight(int height);
+	int GetHeight();
 };
 
 typedef CSprite * LPSPRITE;

@@ -154,7 +154,7 @@ LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_KEYDOWN:
-
+		SceneManager::GetInstance()->GetCurScene()->OnKeyDown(wParam);
 		break;
 
 	case WM_KEYUP:

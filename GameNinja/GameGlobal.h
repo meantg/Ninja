@@ -1,11 +1,12 @@
 ﻿#pragma once
-#include <windows.h>
+
+#include <Windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <dinput.h>
 
-#define SCREEN_WIDTH 1024					// Chiều rộng cửa sổ
-#define SCREEN_HEIGHT 768					// Chiều dài cửa sổ
+#define SCREEN_WIDTH 300				// Chiều rộng cửa sổ
+#define SCREEN_HEIGHT 176			// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 60					// FPS
 #define WIN_NAME "Game Ninja"
 #define WIN_TITLE "Game Ninja"
@@ -59,4 +60,10 @@ extern enum State
 extern enum TypeObject
 {
 	PLAYER,
+};
+
+extern enum Tag
+{
+	Ninja_Text,
+	Stage3_1,
 };

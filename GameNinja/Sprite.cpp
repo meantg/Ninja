@@ -28,6 +28,7 @@ void CSprite::Draw(float x, float y, bool _isFlipHorizontal)
 	//spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_XRGB(255,255,255));
 	int _width = right - left;
 	int _height = bottom - top;
+
 	// Nếu có lật hình (theo Ox hay Oy) thì thiết đặt biến đổi hình băng ma trận
 	auto pCenter = D3DXVECTOR3(_width >> 1, _height >> 1, 0);
 	auto pPosition = D3DXVECTOR3(x, y, 0);
@@ -69,4 +70,5 @@ bool CSprite::isFlipHorizontal()
 //{
 //	return _isFlipVertical;
 //}
+
 

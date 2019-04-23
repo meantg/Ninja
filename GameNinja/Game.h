@@ -21,6 +21,7 @@ private:
 	TextureManager * gTextureManager;
 	SpriteManager * gSpriteManager;
 	SceneManager *gSceneManager;
+
 public:
 	Game();
 	//void InitKeyboard(LPKEYEVENTHANDLER handler, HINSTANCE hInstance);

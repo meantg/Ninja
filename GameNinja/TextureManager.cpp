@@ -4,10 +4,11 @@ void TextureManager::StartUp()
 {
 	TextureManager * textures = TextureManager::GetInstance();
 
-	textures->Add(1, "Ninja.png", D3DCOLOR_XRGB(255, 163, 177));
+	textures->Add(Ninja_Text, "Ninja.png", D3DCOLOR_XRGB(255, 163, 177));
+	textures->Add(Stage3_1, "MapReader/tiles.png", D3DCOLOR_XRGB(255, 163, 177));
 }
 
-void TextureManager::Add(int id, LPCSTR filePath, D3DCOLOR transparentColor)
+void TextureManager::Add(Tag tag, LPCSTR filePath, D3DCOLOR transparentColor)
 {
 	D3DXIMAGE_INFO info;
 	HRESULT result = D3DXGetImageInfoFromFile(filePath, &info);
@@ -30,12 +31,12 @@ void TextureManager::Add(int id, LPCSTR filePath, D3DCOLOR transparentColor)
 		NULL,
 		&texture);
 
-	textures[id] = texture;
+	textures[tag] = texture;
 }
 
-LPDIRECT3DTEXTURE9 TextureManager::GetTexture(int id)
+LPDIRECT3DTEXTURE9 TextureManager::GetTexture(Tag tag)
 {
-	return textures[id];
+	return textures[tag];
 }
 
 TextureManager * TextureManager::GetInstance()

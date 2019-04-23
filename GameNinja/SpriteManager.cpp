@@ -11,8 +11,11 @@ SpriteManager *SpriteManager::GetInstance()
 
 void SpriteManager::StartUp()
 {
+	//Load Sprite Ninja
+	//
+
 	SpriteManager * sprites = SpriteManager::GetInstance();
-	LPDIRECT3DTEXTURE9 texPeople = TextureManager::GetInstance()->GetTexture(1);
+	LPDIRECT3DTEXTURE9 texPeople = TextureManager::GetInstance()->GetTexture(Ninja_Text);
 	//Idle
 	sprites->Add(00000, 2, 4, 21, 37, texPeople);
 	//Attack-Standing
@@ -53,6 +56,14 @@ void SpriteManager::StartUp()
 	sprites->Add(60002, 293, 45, 321, 77, texPeople);
 	sprites->Add(60003, 325, 45, 353, 77, texPeople);
 	sprites->Add(60004, 357, 45, 385, 77, texPeople);
+
+	//Load TilesMap
+
+	LPDIRECT3DTEXTURE9 texStage1 = TextureManager::GetInstance()->GetTexture(Stage3_1);
+	for (int i = 0; i < 62; i++)
+	{
+		sprites->Add(70000+ i, i*32, 0, 32*(i+1), 32, texStage1);
+	}
 }
 
 void SpriteManager::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)

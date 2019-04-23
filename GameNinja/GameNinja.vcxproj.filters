@@ -26,14 +26,14 @@
     <Filter Include="FrameWork\Player">
       <UniqueIdentifier>{6c199c5b-c5a5-41c6-9614-29cf5cbf9a25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MapReader">
+      <UniqueIdentifier>{e37c4e72-e608-4e84-864d-0dc62bd9df56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Scenes">
+      <UniqueIdentifier>{2d1d1993-246b-4d12-9525-090b1edfb43f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Scene.cpp">
-      <Filter>FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>FrameWork</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>FrameWork\Graphics\src</Filter>
     </ClCompile>
@@ -61,23 +61,26 @@
     <ClCompile Include="Player.cpp">
       <Filter>FrameWork\Player</Filter>
     </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>FrameWork</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>FrameWork\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>FrameWork\Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMap.cpp">
+      <Filter>FrameWork\Game\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SceneManager.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>FrameWork\Graphics</Filter>
     </ClInclude>
@@ -105,5 +108,33 @@
     <ClInclude Include="Object.h">
       <Filter>FrameWork\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>FrameWork\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMap.h">
+      <Filter>FrameWork\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MapReader\lv1.png">
+      <Filter>MapReader</Filter>
+    </Image>
+    <Image Include="MapReader\tiles.png">
+      <Filter>MapReader</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="MapReader\Map1_matrix.txt">
+      <Filter>MapReader</Filter>
+    </Text>
   </ItemGroup>
 </Project>

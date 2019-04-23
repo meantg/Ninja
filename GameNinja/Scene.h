@@ -9,7 +9,10 @@ protected:
 	Scene();									// Constructor khởi tạo cho abstract factory
 
 public:
-	virtual void Update(int dt) {};			// Update các thông số sau khoảng delta-time
+	virtual void Update(float dt) {};			// Update các thông số sau khoảng delta-time
 	virtual void Render() {};					// Render các UI Components lên Scene
-	D3DCOLOR GetBackColor();					// Lấy màu nền
+	D3DCOLOR GetBackColor();			
+	
+	virtual void OnKeyDown(int keyCode) {};
+	virtual void OnKeyUp(int keyCode) {};
 };

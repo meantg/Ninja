@@ -15,6 +15,7 @@ Player::Player()
 	this->AddAnimation(JUMPING_ATK);
 
 	this->SetPosition(10.0f, 100.0f);
+	_state = RUNNING;
 }
 
 Player::~Player()
@@ -24,10 +25,11 @@ Player::~Player()
 void Player::Update(DWORD dt)
 {
 
-	if (_curState == NINJA_RUN_RIGHT)
+	if (_state == RUNNING)
 	{
 		if (x <= SCREEN_WIDTH - 20 && x >= 0)
-			x += vx * dt*nx;
+			/*x += vx * dt*nx;*/
+			x += 5;
 		if (x < 0)
 			x = 0;
 		if (x > SCREEN_WIDTH - 20)
@@ -41,7 +43,7 @@ void Player::Update(DWORD dt)
 
 void Player::Render()
 {
-	State ani = _curState;
+	State ani = _state;
 	animations[ani]->FlipHorizontal(isReverse);
 	animations[ani]->Render(x, y);
 }

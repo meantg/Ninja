@@ -17,8 +17,8 @@ public:
 	TextureManager() {};
 	~TextureManager();
 
-	void Add(int id, LPCSTR filePath, D3DCOLOR transparentColor);
-	LPDIRECT3DTEXTURE9 GetTexture(int _id);
+	void Add(Tag tag, LPCSTR filePath, D3DCOLOR transparentColor);
+	LPDIRECT3DTEXTURE9 GetTexture(Tag tag);
 
 	static TextureManager * GetInstance();
 };
