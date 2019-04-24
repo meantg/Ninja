@@ -26,7 +26,7 @@ private:
 
 	int **mapMatrix;
 	int **isContain(int **matrix);
-
+	int curX;
 	Camera *mCamera;
 };
 

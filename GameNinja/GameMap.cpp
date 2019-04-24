@@ -54,13 +54,15 @@ int** GameMap::isContain(int **matrix)
 
 void GameMap::Draw()
 {
-	int **_mapMatrix = isContain(mapMatrix);
+	/*int **_mapMatrix = isContain(mapMatrix);*/
+	RECT r = mCamera->GetBound();
 
-	for (int i = 0; i < ceil(SCREEN_HEIGHT/32); i++)
+	for (int i = 0; i < r.bottom/32; i++)
 	{
-		for (int j = 0; j < ceil(SCREEN_WIDTH/32); j++)
+		for (int j = 0, curX = r.left/32; curX < r.right/32; j++,curX++)
 		{
-			SpriteManager::GetInstance()->GetSprite(70000 + _mapMatrix[i][j])->Draw(j * 32, i * 32);
+			
+			SpriteManager::GetInstance()->GetSprite(70000 + mapMatrix[i][curX])->Draw(j * 32, i * 32);
 		}
 	}
 }

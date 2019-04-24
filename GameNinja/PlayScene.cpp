@@ -43,22 +43,14 @@ void PlayScene::OnKeyDown(int keyCode)
 {
 	if (keyCode == VK_LEFT)
 	{
-		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(-30, 0, 0));
+		if(mCamera->GetBound().left - 32 >= 0)
+		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(-32, 0, 0));
 	}
 
 	if (keyCode == VK_RIGHT)
 	{
-		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(30, 0, 0));
-	}
-
-	if (keyCode == VK_UP)
-	{
-		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(0, -10, 0));
-	}
-
-	if (keyCode == VK_DOWN)
-	{
-		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(0, 10, 0));
+		if (mCamera->GetBound().right + 32 <= MapWidth)
+			mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(32, 0, 0));
 	}
 }
 

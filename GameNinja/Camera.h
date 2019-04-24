@@ -16,7 +16,6 @@ public:
 
 	int GetWidth();
 	int GetHeight();
-
 	D3DXVECTOR3 GetPosition();
 	RECT GetBound();
 
