@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <Windows.h>
 #include <d3dx9.h>
 #include <vector>
@@ -28,3 +28,41 @@ public:
 	virtual void Render();
 	~Object();
 };
+
+struct Position {
+	float x;
+	float y;
+};
+
+struct Velocity {
+	float vx;
+	float vy;
+};
+struct Rigidbody {
+	float width;
+	float height;
+};
+class GameObject
+{
+protected:
+	TypeObject _type;
+	Position pos;
+	
+public:
+	virtual TypeObject getType() = 0;
+	void setPosition(float x, float y);
+	GameObject();
+	~GameObject();
+};
+
+
+
+
+// GameObject: chứa type để quản lý, những class object sẽ kế thừa, và return type khác nhau.
+// GameObject: có thể có các thuộc tính như: vị trí, vận tốc, sprites, enable, disable theo grid, Physics(collision)
+// Player: vị trí, tốc độ, tốc độ đánh, vũ khí, animation, input, rigid body, máu, năng lượng
+// Enemies: vị trí, tốc độ, tốc độ đánh, AI, enable, disable theo grid, rigid body, máu
+// Tường: vị trí, rigid body
+// Đất: vị trí, rigid body
+// Ô vật phẩm: vị trí, rigid body, chứa item nào?
+// Các items như vũ khí: animation khác nhau, năng lượng tiêu tốn khi sử dụng, tốc độ, input, dame,

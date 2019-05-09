@@ -4,19 +4,19 @@
 class Camera
 {
 private:
-	int mWidth;
-	int mHeight;
+	int cmWidth;
+	int cmHeight;
 
-	D3DXVECTOR3 mPosition;
+	D3DXVECTOR2 mPosition;
+	D3DXVECTOR2 maxPosition;
 public:
-	Camera(int width, int height);
+	Camera(int width, int height, int row, int column);
 
 	void SetPosition(float x, float y);
-	void SetPosition(D3DXVECTOR3 pos);
-
+	void SetPosition(D3DXVECTOR2 pos);
 	int GetWidth();
 	int GetHeight();
-	D3DXVECTOR3 GetPosition();
+	D3DXVECTOR2 GetPosition();
 	RECT GetBound();
 
 	~Camera();

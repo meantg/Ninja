@@ -5,7 +5,7 @@
 #include <d3dx9.h>
 #include <dinput.h>
 
-#define SCREEN_WIDTH 800				// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 608				// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176			// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 60					// FPS
 #define WIN_NAME "Game Ninja"

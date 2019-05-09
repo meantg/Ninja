@@ -23,7 +23,7 @@ public:
 	void SetWidth(float _width) { width = _width; }
 	void SetHeight(float _height) { height = _height; }
 	State GetState() { return _state; }
-
+	D3DXVECTOR3 GetPosition() { return D3DXVECTOR3(x, y, 0); }
 	void HandleKeyboard(map<int, bool> keyCode);
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);

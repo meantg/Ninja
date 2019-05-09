@@ -1,7 +1,7 @@
 ﻿#include "Sprite.h"
 
 //Constructor - Khoi tao 1 Sprite tu duong dan
-CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)
+CSprite::CSprite(int id, float left, float top, float right, float bottom, LPDIRECT3DTEXTURE9 tex)
 {
 	this->id = id;
 	this->left = left;
@@ -64,6 +64,16 @@ void CSprite::FlipHorizontal(bool flip)
 bool CSprite::isFlipHorizontal()
 {
 	return _isFlipHorizontal;
+}
+
+float CSprite::getWidth()
+{
+	return right-left;
+}
+
+float CSprite::getHeight()
+{
+	return bottom-top;
 }
 
 //bool Sprite::isFlipVertical()

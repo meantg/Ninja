@@ -60,9 +60,9 @@ void SpriteManager::StartUp()
 	//Load TilesMap
 
 	LPDIRECT3DTEXTURE9 texStage1 = TextureManager::GetInstance()->GetTexture(Stage3_1);
-	for (int i = 0; i < 62; i++)
+	for (int i = 0; i < 79; i++)
 	{
-		sprites->Add(70000+ i, i*32, 0, 32*(i+1), 32, texStage1);
+		sprites->Add(70000+ i, i*16, 0, 16*(i+1), 16, texStage1);
 	}
 }
 

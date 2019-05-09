@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include "string"
+#include <math.h>
 
 class GameMap
 {
@@ -18,15 +19,15 @@ public:
 
 	void SetCamera(Camera *camera);
 	void Draw();
-
+	int getRow();
+	int getColumn();
 	~GameMap();
 
 private:
 	void LoadMap(const char* filePath);
 
 	int **mapMatrix;
-	int **isContain(int **matrix);
-	int curX;
+	int row, column;
 	Camera *mCamera;
 };
 
