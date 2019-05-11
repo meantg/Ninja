@@ -4,7 +4,7 @@
 
 Player::Player()
 {
-	this->AddAnimation(STANDING);
+	/*this->AddAnimation(STANDING);
 	this->AddAnimation(ATTACKING_STAND);
 	this->AddAnimation(THROWING);
 	this->AddAnimation(CLIMBING);
@@ -12,10 +12,10 @@ Player::Player()
 	this->AddAnimation(SITTING);
 	this->AddAnimation(ATTACKING_SIT);
 	this->AddAnimation(JUMPING);
-	this->AddAnimation(JUMPING_ATK);
+	this->AddAnimation(JUMPING_ATK);*/
 
 	this->SetPosition(10.0f, 100.0f);
-	_state = RUNNING;
+	_state = ATTACKING_SIT;
 }
 
 Player::~Player()
@@ -43,9 +43,9 @@ void Player::Update(DWORD dt)
 
 void Player::Render()
 {
-	State ani = _state;
-	animations[ani]->FlipHorizontal(isReverse);
-	animations[ani]->Render(x, y);
+	State state = _state;
+	AnimationManager::GetInstance()->Get(PLAYER, state)->FlipHorizontal(isReverse);
+	AnimationManager::GetInstance()->Get(PLAYER, state)->Render(x, y);
 }
 
 void Player::AddAnimation(State _state)

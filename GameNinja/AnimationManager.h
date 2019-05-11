@@ -11,6 +11,10 @@ public:
 
 	void Add(TypeObject _type, State _state, LPANIMATION ani);
 	LPANIMATION Get(TypeObject _type, State _state);
+	unordered_map<State, LPANIMATION> getAnimationsAsTypeObject(TypeObject _type) {
+		unordered_map<State, LPANIMATION> result;
+
+	}
 
 	static AnimationManager * GetInstance();
 };

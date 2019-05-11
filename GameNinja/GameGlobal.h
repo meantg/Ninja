@@ -42,6 +42,7 @@ extern bool isGameRunning;
 
 extern enum State
 {
+	IDLE,
 	STANDING,			//0		
 	
 	RUNNING,//1
@@ -60,6 +61,7 @@ extern enum State
 extern enum TypeObject
 {
 	PLAYER,
+	ENEMY,
 };
 
 extern enum Tag

@@ -29,30 +29,16 @@ public:
 	~Object();
 };
 
-struct Position {
-	float x;
-	float y;
-};
-
-struct Velocity {
-	float vx;
-	float vy;
-};
-struct Rigidbody {
-	float width;
-	float height;
-};
-class GameObject
+class Entity
 {
 protected:
-	TypeObject _type;
-	Position pos;
-	
+	//TypeObject _type;
+	int _EId;
 public:
-	virtual TypeObject getType() = 0;
-	void setPosition(float x, float y);
-	GameObject();
-	~GameObject();
+	//TypeObject getType() { return _type; }
+	int getEId() { return _EId; }
+	Entity();
+	~Entity();
 };
 
 

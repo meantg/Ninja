@@ -31,9 +31,9 @@ void PlayScene::Update(float dt)
 	player->Update(dt);
 	/*if (mCamera->GetBound().right + 8 <= MapWidth)
 	mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(8,0,0));*/
-	if ((player->GetPosition().x >= SCREEN_WIDTH / 2) && (mCamera->GetBound().right + 32 <= MapWidth)) {
+	/*if ((player->GetPosition().x >= SCREEN_WIDTH / 2) && (mCamera->GetBound().right + 32 <= MapWidth)) {
 		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR2(8, 0));
-	}
+	}*/
 	/*if(mCamera->GetBound().right == MapWidth)*/
 }
 
