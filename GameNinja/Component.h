@@ -1,8 +1,12 @@
 #pragma once
+template <class T>
 class Component
 {
+private:
+	T cType;
 public:
-	Component();
-	~Component();
+	Component() {}
+	T GetComponentType() { return cType; }
+	~Component() {}
 };
 

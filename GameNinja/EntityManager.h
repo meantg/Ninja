@@ -5,8 +5,9 @@
 class EntityManager {
 private:
 	static EntityManager *_instance;
-	vector<Entity> _entities;
-	vector<Component> _components;
-
+	unordered_map<int,Entity> entities;
+public:
+	static EntityManager *GetInstance();
+	Entity GetEntity();
 
 };

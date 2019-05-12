@@ -82,9 +82,6 @@
     <ClCompile Include="GameMap.cpp">
       <Filter>FrameWork\Game\src</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>FrameWork\GameObjects\Components</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
