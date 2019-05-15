@@ -106,9 +106,26 @@ void Player::OnKeyDown(int keyCode)
 Ninja::Ninja()
 {
 	{
-		mPos = new PositionComponent(10.0f, 100.0f);
+		_curState = IDLE;
+		mPos = new PositionComponent(10.0f, 100.0f,0.0f,15.0f);
 		mVelo = new VelocityComponent(2.0f, 2.0f, 2.0f);
-		mRigid = new RigidBodyComponent();
+		mRigid = new RigidBodyComponent(mRigid->GetWitdh(PLAYER,_curState),mRigid->GetHeight(PLAYER,_curState));
 		mStats = new StatsComponent(10.0f, 10.0f, 2.0f, 2.0f);
 	}
+}
+
+Ninja::~Ninja()
+{
+}
+
+void Ninja::Update()
+{
+	mPos->Update(mVelo);
+	mVelo->Update();
+	mRigid->Update();
+	mStats->Update();
+}
+
+void Ninja::Render()
+{
 }

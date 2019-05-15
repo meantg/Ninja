@@ -18,6 +18,10 @@ public:
 	float Getvx() { return vx; }
 	float Getvy() { return vy; }
 
+	void Update()
+	{
+
+	}
 	~VelocityComponent() {}
 
 };

@@ -13,5 +13,10 @@ public:
 		this->mp = mp;
 		this->maxMP = maxMP;
 	}
+
+	void Update()
+	{
+
+	}
 	~StatsComponent() {}
 };

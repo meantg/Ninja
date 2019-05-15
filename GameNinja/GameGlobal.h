@@ -69,3 +69,11 @@ extern enum Tag
 	Ninja_Text,
 	Stage3_1,
 };
+
+extern enum TypeItem
+{
+	MANA,
+	HEAL,
+	POINT,
+	TIME,
+};

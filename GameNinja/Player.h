@@ -47,5 +47,8 @@ public:
 
 	void Update();
 	void Render();
-	void OnKeyDown(int keycode);
+	TypeObject getType() { return PLAYER; }
+	void OnKeyDown(int keyCode);
+	void OnKeyUp(int keyCode);
+
 };

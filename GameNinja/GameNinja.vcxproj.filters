@@ -38,6 +38,9 @@
     <Filter Include="FrameWork\GameObjects\Entity">
       <UniqueIdentifier>{e07fc3b7-de4b-4d91-829c-a4261843349e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Item">
+      <UniqueIdentifier>{4e686d2b-530a-4e29-a85f-edd6c49b3a1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -64,12 +67,6 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>FrameWork\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>FrameWork\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>FrameWork\Graphics\src</Filter>
     </ClCompile>
@@ -84,6 +81,15 @@
     </ClCompile>
     <ClCompile Include="GameMap.cpp">
       <Filter>FrameWork\Game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>FrameWork\GameObjects\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>FrameWork\GameObjects\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,12 +113,6 @@
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
       <Filter>FrameWork\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>FrameWork\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>FrameWork\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>FrameWork\Graphics</Filter>
@@ -144,8 +144,20 @@
     <ClInclude Include="StatsComponent.h">
       <Filter>FrameWork\GameObjects\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>FrameWork\GameObjects\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>FrameWork\GameObjects\Entity</Filter>
+    </ClInclude>
     <ClInclude Include="EntityManager.h">
-      <Filter>FrameWork\GameObjects</Filter>
+      <Filter>FrameWork\GameObjects\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ManaPotion.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

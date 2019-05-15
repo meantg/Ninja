@@ -32,19 +32,19 @@ public:
 class Entity
 {
 protected:
-	//TypeObject _type;
+	TypeObject _type;
 	int _EId;
 	unordered_map<State, LPANIMATION> animations;
 	bool _isReverse = false ;
-	State _curState ;
 public:
-	//TypeObject getType() { return _type; }
+	State _curState;
+	virtual TypeObject getType() { }
 	int getEId() { return _EId; }
 
 	virtual void AddAnimation(State _state);
 	virtual void Update(float dt);
 	virtual void Render();
-	void SetState(State _state) { this->_curState = _state; }
+
 
 	Entity();
 	~Entity();

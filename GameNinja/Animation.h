@@ -30,6 +30,10 @@ public:
 	void Add(int spriteId, DWORD time = 0);
 	void Render(float x, float y);
 	void FlipHorizontal(bool flag);
+	LPANIMATIONFRAME GetcurFrame()
+	{
+		return frames[curFrame];
+	}
 	/*void SetPosition(float x, float y);
 
 	void FlipVertical(bool flag);*/

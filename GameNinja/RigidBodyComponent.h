@@ -9,5 +9,15 @@ public:
 		this->width = width;
 		this->height = height;
 	}
+
+	float GetWitdh(TypeObject _type,State _curState)
+	{
+		return AnimationManager::GetInstance()->Get(_type, _curState)->GetcurFrame()->GetSprite()->getWidth();
+	}
+
+	float GetHeight(TypeObject _type, State _curState)
+	{
+		return AnimationManager::GetInstance()->Get(_type, _curState)->GetcurFrame()->GetSprite()->getHeight();
+	}
 	~RigidBodyComponent() {}
 };

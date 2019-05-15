@@ -1,5 +1,4 @@
 #pragma once
-#include "GameGlobal.h"
 
 class Component
 {
@@ -9,7 +8,7 @@ public:
 	Component() {}
 
 	int GetComponentType() { return Cid; }
-	static void Update();
+	virtual void Update();
 
 	~Component() {}
 };

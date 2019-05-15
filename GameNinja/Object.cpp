@@ -9,9 +9,9 @@ Object::Object()
 void Object::Update(DWORD dt)
 {
 	//Dich chuyen vi tri cua Anim
-	x += vx * dt;
+	/*x += vx * dt;
 	if ((vx > 0 && x >= SCREEN_WIDTH) || (x < 0 && vx < 0))
-		vx = -vx;
+		vx = -vx;*/
 }
 
 void Object::Render()
@@ -32,6 +32,20 @@ void Entity::AddAnimation(State _state)
 
 void Entity::Update(float dt)
 {
+
 }
+
+void Entity::Render()
+{
+}
+
+Entity::Entity()
+{
+}
+
+Entity::~Entity()
+{
+}
+
 
 
