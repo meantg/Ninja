@@ -1,12 +1,16 @@
 #pragma once
-template <class T>
+#include "GameGlobal.h"
+
 class Component
 {
 private:
-	T cType;
+	int Cid;
 public:
 	Component() {}
-	T GetComponentType() { return cType; }
+
+	int GetComponentType() { return Cid; }
+	static void Update();
+
 	~Component() {}
 };
 

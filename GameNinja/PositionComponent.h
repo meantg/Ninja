@@ -1,7 +1,11 @@
 #pragma once
 #include "Component.h"
-class PositionComponent : public Component {
-private:
+#include "VelocityComponent.h"
+class VelocityComponent a;
+
+class PositionComponent : public Component 
+{
+protected:
 	float x;
 	float y;
 public:
@@ -9,6 +13,12 @@ public:
 	{
 		this->x = x;
 		this->y = y;
+	}
+
+	void Update()
+	{
+		this->x += a.Getvx();
+		this->y += a.Getvy();
 	}
 	~PositionComponent() {}
 };

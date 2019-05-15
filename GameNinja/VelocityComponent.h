@@ -1,8 +1,9 @@
 #pragma once
 #include "Component.h"
+
 class VelocityComponent : public Component
 {
-private:
+protected:
 	float vx;
 	float vy;
 	float _gravity;
@@ -13,6 +14,10 @@ public:
 		this->vy = vy;
 		this->_gravity = _gravity;
 	}
+
+	float Getvx() { return vx; }
+	float Getvy() { return vy; }
+
 	~VelocityComponent() {}
 
 };

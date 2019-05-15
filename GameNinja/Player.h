@@ -1,5 +1,10 @@
 #pragma once
 #include "Object.h"
+#include "Component.h"
+#include "PositionComponent.h"
+#include "RigidBodyComponent.h"
+#include "StatsComponent.h"
+#include "VelocityComponent.h"
 #include <map>
 
 class Player : public Object
@@ -27,4 +32,20 @@ public:
 	void HandleKeyboard(map<int, bool> keyCode);
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);
+};
+
+class Ninja : public Entity
+{
+protected:
+	PositionComponent *mPos;
+	VelocityComponent *mVelo;
+	RigidBodyComponent *mRigid;
+	StatsComponent *mStats;
+public:
+	Ninja();
+	~Ninja();
+
+	void Update();
+	void Render();
+	void OnKeyDown(int keycode);
 };

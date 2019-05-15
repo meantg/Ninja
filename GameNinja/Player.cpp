@@ -103,4 +103,12 @@ void Player::OnKeyDown(int keyCode)
 	}
 }
 
-
+Ninja::Ninja()
+{
+	{
+		mPos = new PositionComponent(10.0f, 100.0f);
+		mVelo = new VelocityComponent(2.0f, 2.0f, 2.0f);
+		mRigid = new RigidBodyComponent();
+		mStats = new StatsComponent(10.0f, 10.0f, 2.0f, 2.0f);
+	}
+}

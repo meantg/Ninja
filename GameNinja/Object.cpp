@@ -23,3 +23,15 @@ void Object::AddAnimation(State _state)
 }
 
 Object::~Object(){}
+
+void Entity::AddAnimation(State _state)
+{
+	LPANIMATION ani = AnimationManager::GetInstance()->Get(PLAYER, _state);
+	animations[_state] = ani;
+}
+
+void Entity::Update(float dt)
+{
+}
+
+

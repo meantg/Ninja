@@ -35,6 +35,9 @@
     <Filter Include="FrameWork\GameObjects\Components">
       <UniqueIdentifier>{ed52e6af-787e-45f8-8ea1-8a3ce8b5f030}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity">
+      <UniqueIdentifier>{e07fc3b7-de4b-4d91-829c-a4261843349e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
