@@ -14,7 +14,7 @@ public:
 	void StartUp();
 	void ShutDown();
 
-	TextureManager();
+	TextureManager() {};
 	~TextureManager();
 
 	void Add(int id, LPCSTR filePath, D3DCOLOR transparentColor);

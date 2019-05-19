@@ -1,4 +1,4 @@
 ﻿  Game.cpp
-e:\bai tap\nam 2\gameeee\ninjagame\gameninja\gameninja\game.cpp(51): warning C4018: '>=': signed/unsigned mismatch
-e:\bai tap\nam 2\gameeee\ninjagame\gameninja\gameninja\game.cpp(54): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
-  GameNinja.vcxproj -> E:\Bai tap\Nam 2\Gameeee\NinjaGame\GameNinja\Debug\GameNinja.exe
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\nes\gameninja\gameninja\gameglobal.h(57): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  GameNinja.vcxproj -> D:\NES\GameNinja\Debug\GameNinja.exe
