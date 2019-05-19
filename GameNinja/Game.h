@@ -16,7 +16,7 @@ private:
 	LPDIRECTINPUT8 di8;
 	LPDIRECTINPUTDEVICE8 didv8;
 	BYTE keyStates[256];
-	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFERD_SIZE];
+	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE];
 	AnimationManager * gAnimationManager;
 	TextureManager * gTextureManager;
 	SpriteManager * gSpriteManager;
@@ -26,6 +26,7 @@ public:
 	Game();
 	//void InitKeyboard(LPKEYEVENTHANDLER handler, HINSTANCE hInstance);
 
+	Scene * CurScene;
 	void GameInit(HINSTANCE hInstance, int cmdShow);
 	void GameRun(); //Khoi chay game
 	void GameStartUp();

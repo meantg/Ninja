@@ -35,16 +35,16 @@ protected:
 	TypeObject _type;
 	int _EId;
 	unordered_map<State, LPANIMATION> animations;
-	bool _isReverse = false ;
 public:
-	State _curState;
-	virtual TypeObject getType() { }
+	bool isReverse = false;
+	State _curState ;
+	virtual TypeObject getType() { return _type; }
 	int getEId() { return _EId; }
+	void SetState(State _state);
 
 	virtual void AddAnimation(State _state);
 	virtual void Update(float dt);
 	virtual void Render();
-
 
 	Entity();
 	~Entity();

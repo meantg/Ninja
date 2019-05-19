@@ -8,7 +8,7 @@ public:
 	Component() {}
 
 	int GetComponentType() { return Cid; }
-	virtual void Update();
+	virtual void Update(float dt);
 
 	~Component() {}
 };

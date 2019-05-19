@@ -41,6 +41,12 @@
     <Filter Include="FrameWork\GameObjects\Entity\Item">
       <UniqueIdentifier>{4e686d2b-530a-4e29-a85f-edd6c49b3a1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Player">
+      <UniqueIdentifier>{90f1fdf6-d8ba-4640-9637-aa1ab47ae291}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Player\State">
+      <UniqueIdentifier>{8035c7bd-cc7b-407e-a020-07c24e222344}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -82,14 +88,44 @@
     <ClCompile Include="GameMap.cpp">
       <Filter>FrameWork\Game\src</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>FrameWork\GameObjects\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>FrameWork\GameObjects\Components</Filter>
+    </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>FrameWork\GameObjects\Entity</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerRunningState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerJumpingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInjuredState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFallingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeadState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClingingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClimbingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSittingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStandingState.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,9 +183,6 @@
     <ClInclude Include="Object.h">
       <Filter>FrameWork\GameObjects\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>FrameWork\GameObjects\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="EntityManager.h">
       <Filter>FrameWork\GameObjects\Entity</Filter>
     </ClInclude>
@@ -158,6 +191,42 @@
     </ClInclude>
     <ClInclude Include="ManaPotion.h">
       <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>FrameWork\GameObjects\Entity\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSittingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerJumpingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInjuredState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFallingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeadState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClingingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClimbingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerRunningState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStandingState.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

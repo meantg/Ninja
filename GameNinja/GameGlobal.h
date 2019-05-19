@@ -4,14 +4,15 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <dinput.h>
+#include <WinUser.h>
 
-#define SCREEN_WIDTH 608				// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 320			// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176			// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 60					// FPS
 #define WIN_NAME "Game Ninja"
 #define WIN_TITLE "Game Ninja"
 #define FPS 60
-#define KEYBOARD_BUFFERD_SIZE	1024
+#define KEYBOARD_BUFFER_SIZE	1024
 #define NINJA_WALKING_SPEED		0.2f
 #define NINJA_JUMPING_SPEED_Y	0.5f
 #define NINJA_GRAVITY			0.2f
@@ -44,15 +45,14 @@ extern enum State
 {
 	IDLE,
 	STANDING,			//0		
-	
 	RUNNING,//1
 	RUNNING_LEFT,		//2
 	RUNNING_RIGHT,		//3
 	JUMPING,			//4
 	FALLING,			//5
 	SITTING,			//6
-	ATTACKING_SIT,		//7
-	ATTACKING_STAND	,	//8
+	ATK_SIT,		//7
+	ATK_STAND	,	//8
 	JUMPING_ATK,		//9
 	THROWING,			//10
 	CLIMBING,			//11	
@@ -74,6 +74,5 @@ extern enum TypeItem
 {
 	MANA,
 	HEAL,
-	POINT,
 	TIME,
 };

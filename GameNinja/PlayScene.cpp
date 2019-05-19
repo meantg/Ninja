@@ -1,10 +1,12 @@
 ﻿#include "PlayScene.h"
 #include "GameGlobal.h"
 Player *player;
+Ninja *ninja;
 
 PlayScene::PlayScene(AnimationManager* gAnimationManager)
 {
 	player = new Player();
+	ninja = new Ninja();
 	_backColor = D3DCOLOR_XRGB(0, 255, 255);
 	_timeCounter = 0;
 	animations = gAnimationManager;
@@ -29,6 +31,7 @@ void PlayScene::LoadMap(const char * filePath)
 void PlayScene::Update(float dt)
 {
 	player->Update(dt);
+	ninja ->Update(dt);
 	/*if (mCamera->GetBound().right + 8 <= MapWidth)
 	mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(8,0,0));*/
 	/*if ((player->GetPosition().x >= SCREEN_WIDTH / 2) && (mCamera->GetBound().right + 32 <= MapWidth)) {
@@ -42,17 +45,20 @@ void PlayScene::Render()
 {
 	mMap->Draw();
 	player->Render();
+	ninja->Render();
 }
 
 void PlayScene::OnKeyDown(int keyCode)
 {
-	if (keyCode == VK_LEFT)
+	player->OnKeyDown(keyCode);
+	ninja->OnKeyDown(keyCode);
+	if (keyCode == DIK_LEFT)
 	{
 		if(mCamera->GetBound().left - 32 >= 0)
 		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR2(-32, 0));
 	}
 
-	if (keyCode == VK_RIGHT)
+	if (keyCode == DIK_RIGHT)
 	{
 		if (mCamera->GetBound().right + 32 <= MapWidth)
 			mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR2(32, 0));

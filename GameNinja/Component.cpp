@@ -1,5 +1,5 @@
 #include "Component.h"
 
-void Component::Update()
+void Component::Update(float dt)
 {
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "Object.h"
-#include "Component.h"
+#include "PlayerState.h"
 #include "PositionComponent.h"
 #include "RigidBodyComponent.h"
 #include "StatsComponent.h"
@@ -9,46 +9,55 @@
 
 class Player : public Object
 {
+private:
+	static Player* _instance;
+	bool isReverse = false;
 protected:
 	float vx, vy, nx, width, height;
 	LPANIMATION _curanimation;
-	State _state;
-	bool isReverse = false;
-	
+	State _state, _lastState;
+
 public:
 	Player();
 	~Player();
+	static Player* GetInstance();
+	PlayerState* state;
+	State stateName;
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);
 	void Render();
 	void AddAnimation(State _state);
 	void SetState(State state);
+	void ChangeState(PlayerState* playerstate);
 
 	void SetWidth(float _width) { width = _width; }
 	void SetHeight(float _height) { height = _height; }
 	State GetState() { return _state; }
 	D3DXVECTOR3 GetPosition() { return D3DXVECTOR3(x, y, 0); }
-	void HandleKeyboard(map<int, bool> keyCode);
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);
 };
 
 class Ninja : public Entity
 {
+private:
+	static Ninja * _instance;
 protected:
 	PositionComponent *mPos;
 	VelocityComponent *mVelo;
 	RigidBodyComponent *mRigid;
 	StatsComponent *mStats;
+
 public:
 	Ninja();
 	~Ninja();
 
-	void Update();
+	void Update(float dt);
 	void Render();
 	TypeObject getType() { return PLAYER; }
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);
 
+	static Ninja * GetInstance();
 };

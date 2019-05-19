@@ -74,6 +74,21 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 	// Tạo Sprite Handler
 	D3DXCreateSprite(d3ddev, &spriteHandler);
 	
+	DirectInput8Create((HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&di8, NULL);
+	
+	di8->CreateDevice(GUID_SysKeyboard, &didv8, NULL);
+	didv8->SetDataFormat(&c_dfDIKeyboard);
+	didv8->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+
+	DIPROPDWORD dipwd;
+	dipwd.diph.dwSize = sizeof(DIPROPDWORD);
+	dipwd.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+	dipwd.diph.dwObj = 0;
+	dipwd.diph.dwHow = DIPH_DEVICE;
+	dipwd.dwData = 1024;
+
+	didv8->SetProperty(DIPROP_BUFFERSIZE, &dipwd.diph);
+	didv8->Acquire();
 	
 }
 
@@ -103,6 +118,7 @@ void Game::GameRun()
 		{
 			frameStart = now;
 			Update(dt);
+			ProcessKeyboard();
 			Render();
 		}
 		else
@@ -138,6 +154,7 @@ void Game::GameStartUp()
 	gSpriteManager->StartUp();
 	gAnimationManager->StartUp();
 	gSceneManager->ReplaceScene(new PlayScene(gAnimationManager));
+	CurScene = gSceneManager->GetInstance()->GetCurScene();
 }
 
 LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -164,6 +181,40 @@ LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
+}
+
+void Game::ProcessKeyboard()
+{// Kiểm tra trạng thái của các phím đã sẵn sàng chưa
+	auto hr = didv8->GetDeviceState(sizeof(keyStates), keyStates);
+
+	if (FAILED(hr))
+	{
+		// Nếu chưa thì thử kiểm tra lại
+		if ((hr == DIERR_INPUTLOST) || (hr == DIERR_NOTACQUIRED))
+		{
+			auto hr = didv8->Acquire();
+			if (hr != DI_OK)
+				return;
+		}
+		else
+		{
+			return;
+		}
+	}
+
+	// Kiểm tra các sự kiện của keyboard
+	DWORD dwElements = KEYBOARD_BUFFER_SIZE;
+	hr = didv8->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), keyEvents, &dwElements, 0);
+
+	// Scan các sự kiện, xem có phím nào được nhấn hay thả hay không
+	for (DWORD i = 0; i < dwElements; ++i)
+	{
+		int KeyCode = keyEvents[i].dwOfs;
+		int KeyState = keyEvents[i].dwData;
+		if ((KeyState & 0x80) > 0)
+			CurScene->OnKeyDown(KeyCode);
+		else CurScene->OnKeyUp(KeyCode);
+	}
 }
 
 Game *Game::GetInstance()

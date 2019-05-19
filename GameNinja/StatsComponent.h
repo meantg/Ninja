@@ -14,7 +14,7 @@ public:
 		this->maxMP = maxMP;
 	}
 
-	void Update()
+	void Update(float dt)
 	{
 
 	}
