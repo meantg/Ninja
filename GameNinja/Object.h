@@ -10,14 +10,13 @@ using namespace std;
 
 class Object
 {
-protected:
-	float x, y;
-	float vx;
-
-	State _curState;
-
+private:
 	unordered_map<State, LPANIMATION> animations;
 public:
+	float x, y;
+	float vx;	
+	State _curState;
+	bool isOnGround = true;
 	void SetPosition(float x, float y) { this->x = x; this->y = y; }
 	void SetState(State _state) { this->_curState = _state; }
 	virtual void AddAnimation(State _state);

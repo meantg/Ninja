@@ -11,18 +11,17 @@ class Player : public Object
 {
 private:
 	static Player* _instance;
-	bool isReverse = false;
-protected:
-	float vx, vy, nx, width, height;
-	LPANIMATION _curanimation;
-	State _state, _lastState;
-
 public:
 	Player();
 	~Player();
+
+	float vx, vy, nx, width, height;
+	LPANIMATION _curanimation;
+	State _state, _lastState;
 	static Player* GetInstance();
 	PlayerState* state;
 	State stateName;
+	bool isReverse = false;
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);
@@ -53,11 +52,15 @@ public:
 	Ninja();
 	~Ninja();
 
+	bool Reverse = false;
+	State _state, _lastState;
+	PlayerState* state;
+	State stateName;
+
 	void Update(float dt);
 	void Render();
 	TypeObject getType() { return PLAYER; }
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);
-
 	static Ninja * GetInstance();
-};
+}; 

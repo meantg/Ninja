@@ -25,7 +25,7 @@ class Animation
 	vector<LPANIMATIONFRAME> frames;
 
 public:
-
+	bool isLastFrame;
 	Animation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; curFrame = 0; totalFrames = frames.size(); }
 	void Add(int spriteId, DWORD time = 0);
 	void Render(float x, float y);

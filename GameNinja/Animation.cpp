@@ -35,7 +35,11 @@ void Animation::Render(float x, float y)
 	if (curFrame == 0) {
 		curFrame++;
 		lastFrameTime = now;
-		if (curFrame == frames.size()) curFrame = 0;
+		if (curFrame == frames.size())
+		{
+			curFrame = 0;
+			isLastFrame = true;
+		}
 	}
 
 	else
@@ -45,7 +49,12 @@ void Animation::Render(float x, float y)
 		{
 			curFrame++;
 			lastFrameTime = now;
-			if (curFrame == frames.size()) curFrame = 0;
+			isLastFrame = false;
+			if (curFrame == frames.size())
+			{
+				curFrame = 0;
+				isLastFrame = true;
+			}
 		}
 
 	}

@@ -5,6 +5,7 @@
 #include <d3dx9.h>
 #include <dinput.h>
 #include <WinUser.h>
+#include <unordered_map>
 
 #define SCREEN_WIDTH 320			// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176			// Chiều dài cửa sổ
@@ -40,6 +41,7 @@ extern LPDIRECT3DDEVICE9 d3ddev; //con tro den thiet bi
 extern LPDIRECT3DSURFACE9 backBuffer; //
 extern LPDIRECT3DSURFACE9 surface;
 extern bool isGameRunning;
+extern std::unordered_map<int, bool> keyCode;
 
 extern enum State
 {
@@ -51,11 +53,15 @@ extern enum State
 	JUMPING,			//4
 	FALLING,			//5
 	SITTING,			//6
+	ATTACKING,
 	ATK_SIT,		//7
-	ATK_STAND	,	//8
+	ATK_STAND,	//8
 	JUMPING_ATK,		//9
 	THROWING,			//10
-	CLIMBING,			//11	
+	CLIMBING,			//11
+	CLINGING,
+	INJURED,
+	DEAD
 };					
 
 extern enum TypeObject
