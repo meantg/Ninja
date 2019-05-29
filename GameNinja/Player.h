@@ -3,6 +3,7 @@
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "PlayerInjuredState.h"
+#include "Camera.h"
 #include <map>
 
 class Player : public Object
@@ -23,7 +24,7 @@ public:
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);
-	void Render();
+	void Render(float cmx, float cmy);
 	void AddAnimation(State _state);
 	void SetState(State state);
 	void ChangeState(PlayerState * playerstate);

@@ -15,7 +15,7 @@ Player::Player()
 	this->AddAnimation(JUMPING);
 	this->AddAnimation(JUMPING_ATK);
 
-	this->SetPosition(10.0f, 100.0f);
+	this->SetPosition(170.0f, 100.0f);
 	_state = STANDING;
 	_curanimation = animations[_state];
 }
@@ -35,27 +35,27 @@ void Player::Update(DWORD dt)
 {
 	if (_state == RUNNING)
 	{
-		if (x <= (SCREEN_WIDTH - 20) / 2 && x >= 0)
+		if (x <= SCREEN_WIDTH && x >= 0)
 			if(isReverse==false)
-			x += 2;
-			else x -= 2;
+			x += 0.2f * dt;
+			else x -= 0.2f * dt;
 		if (x < 0)
 			x = 0;
-		if (x > (SCREEN_WIDTH - 20)/2)
-			x = (SCREEN_WIDTH - 20)/2;
+		if (x >= (SCREEN_WIDTH - 20))
+			x = SCREEN_WIDTH - 20;
 	}
-	if (_curState == NINJA_JUMP)
+	if (_state == NINJA_JUMP)
 	{
 		y += dt * vy;
 	}
 	state->Update(dt);
 }
 
-void Player::Render()
+void Player::Render(float cmx, float cmy)
 {
-	State state = _state;
-	animations[state]->FlipHorizontal(isReverse);
-	animations[state]->Render(x, y);
+	x = x-cmx;
+	animations[_state]->FlipHorizontal(isReverse);
+	animations[_state]->Render(x, y);
 }
 
 void Player::AddAnimation(State _state)

@@ -1,11 +1,10 @@
 #include "Camera.h"
 
-Camera::Camera(int width, int height, int row, int column)
+Camera::Camera(int width, int height)
 {
 	cmWidth = width;
-	cmHeight = height;	
-	maxPosition = D3DXVECTOR2(column * 16 - width, row * 16 - height);
-	mPosition = D3DXVECTOR2(0, 0);
+	cmHeight = height;
+	mPosition = D3DXVECTOR2(0, height);
 }
 
 
@@ -33,12 +32,32 @@ RECT Camera::GetBound()
 {
 	RECT bound;
 
-	bound.left = mPosition.x - cmWidth / 2;
-	bound.right = bound.left + cmWidth;;
-	bound.top = mPosition.y - cmHeight / 2;
+	bound.left = mPosition.x;
+	bound.right = bound.left + cmWidth;
+	bound.top = mPosition.y;
 	bound.bottom = bound.top + cmHeight;
 
 	return bound;
+}
+
+void Camera::Update(int mWidth, int mHeight)
+{
+	if (this->GetPosition().x <= 0)
+	{
+		this->SetPosition(0, this->GetPosition().y);
+	}
+
+	else if (this->GetPosition().x >= mWidth - this->GetWidth())
+	{
+		this->SetPosition(mWidth - this->GetWidth(), this->GetPosition().y);
+	}
+}
+
+void Camera::ConvertToViewport(float x, float y)
+{
+	float newx = x - mPosition.x;
+	float newy = y - mPosition.y;
+	this->SetPosition(newx, newy);
 }
 
 int Camera::GetWidth()

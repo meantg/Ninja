@@ -42,7 +42,7 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		SCREEN_WIDTH,
-		SCREEN_HEIGHT,
+		SCREEN_HEIGHT+32,
 		NULL,
 		NULL,
 		hInstance,

@@ -16,12 +16,14 @@ void GameMap::LoadMap(const char* filePath)
 	input.open(filePath);
 	if (input.is_open())
 	{
-		input >> row >> column;
-		mapMatrix = new int*[row];
-		for (int i = 0; i < row; i++)
+		input >> rows >> columns;
+		mWidth = columns << 4;
+		mHeight = rows << 4;
+		mapMatrix = new int*[rows];
+		for (int i = 0; i < rows; ++i)
 		{
-			mapMatrix[i] = new int[column];
-			for (int j = 0; j < column; j++)
+			mapMatrix[i] = new int[columns];
+			for (int j = 0; j < columns; ++j)
 			{
 				input >> mapMatrix[i][j];
 			}
@@ -31,29 +33,35 @@ void GameMap::LoadMap(const char* filePath)
 }
 
 
-void GameMap::Draw()
+void GameMap::Render()
 {
-	RECT r = mCamera->GetBound();
-	for (int i = 0; i < r.bottom/16; i++)
+	for (int i = 0; i != rows; ++i)
 	{
-		for (int j = 0, curX = r.left/16; curX < r.right/16; j++,curX++)
-		{	
-			SpriteManager::GetInstance()->GetSprite(70000 + mapMatrix[i][curX])->Draw(j * 16, i * 16);
+		for (int j = cBegin; j != cEnd; ++j)
+		{
+			SpriteManager::GetInstance()->GetSprite(70000 + mapMatrix[i][j])->Draw((j << 4) + (16 >> 1) - (int)mCamera->GetPosition().x, ((i << 4) + (16 >> 1)));
 		}
 	}
 }
 
 int GameMap::getRow()
 {
-	return row;
+	return rows;
 }
 
 int GameMap::getColumn()
 {
-	return column;
+	return columns;
 }
 
 void GameMap::SetCamera(Camera * camera)
 {
 	this->mCamera = camera;
+}
+
+void GameMap::Update()
+{
+	mCamera->Update(mWidth, mHeight);
+	cBegin = max(0, mCamera->GetPosition().x / 16);
+	cEnd = min(cBegin + ((SCREEN_WIDTH >> 4) + 1), columns);
 }
