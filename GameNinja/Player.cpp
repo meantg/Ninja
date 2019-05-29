@@ -1,21 +1,23 @@
-#include "Player.h"
+﻿#include "Player.h"
 
-
+Player * Player::_instance = NULL;
 
 Player::Player()
 {
-	/*this->AddAnimation(STANDING);
-	this->AddAnimation(ATTACKING_STAND);
+
+	this->AddAnimation(STANDING);
+	this->AddAnimation(ATK_STAND);
 	this->AddAnimation(THROWING);
 	this->AddAnimation(CLIMBING);
 	this->AddAnimation(RUNNING);
 	this->AddAnimation(SITTING);
-	this->AddAnimation(ATTACKING_SIT);
+	this->AddAnimation(ATTACKING);
 	this->AddAnimation(JUMPING);
-	this->AddAnimation(JUMPING_ATK);*/
+	this->AddAnimation(JUMPING_ATK);
 
 	this->SetPosition(10.0f, 100.0f);
 	_state = STANDING;
+	_curanimation = animations[_state];
 }
 
 Player::~Player()
@@ -34,8 +36,9 @@ void Player::Update(DWORD dt)
 	if (_state == RUNNING)
 	{
 		if (x <= (SCREEN_WIDTH - 20) / 2 && x >= 0)
-			/*x += vx * dt*nx;*/
+			if(isReverse==false)
 			x += 2;
+			else x -= 2;
 		if (x < 0)
 			x = 0;
 		if (x > (SCREEN_WIDTH - 20)/2)
@@ -45,14 +48,14 @@ void Player::Update(DWORD dt)
 	{
 		y += dt * vy;
 	}
-
+	state->Update(dt);
 }
 
 void Player::Render()
 {
 	State state = _state;
-	AnimationManager::GetInstance()->Get(PLAYER, state)->FlipHorizontal(isReverse);
-	AnimationManager::GetInstance()->Get(PLAYER, state)->Render(x, y);
+	animations[state]->FlipHorizontal(isReverse);
+	animations[state]->Render(x, y);
 }
 
 void Player::AddAnimation(State _state)
@@ -65,10 +68,10 @@ void Player::SetState(State state)
 {
 	switch (state)
 	{
-	//case STANDING:
-	//	vx = 0;
-	//	_curState = NINJA_IDLE;
-	//	break;
+	case STANDING:
+		vx = 0;
+		_state = STANDING;
+		break;
 	case RUNNING_RIGHT:
 		vx = NINJA_WALKING_SPEED;
 		_state = RUNNING;
@@ -87,6 +90,9 @@ void Player::SetState(State state)
 		break;
 	case JUMPING:
 		_state = JUMPING;
+		break;
+	case ATTACKING:
+		_state = ATTACKING;
 		break;
 	//case NINJA_RUN_LEFT:
 	//	vx = NINJA_WALKING_SPEED;
@@ -110,83 +116,79 @@ void Player::SetState(State state)
 	}
 }
 
+void Player::ChangeState(PlayerState * playerstate)
+{
+	delete state;
+	state = playerstate;
+	stateName = playerstate->StateName;
+	_curanimation = animations[stateName];
+}
+
 
 void Player::OnKeyDown(int keyCode)
 {
 	switch (keyCode)
 	{
 	case DIK_RIGHT:
+		ChangeState(new PlayerRunningState());
 		SetState(RUNNING_RIGHT);
 		isReverse = false;
 		break;	
 	case DIK_LEFT:
-		SetState(RUNNING_LEFT);
+		ChangeState(new PlayerRunningState());
 		isReverse = true;
+		SetState(RUNNING_LEFT);
 		break;
 	case DIK_A:
-		SetState(ATK_STAND);
+		ChangeState(new PlayerAttackingState());
+		if (isStanding = true)
+			SetState(ATK_STAND);
+		//else
+		//	SetState(ATK_SIT);
 		break;
 	case DIK_DOWN:
+		ChangeState(new PlayerSittingState());
 		SetState(SITTING);
 		break;
 	case DIK_SPACE:
+		ChangeState(new PlayerJumpingState());
 		SetState(JUMPING);
 		break;
 	}
 }
 
-Ninja::Ninja()
+void Player::OnKeyUp(int keyCode)
 {
+	switch (keyCode)
 	{
-		_curState = STANDING;
-		mPos = new PositionComponent(10.0f, 100.0f,0.0f,15.0f);
-		mVelo = new VelocityComponent(2.0f, 2.0f, 2.0f);
-		mRigid = new RigidBodyComponent(mRigid->GetWitdh(PLAYER,_curState),mRigid->GetHeight(PLAYER,_curState));
-		mStats = new StatsComponent(10.0f, 10.0f, 2.0f, 2.0f);
+		case DIK_LEFT: case DIK_RIGHT:
+		{
+			stateName = STANDING;
+			SetState(STANDING);
+		}
+		break;
+
+	// Khi thả phím DOWN: state hiện tại chuyển thành đứng
+		case DIK_DOWN:
+			if (_state == SITTING)
+			{
+				stateName = STANDING;
+				SetState(STANDING);
+			}
+			break;
+		case DIK_A:
+			if (_state == SITTING)
+			{
+				stateName = SITTING;
+				SetState(SITTING);
+			}
+			else
+			{
+				stateName = STANDING;
+				SetState(STANDING);
+			}
+			break;
 	}
 }
 
-Ninja::~Ninja()
-{
-}
 
-
-void Ninja::Update(float dt)
-{
-	mPos->Update(dt,mVelo);
-	mVelo->Update(dt);
-	mRigid->Update(dt);
-	mStats->Update(dt);
-}
-
-void Ninja::Render()
-{
-	State state = _curState;
-	AnimationManager::GetInstance()->Get(PLAYER, state)->FlipHorizontal(isReverse);
-	AnimationManager::GetInstance()->Get(PLAYER, state)->Render(mPos->x, mPos->y);
-}
-
-Ninja * Ninja::GetInstance()
-{
-	if (_instance == NULL)
-		return _instance = new Ninja();
-	return _instance;
-}
-
-//void Ninja::OnKeyDown(int keyCode)
-//{
-//	switch (keyCode)
-//	{
-//	case VK_RIGHT:
-//		SetState(RUNNING_RIGHT);
-//		isReverse = false;
-//		break;
-//	case VK_LEFT:
-//		SetState(RUNNING_LEFT);
-//		isReverse = true;
-//		break;
-//	case DIK_BACKSPACE:
-//		SetState(ATK_STAND);
-//		break;
-//	}
-//}

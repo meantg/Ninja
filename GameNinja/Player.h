@@ -1,34 +1,32 @@
 #pragma once
 #include "Object.h"
 #include "PlayerState.h"
-#include "PositionComponent.h"
-#include "RigidBodyComponent.h"
-#include "StatsComponent.h"
-#include "VelocityComponent.h"
+#include "PlayerStandingState.h"
+#include "PlayerInjuredState.h"
 #include <map>
 
 class Player : public Object
 {
 private:
-	static Player* _instance;
+	static Player * _instance;
 public:
 	Player();
 	~Player();
 
 	float vx, vy, nx, width, height;
-	LPANIMATION _curanimation;
+	LPANIMATION _curanimation ;
 	State _state, _lastState;
 	static Player* GetInstance();
 	PlayerState* state;
 	State stateName;
-	bool isReverse = false;
+	bool isReverse = false, isStanding = true;
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);
 	void Render();
 	void AddAnimation(State _state);
 	void SetState(State state);
-	void ChangeState(PlayerState* playerstate);
+	void ChangeState(PlayerState * playerstate);
 
 	void SetWidth(float _width) { width = _width; }
 	void SetHeight(float _height) { height = _height; }
@@ -37,30 +35,3 @@ public:
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);
 };
-
-class Ninja : public Entity
-{
-private:
-	static Ninja * _instance;
-protected:
-	PositionComponent *mPos;
-	VelocityComponent *mVelo;
-	RigidBodyComponent *mRigid;
-	StatsComponent *mStats;
-
-public:
-	Ninja();
-	~Ninja();
-
-	bool Reverse = false;
-	State _state, _lastState;
-	PlayerState* state;
-	State stateName;
-
-	void Update(float dt);
-	void Render();
-	TypeObject getType() { return PLAYER; }
-	void OnKeyDown(int keyCode);
-	void OnKeyUp(int keyCode);
-	static Ninja * GetInstance();
-}; 

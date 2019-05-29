@@ -24,33 +24,6 @@ void Object::AddAnimation(State _state)
 
 Object::~Object(){}
 
-void Entity::SetState(State _state)
-{
-	_curState = _state;
-}
-
-void Entity::AddAnimation(State _state)
-{
-	LPANIMATION ani = AnimationManager::GetInstance()->Get(PLAYER, _state);
-	animations[_state] = ani;
-}
-
-void Entity::Update(float dt)
-{
-
-}
-
-void Entity::Render()
-{
-}
-
-Entity::Entity()
-{
-}
-
-Entity::~Entity()
-{
-}
 
 
 

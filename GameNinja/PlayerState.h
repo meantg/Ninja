@@ -6,8 +6,9 @@ class PlayerState
 {
 public:
 	unordered_map<int, bool> keyCode;
-	PlayerState() {};
+	PlayerState() {}
 	virtual void Update(float dt) = 0;
 	virtual void HandleKeyboard() = 0;
 	State StateName;
+	bool _reverse;
 };

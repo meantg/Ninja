@@ -3,6 +3,8 @@
 PlayerSittingState::PlayerSittingState()
 {
 	StateName = SITTING;
+	Player::GetInstance()->vx = 0;
+	Player::GetInstance() -> vy = 0;
 }
 
 void PlayerSittingState::HandleKeyboard()

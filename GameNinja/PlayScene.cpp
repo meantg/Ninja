@@ -1,12 +1,10 @@
 ﻿#include "PlayScene.h"
 #include "GameGlobal.h"
-Player *player;
-Ninja *ninja;
+
 
 PlayScene::PlayScene(AnimationManager* gAnimationManager)
 {
-	player = new Player();
-	ninja = new Ninja();
+	Player::GetInstance()->ChangeState(new PlayerStandingState());
 	_backColor = D3DCOLOR_XRGB(0, 255, 255);
 	_timeCounter = 0;
 	animations = gAnimationManager;
@@ -30,8 +28,8 @@ void PlayScene::LoadMap(const char * filePath)
 
 void PlayScene::Update(float dt)
 {
-	player->Update(dt);
-	ninja ->Update(dt);
+	mCamera->SetPosition(Player::GetInstance()->GetPosition().x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
+	Player::GetInstance()->Update(dt);
 	/*if (mCamera->GetBound().right + 8 <= MapWidth)
 	mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(8,0,0));*/
 	/*if ((player->GetPosition().x >= SCREEN_WIDTH / 2) && (mCamera->GetBound().right + 32 <= MapWidth)) {
@@ -44,21 +42,19 @@ void PlayScene::Update(float dt)
 void PlayScene::Render()
 {
 	mMap->Draw();
-	player->Render();
-	ninja->Render();
+	Player::GetInstance()->Render();
 }
 
 void PlayScene::OnKeyDown(int keyCode)
 {
-	player->OnKeyDown(keyCode);
-	ninja->OnKeyDown(keyCode);
-	if (keyCode == DIK_LEFT)
+	Player::GetInstance()->OnKeyDown(keyCode);
+	if (keyCode == VK_LEFT)
 	{
 		if(mCamera->GetBound().left - 32 >= 0)
 		mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR2(-32, 0));
 	}
 
-	if (keyCode == DIK_RIGHT)
+	if (keyCode == VK_RIGHT)
 	{
 		if (mCamera->GetBound().right + 32 <= MapWidth)
 			mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR2(32, 0));
@@ -67,5 +63,6 @@ void PlayScene::OnKeyDown(int keyCode)
 
 void PlayScene::OnKeyUp(int keyCode)
 {
+	Player::GetInstance()->OnKeyUp(keyCode);
 }
 

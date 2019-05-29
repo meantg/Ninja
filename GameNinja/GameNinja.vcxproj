@@ -132,7 +132,6 @@
   <ItemGroup>
     <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="GameMap.cpp" />
@@ -161,13 +160,9 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="GameMap.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="ManaPotion.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackingState.h" />
@@ -180,17 +175,13 @@
     <ClInclude Include="PlayerSittingState.h" />
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="PositionComponent.h" />
-    <ClInclude Include="RigidBodyComponent.h" />
     <ClInclude Include="PlayerRunningState.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="PlayerStandingState.h" />
-    <ClInclude Include="StatsComponent.h" />
     <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="VelocityComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="MapReader\lv1.png" />

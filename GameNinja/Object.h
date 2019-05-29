@@ -10,9 +10,9 @@ using namespace std;
 
 class Object
 {
-private:
-	unordered_map<State, LPANIMATION> animations;
+
 public:
+	unordered_map<State, LPANIMATION> animations;
 	float x, y;
 	float vx;	
 	State _curState;
@@ -28,26 +28,6 @@ public:
 	~Object();
 };
 
-class Entity
-{
-protected:
-	TypeObject _type;
-	int _EId;
-	unordered_map<State, LPANIMATION> animations;
-public:
-	bool isReverse = false;
-	State _curState ;
-	virtual TypeObject getType() { return _type; }
-	int getEId() { return _EId; }
-	void SetState(State _state);
-
-	virtual void AddAnimation(State _state);
-	virtual void Update(float dt);
-	virtual void Render();
-
-	Entity();
-	~Entity();
-};
 
 
 

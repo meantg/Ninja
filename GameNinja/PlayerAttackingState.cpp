@@ -2,10 +2,13 @@
 
 PlayerAttackingState::PlayerAttackingState()
 {
-	StateName = ATTACKING;
-	_curState = Player::GetInstance()->_curState;
+	_curState = Player::GetInstance()->state->StateName;
+	_reverse = Player::GetInstance()->isReverse;
 	if (_curState == SITTING)
+	{
 		StateName = ATK_SIT;
+		Player::GetInstance()->isStanding = false;
+	}
 	else
 		StateName = ATK_STAND;
 }
@@ -20,7 +23,6 @@ void PlayerAttackingState::Update(float dt)
 		case STANDING: case RUNNING:
 			Player::GetInstance()->ChangeState(new PlayerStandingState());
 			return;
-
 		case SITTING:
 			Player::GetInstance()->ChangeState(new PlayerSittingState());
 			return;
@@ -50,12 +52,26 @@ void PlayerAttackingState::Update(float dt)
 				return;
 			}
 
-			else if(Player::GetInstance()->vy <=0)
+			else if (Player::GetInstance()->vy <= 0)
 			{
 				_curState = FALLING;
 				Player::GetInstance()->vy = NINJA_GRAVITY;
 			}
 			break;
 		}
+		}
 	}
+}
+
+void PlayerAttackingState::HandleKeyboard()
+{
+	if (keyCode[DIK_LEFT])
+	{
+		Player::GetInstance()->vx = _reverse ? -NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED / 2;
+	}
+	else if (keyCode[DIK_RIGHT])
+	{
+		Player::GetInstance()->vx = !_reverse ? NINJA_WALKING_SPEED : NINJA_WALKING_SPEED / 2;
+	}
+	else Player::GetInstance()->vx = 0;
 }
