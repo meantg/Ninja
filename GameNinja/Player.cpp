@@ -15,7 +15,7 @@ Player::Player()
 	this->AddAnimation(JUMPING);
 	this->AddAnimation(JUMPING_ATK);
 
-	this->SetPosition(170.0f, 100.0f);
+	this->SetPosition(10.0f, 100.0f);
 	_state = STANDING;
 	_curanimation = animations[_state];
 }
@@ -33,29 +33,34 @@ Player * Player::GetInstance()
 
 void Player::Update(DWORD dt)
 {
-	if (_state == RUNNING)
-	{
-		if (x <= SCREEN_WIDTH && x >= 0)
-			if(isReverse==false)
-			x += 0.2f * dt;
-			else x -= 0.2f * dt;
-		if (x < 0)
-			x = 0;
-		if (x >= (SCREEN_WIDTH - 20))
-			x = SCREEN_WIDTH - 20;
-	}
-	if (_state == NINJA_JUMP)
-	{
-		y += dt * vy;
-	}
+	//if (_state == RUNNING)
+	//{
+	//	if (x <= SCREEN_WIDTH && x >= 0)
+	//		if(isReverse==false)
+	//		x += 0.2f * dt;
+	//		else x -= 0.2f * dt;
+	//	if (x < 0)
+	//		x = 0;
+	//	if (x >= SCREEN_WIDTH /2)
+	//		x = SCREEN_WIDTH /2;
+	//}
+	//if (_state == NINJA_JUMP)
+	//{
+	//	y += dt * vy;
+	//}
+
 	state->Update(dt);
+	if (x < 0)
+		x = 0;
+	if (x >=2048-20)
+		x = 2048-20;
+	x += vx * dt;
 }
 
-void Player::Render(float cmx, float cmy)
+void Player::Render(float cameraX, float cameraY)
 {
-	x = x-cmx;
 	animations[_state]->FlipHorizontal(isReverse);
-	animations[_state]->Render(x, y);
+	animations[_state]->Render(x-cameraX, y);
 }
 
 void Player::AddAnimation(State _state)
@@ -73,14 +78,10 @@ void Player::SetState(State state)
 		_state = STANDING;
 		break;
 	case RUNNING_RIGHT:
-		vx = NINJA_WALKING_SPEED;
 		_state = RUNNING;
-		nx = 2;
 		break;
 	case RUNNING_LEFT:
-		vx = -NINJA_WALKING_SPEED;
 		_state = RUNNING;
-		nx = -2;
 		break;
 	case ATK_STAND:
 		_state = ATK_STAND;
@@ -121,6 +122,7 @@ void Player::ChangeState(PlayerState * playerstate)
 	delete state;
 	state = playerstate;
 	stateName = playerstate->StateName;
+	_state = stateName;
 	_curanimation = animations[stateName];
 }
 
@@ -129,16 +131,16 @@ void Player::OnKeyDown(int keyCode)
 {
 	switch (keyCode)
 	{
-	case DIK_RIGHT:
+	/*case DIK_RIGHT:
 		ChangeState(new PlayerRunningState());
-		SetState(RUNNING_RIGHT);
+		_state = RUNNING;
 		isReverse = false;
 		break;	
 	case DIK_LEFT:
 		ChangeState(new PlayerRunningState());
 		isReverse = true;
 		SetState(RUNNING_LEFT);
-		break;
+		break;*/
 	case DIK_A:
 		ChangeState(new PlayerAttackingState());
 		if (isStanding = true)
@@ -161,12 +163,12 @@ void Player::OnKeyUp(int keyCode)
 {
 	switch (keyCode)
 	{
-		case DIK_LEFT: case DIK_RIGHT:
+	/*	case DIK_LEFT: case DIK_RIGHT:
 		{
 			stateName = STANDING;
 			SetState(STANDING);
 		}
-		break;
+		break;*/
 
 	// Khi thả phím DOWN: state hiện tại chuyển thành đứng
 		case DIK_DOWN:

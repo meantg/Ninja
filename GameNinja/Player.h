@@ -24,7 +24,7 @@ public:
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);
-	void Render(float cmx, float cmy);
+	void Render(float cameraX= 0, float cameraY= 0);
 	void AddAnimation(State _state);
 	void SetState(State state);
 	void ChangeState(PlayerState * playerstate);

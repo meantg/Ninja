@@ -9,6 +9,7 @@ PlayerRunningState::PlayerRunningState()
 void PlayerRunningState::Update(float dt)
 {
 	this->HandleKeyboard();
+
 }
 
 void PlayerRunningState::HandleKeyboard()

@@ -39,7 +39,7 @@ void GameMap::Render()
 	{
 		for (int j = cBegin; j != cEnd; ++j)
 		{
-			SpriteManager::GetInstance()->GetSprite(70000 + mapMatrix[i][j])->Draw((j << 4) + (16 >> 1) - (int)mCamera->GetPosition().x, ((i << 4) + (16 >> 1)));
+			SpriteManager::GetInstance()->GetSprite(70000 + mapMatrix[i][j])->Draw((j << 4) + (16 >> 1) - (int)mCamera->GetPositionX(), ((i << 4) + (16 >> 1)));
 		}
 	}
 }
@@ -62,6 +62,6 @@ void GameMap::SetCamera(Camera * camera)
 void GameMap::Update()
 {
 	mCamera->Update(mWidth, mHeight);
-	cBegin = max(0, mCamera->GetPosition().x / 16);
+	cBegin = max(0, mCamera->GetPositionX() / 16);
 	cEnd = min(cBegin + ((SCREEN_WIDTH >> 4) + 1), columns);
 }

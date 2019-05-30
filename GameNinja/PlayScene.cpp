@@ -30,7 +30,7 @@ void PlayScene::Update(float dt)
 {
 	Player::GetInstance()->Update(dt);
 
-	mCamera->SetPosition(Player::GetInstance()->GetPosition().x - (mCamera->GetWidth() >> 1  , SCREEN_HEIGHT);
+	
 
 	mMap->Update();
 
@@ -46,12 +46,14 @@ void PlayScene::Update(float dt)
 void PlayScene::Render()
 {
 	mMap->Render();
-	Player::GetInstance()->Render(mCamera->GetPosition().x,mCamera->GetPosition().y);
+	Player::GetInstance()->Render(mCamera->GetPositionX(),mCamera->GetPositionY());
+	mCamera->SetPosition(Player::GetInstance()->GetPosition().x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
 }
 
-void PlayScene::OnKeyDown(int keyCode)
+void PlayScene::OnKeyDown(int key)
 {
-	Player::GetInstance()->OnKeyDown(keyCode);
+	keyCode[key] = true;
+	Player::GetInstance()->OnKeyDown(key);
 	//if (keyCode == VK_LEFT)
 	//{
 	//	if(mCamera->GetBound().left - 32 >= 0)
@@ -65,8 +67,9 @@ void PlayScene::OnKeyDown(int keyCode)
 	//}
 }
 
-void PlayScene::OnKeyUp(int keyCode)
+void PlayScene::OnKeyUp(int key)
 {
-	Player::GetInstance()->OnKeyUp(keyCode);
+	keyCode[key] = false;
+	Player::GetInstance()->OnKeyUp(key);
 }
 

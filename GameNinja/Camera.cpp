@@ -4,7 +4,8 @@ Camera::Camera(int width, int height)
 {
 	cmWidth = width;
 	cmHeight = height;
-	mPosition = D3DXVECTOR2(0, height);
+	x = 0;
+	y = height;
 }
 
 
@@ -15,26 +16,26 @@ Camera::~Camera()
 
 void Camera::SetPosition(float x, float y)
 {
-	SetPosition(D3DXVECTOR2(x, y));
+	this->x = x;
+	this->y = y;
 }
 
-void Camera::SetPosition(D3DXVECTOR2 pos)
-{
-	mPosition = pos;
-}
 
-D3DXVECTOR2 Camera::GetPosition()
+float Camera::GetPositionX()
 {
-	return mPosition;
+	return x;
+}
+float Camera::GetPositionY() {
+	return y;
 }
 
 RECT Camera::GetBound()
 {
 	RECT bound;
 
-	bound.left = mPosition.x;
+	bound.left = x;
 	bound.right = bound.left + cmWidth;
-	bound.top = mPosition.y;
+	bound.top = y;
 	bound.bottom = bound.top + cmHeight;
 
 	return bound;
@@ -42,21 +43,21 @@ RECT Camera::GetBound()
 
 void Camera::Update(int mWidth, int mHeight)
 {
-	if (this->GetPosition().x <= 0)
+	if (this->GetPositionX() <= 0)
 	{
-		this->SetPosition(0, this->GetPosition().y);
+		this->SetPosition(0, this->GetPositionY());
 	}
 
-	else if (this->GetPosition().x >= mWidth - this->GetWidth())
+	else if (this->GetPositionX() >= mWidth - this->GetWidth())
 	{
-		this->SetPosition(mWidth - this->GetWidth(), this->GetPosition().y);
+		this->SetPosition(mWidth - this->GetWidth(), this->GetPositionY());
 	}
 }
 
 void Camera::ConvertToViewport(float x, float y)
 {
-	float newx = x - mPosition.x;
-	float newy = y - mPosition.y;
+	float newx = x - this->x;
+	float newy = y - this->y;
 	this->SetPosition(newx, newy);
 }
 
