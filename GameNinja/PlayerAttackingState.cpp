@@ -29,8 +29,8 @@ void PlayerAttackingState::Update(float dt)
 		case FALLING:
 			Player::GetInstance()->ChangeState(new PlayerFallingState());
 			return;
-		case JUMPING:
-			Player::GetInstance()->ChangeState(new PlayerJumpingState());
+		default:
+			Player::GetInstance()->ChangeState(new PlayerStandingState());
 			return;
 		default:
 			Player::GetInstance()->ChangeState(new PlayerStandingState());

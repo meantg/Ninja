@@ -28,32 +28,23 @@ void Animation::Add(int spriteId, DWORD time)
 
 void Animation::Render(float x, float y)
 {
-	DWORD now = GetTickCount();
-	if (curFrame == -1) {
-		curFrame = 0;
-		lastFrameTime = now;
-	}
-
-	else
-	{
-		DWORD t = frames[curFrame]->GetTime();
-		if (now - lastFrameTime > t)
-		{
-			curFrame++;
-			lastFrameTime = now;
-			if (curFrame == frames.size())
-			{
-				curFrame = 0;
-				isLastFrame = true;
-			}
-
-		}
-	}
 	frames[curFrame]->GetSprite()->FlipHorizontal(isReverse);
 	frames[curFrame]->GetSprite()->Draw(x, y, frames[curFrame]->GetSprite()->isFlipHorizontal());
 }
 
-void Animation::Update()
+void Animation::Update(float dt)
 {
-	
+	DWORD t = frames[curFrame]->GetTime();
+	if (curFrameTime > t) {
+		curFrameTime = 0;
+		if (++curFrame == frames.size()) {
+			isLastFrame = true;
+			curFrame = 0;
+		}
+	}
+	else
+	{
+		isLastFrame = false;
+		curFrameTime += dt;
+	}
 }
