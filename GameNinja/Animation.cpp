@@ -6,10 +6,7 @@
 //	_sprite->SetPosition(x, y);
 //}
 //
-void Animation::FlipHorizontal(bool flag)
-{
-	frames[curFrame]->GetSprite()->FlipHorizontal(flag);
-}
+
 //
 //void Animation::FlipVertical(bool flag)
 //{
@@ -22,7 +19,7 @@ void Animation::Add(int spriteId, DWORD time)
 {
 	int t = time;
 	if (time == 0) t = this->defaultTime;
-
+	
 	LPSPRITE sprite = SpriteManager::GetInstance()->GetSprite(spriteId);
 
 	LPANIMATIONFRAME frame = new AnimationFrame(sprite, t);
@@ -32,14 +29,9 @@ void Animation::Add(int spriteId, DWORD time)
 void Animation::Render(float x, float y)
 {
 	DWORD now = GetTickCount();
-	if (curFrame == 0) {
-		curFrame++;
+	if (curFrame == -1) {
+		curFrame = 0;
 		lastFrameTime = now;
-		if (curFrame == frames.size())
-		{
-			curFrame = 0;
-			isLastFrame = true;
-		}
 	}
 
 	else
@@ -49,15 +41,19 @@ void Animation::Render(float x, float y)
 		{
 			curFrame++;
 			lastFrameTime = now;
-			isLastFrame = false;
 			if (curFrame == frames.size())
 			{
 				curFrame = 0;
 				isLastFrame = true;
 			}
-		}
 
+		}
 	}
+	frames[curFrame]->GetSprite()->FlipHorizontal(isReverse);
 	frames[curFrame]->GetSprite()->Draw(x, y, frames[curFrame]->GetSprite()->isFlipHorizontal());
 }
 
+void Animation::Update()
+{
+	
+}

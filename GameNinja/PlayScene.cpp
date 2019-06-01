@@ -29,7 +29,6 @@ void PlayScene::LoadMap(const char * filePath)
 void PlayScene::Update(float dt)
 {
 	Player::GetInstance()->Update(dt);
-
 	
 
 	mMap->Update();

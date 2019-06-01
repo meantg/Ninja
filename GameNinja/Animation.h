@@ -26,9 +26,11 @@ class Animation
 
 public:
 	bool isLastFrame;
-	Animation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; curFrame = 0; totalFrames = frames.size(); }
+	bool isReverse;
+	Animation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; curFrame = -1; totalFrames = frames.size(); }
 	void Add(int spriteId, DWORD time = 0);
 	void Render(float x, float y);
+	void Update();
 	void FlipHorizontal(bool flag);
 	LPANIMATIONFRAME GetcurFrame()
 	{

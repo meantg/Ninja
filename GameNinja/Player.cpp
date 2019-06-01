@@ -28,7 +28,7 @@ Player * Player::GetInstance()
 {
 	if (_instance == NULL)
 		_instance = new Player();
-	return _instance;
+		return _instance;
 }
 
 void Player::Update(DWORD dt)
@@ -48,7 +48,6 @@ void Player::Update(DWORD dt)
 	//{
 	//	y += dt * vy;
 	//}
-
 	state->Update(dt);
 	if (x < 0)
 		x = 0;
@@ -59,7 +58,7 @@ void Player::Update(DWORD dt)
 
 void Player::Render(float cameraX, float cameraY)
 {
-	animations[_state]->FlipHorizontal(isReverse);
+	animations[_state]->isReverse = isReverse;
 	animations[_state]->Render(x-cameraX, y);
 }
 

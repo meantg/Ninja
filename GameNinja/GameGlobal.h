@@ -9,10 +9,9 @@
 
 #define SCREEN_WIDTH 320			// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176			// Chiều dài cửa sổ
-#define MAX_FRAME_RATE 60					// FPS
+#define MAX_FRAME_RATE 120					// FPS
 #define WIN_NAME "Game Ninja"
 #define WIN_TITLE "Game Ninja"
-#define FPS 60
 #define KEYBOARD_BUFFER_SIZE	1024
 #define NINJA_WALKING_SPEED		0.2f
 #define NINJA_JUMPING_SPEED_Y	0.5f

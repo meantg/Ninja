@@ -21,7 +21,7 @@ void AnimationManager::StartUp()
 
 	// Anim-Attack-Standing [1]
 	ani = new Animation(100);
-	ani->Add(00001);
+	ani->Add(00001, 500);
 	ani->Add(00002);
 	ani->Add(00003);
 	animations->Add(PLAYER,ATK_STAND, ani);
