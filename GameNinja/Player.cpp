@@ -48,6 +48,7 @@ void Player::Update(DWORD dt)
 	//{
 	//	y += dt * vy;
 	//}
+	animations[_state]->Update();
 	state->Update(dt);
 	if (x < 0)
 		x = 0;
@@ -177,7 +178,7 @@ void Player::OnKeyUp(int keyCode)
 				SetState(STANDING);
 			}
 			break;
-		case DIK_A:
+	/*	case DIK_A:
 			if (_state == SITTING)
 			{
 				stateName = SITTING;
@@ -188,7 +189,7 @@ void Player::OnKeyUp(int keyCode)
 				stateName = STANDING;
 				SetState(STANDING);
 			}
-			break;
+			break;*/
 	}
 }
 

@@ -32,6 +32,9 @@ void PlayerAttackingState::Update(float dt)
 		case JUMPING:
 			Player::GetInstance()->ChangeState(new PlayerJumpingState());
 			return;
+		default:
+			Player::GetInstance()->ChangeState(new PlayerStandingState());
+			return;
 		}
 	}
 	else
