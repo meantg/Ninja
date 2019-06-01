@@ -96,7 +96,7 @@ void Game::GameRun()
 {
 	MSG msg;
 	auto frameStart = GetTickCount();
-	auto tickPerFrame = 1000 / 120;
+	auto tickPerFrame = 1000 / MAX_FRAME_RATE;
 
 	while (isGameRunning)
 	{

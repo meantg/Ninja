@@ -29,4 +29,5 @@ void PlayerJumpingState::HandleKeyboard()
 	{
 		Player::GetInstance()->vx = _reverse ? NINJA_WALKING_SPEED / 2 : NINJA_WALKING_SPEED;
 	}
+
 }
