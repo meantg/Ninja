@@ -16,7 +16,7 @@ typedef AnimationFrame *LPANIMATIONFRAME;
 
 class Animation
 {
-	DWORD lastFrameTime;
+	DWORD curFrameTime;
 	int defaultTime;
 	int curFrame;
 
@@ -27,10 +27,10 @@ class Animation
 public:
 	bool isLastFrame;
 	bool isReverse;
-	Animation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; curFrame = -1; totalFrames = frames.size(); }
+	Animation(int defaultTime) { this->defaultTime = defaultTime; curFrameTime = -1; curFrame = 0; totalFrames = frames.size(); }
 	void Add(int spriteId, DWORD time = 0);
 	void Render(float x, float y);
-	void Update();
+	void Update(float dt);
 	void FlipHorizontal(bool flag);
 	LPANIMATIONFRAME GetcurFrame()
 	{

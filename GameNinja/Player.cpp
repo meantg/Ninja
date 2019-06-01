@@ -48,6 +48,7 @@ void Player::Update(DWORD dt)
 	//{
 	//	y += dt * vy;
 	//}
+	animations[_state]->Update(dt);
 	state->Update(dt);
 	if (x < 0)
 		x = 0;
@@ -172,18 +173,6 @@ void Player::OnKeyUp(int keyCode)
 	// Khi thả phím DOWN: state hiện tại chuyển thành đứng
 		case DIK_DOWN:
 			if (_state == SITTING)
-			{
-				stateName = STANDING;
-				SetState(STANDING);
-			}
-			break;
-		case DIK_A:
-			if (_state == SITTING)
-			{
-				stateName = SITTING;
-				SetState(SITTING);
-			}
-			else
 			{
 				stateName = STANDING;
 				SetState(STANDING);
