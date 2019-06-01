@@ -30,7 +30,7 @@ void PlayScene::Update(float dt)
 {
 	Player::GetInstance()->Update(dt);
 
-	mCamera->SetPosition(Player::GetInstance()->GetPosition().x - (mCamera->GetWidth() >> 1  , SCREEN_HEIGHT);
+	mCamera->SetPosition(Player::GetInstance()->GetPosition().x - (mCamera->GetWidth() >> 1)  , SCREEN_HEIGHT);
 
 	mMap->Update();
 
