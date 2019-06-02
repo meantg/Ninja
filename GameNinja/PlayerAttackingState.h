@@ -4,9 +4,7 @@
 #include "PlayerRunningState.h"
 
 class PlayerAttackingState : public PlayerState
-{
-private:
-	State _curState;				// Biến tạm dùng xét State sẽ chuyển đổi sau khi thoát State
+{				// Biến tạm dùng xét State sẽ chuyển đổi sau khi thoát State
 public:
 	PlayerAttackingState();
 	void Update(float dt);

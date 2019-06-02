@@ -4,6 +4,10 @@ PlayerStandingState::PlayerStandingState()
 {
 	Player::GetInstance()->vx = 0;
 	Player::GetInstance()->vy = 0;
+
+	Player::GetInstance()->_allow[ATTACKING] = true;
+	Player::GetInstance()->_allow[JUMPING] = true;
+	Player::GetInstance()->_allow[RUNNING] = true;
 	StateName = STANDING;
 }
 

@@ -8,9 +8,6 @@
     <Filter Include="FrameWork">
       <UniqueIdentifier>{9cbcb0a3-3c35-4d35-9929-d1f2a9f13cf8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\Input">
-      <UniqueIdentifier>{90e0e29b-fb62-4a9d-9e41-0e01ed269154}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FrameWork\Graphics">
       <UniqueIdentifier>{ded8505a-acce-448b-81d2-c82a5730dd63}</UniqueIdentifier>
     </Filter>
@@ -122,7 +119,7 @@
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>FrameWork\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,7 +199,7 @@
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
-      <Filter>FrameWork</Filter>
+      <Filter>FrameWork\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
