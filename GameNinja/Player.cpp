@@ -18,10 +18,11 @@ Player::Player()
 	this->AddAnimation(FALLING);
 
 
-	this->SetPosition(20.0f, 120.0f);
+	this->x = 20.0f;
+	this->y = 120.0f;
 	maxy = 60;
 	_state = STANDING;
-	_curanimation = animations[_state];
+	_curAnimation = animations[_state];
 
 
 	_allow[JUMPING] = true;
@@ -41,9 +42,21 @@ Player * Player::GetInstance()
 		return _instance;
 }
 
+Hitbox Player::GetHitbox()
+{
+	Hitbox box;
+	box.top = y + (height >> 1);
+	box.left = x - (width >> 1);
+	box.right = box.left + width;
+	box.bottom = box.top - height;
+	box.vx = vx;
+	box.vy = vy;
+	return box;
+}
+
 void Player::Update(DWORD dt)
 {
-	animations[_state]->Update(dt);
+	_curAnimation->Update(dt);
 	state->Update(dt);
 	if (x < 0)
 		x = 0;
@@ -65,61 +78,63 @@ void Player::AddAnimation(State _state)
 	animations[_state] = ani;
 }
 
-void Player::SetState(State state)
-{
-	switch (state)
-	{
-	case STANDING:
-		vx = 0;
-		_state = STANDING;
-		break;
-	case RUNNING_RIGHT:
-		_state = RUNNING;
-		break;
-	case RUNNING_LEFT:
-		_state = RUNNING;
-		break;
-	case ATK_STAND:
-		_state = ATK_STAND;
-		break;
-	case SITTING:
-		_state = SITTING;
-		break;
-	case JUMPING:
-		_state = JUMPING;
-		break;
-	case ATTACKING:
-		_state = ATTACKING;
-		break;
-	//case NINJA_RUN_LEFT:
-	//	vx = NINJA_WALKING_SPEED;
-	//	_curState = 4;
-	//	nx = -1;
-	//	isReverse = true;
-	//	break;
-	//case NINJA_JUMP:
-	//	if (y == 100)
-	//		vy = -NINJA_JUMPING_SPEED_Y;
-	//	_curState = NINJA_JUMP;
-	//	break;
-	//case NINJA_SITTING:
-	//	_curState = NINJA_SITTING;
-	//	break;
-	//case NINJA_ATK_STANDING:
-	//	_curState = NINJA_ATK_STANDING;
-	//	break;
-	//default:
-	//	break;
-	}
-}
+//void Player::SetState(State state)
+//{
+//	switch (state)
+//	{
+//	case STANDING:
+//		vx = 0;
+//		_state = STANDING;
+//		break;
+//	case RUNNING_RIGHT:
+//		_state = RUNNING;
+//		break;
+//	case RUNNING_LEFT:
+//		_state = RUNNING;
+//		break;
+//	case ATK_STAND:
+//		_state = ATK_STAND;
+//		break;
+//	case ATK_SIT:
+//		_state = ATK_SIT;
+//		break;
+//	case SITTING:
+//		_state = SITTING;
+//		break;
+//	case JUMPING:
+//		_state = JUMPING;
+//		break;
+//	case ATTACKING:
+//		_state = ATTACKING;
+//		break;
+//	//case NINJA_RUN_LEFT:
+//	//	vx = NINJA_WALKING_SPEED;
+//	//	_curState = 4;
+//	//	nx = -1;
+//	//	isReverse = true;
+//	//	break;
+//	//case NINJA_JUMP:
+//	//	if (y == 100)
+//	//		vy = -NINJA_JUMPING_SPEED_Y;
+//	//	_curState = NINJA_JUMP;
+//	//	break;
+//	//case NINJA_SITTING:
+//	//	_curState = NINJA_SITTING;
+//	//	break;
+//	//case NINJA_ATK_STANDING:
+//	//	_curState = NINJA_ATK_STANDING;
+//	//	break;
+//	//default:
+//	//	break;
+//	}
+//}
 
 void Player::ChangeState(PlayerState * playerstate)
 {
 	delete state;
 	state = playerstate;
-	stateName = playerstate->StateName;
-	_state = stateName;
-	_curanimation = animations[stateName];
+	_state = playerstate->StateName;
+	_curAnimation = animations[_state];
 }
 
 
@@ -142,19 +157,19 @@ void Player::OnKeyDown(int keyCode)
 		{
 			_allow[ATTACKING] = false;
 			ChangeState(new PlayerAttackingState());
-			if (isStanding == true)
+			/*if (isStanding == true)
 				SetState(ATK_STAND);
 			else
-				SetState(ATK_SIT);
+				SetState(ATK_SIT);*/
 		}
 		break;
 	case DIK_DOWN:
 		ChangeState(new PlayerSittingState());
-		SetState(SITTING);
+		/*SetState(SITTING);*/
 		break;
 	case DIK_SPACE:
 		ChangeState(new PlayerJumpingState());
-		SetState(JUMPING);
+		/*SetState(JUMPING);*/
 		break;
 	}
 }
@@ -174,8 +189,7 @@ void Player::OnKeyUp(int keyCode)
 		case DIK_DOWN:
 			if (isStanding == true)
 			{
-				stateName = STANDING;
-				SetState(STANDING);
+				_state = STANDING;
 			}
 			break;
 	}

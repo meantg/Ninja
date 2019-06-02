@@ -13,19 +13,19 @@ class Object
 {
 
 public:
-	unordered_map<State, LPANIMATION> animations;
-	float x, y;
-	float vx;	
-	int width, height;
-	State _curState;
-	bool isOnGround = true;
-	void SetPosition(float x, float y) { this->x = x; this->y = y; }
-	void SetState(State _state) { this->_curState = _state; }
-	Hitbox GetHitbox();
-	virtual void AddAnimation(State _state);
-
 	Object();
-	
+
+
+	float x, y;
+	int width, height;
+	RECT GetRect();
+	//State _curState;
+	//bool isOnGround = true;
+	//void SetPosition(float x, float y) { this->x = x; this->y = y; }
+	//void SetState(State _state) { this->_curState = _state; }
+
+	//virtual void AddAnimation(State _state);
+	virtual Hitbox GetHitbox() { return Hitbox(); };
 	virtual void Update(DWORD dt);
 	virtual void Render();
 	~Object();

@@ -17,7 +17,7 @@ PlayerAttackingState::PlayerAttackingState()
 void PlayerAttackingState::Update(float dt)
 {
 	this->HandleKeyboard();
-	if (Player::GetInstance()->_curanimation->isLastFrame)
+	if (Player::GetInstance()->_curAnimation->isLastFrame)
 	{
 		Player::GetInstance()->_allow[ATTACKING] = true;
 		switch (_curState)

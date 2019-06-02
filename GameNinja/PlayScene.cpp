@@ -47,7 +47,7 @@ void PlayScene::Render()
 {
 	mMap->Render();
 	Player::GetInstance()->Render(mCamera->GetPositionX(),mCamera->GetPositionY());
-	mCamera->SetPosition(Player::GetInstance()->GetPosition().x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
+	mCamera->SetPosition(Player::GetInstance()->x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
 }
 
 void PlayScene::OnKeyDown(int key)
