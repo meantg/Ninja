@@ -24,7 +24,7 @@ void AnimationManager::StartUp()
 	ani->Add(00001);
 	ani->Add(00002);
 	ani->Add(00003);
-	animations->Add(PLAYER,ATK_STAND, ani);
+	animations->Add(PLAYER, ATK_STAND, ani);
 
 	// Anim-Throwing [2]
 	ani = new Animation(100);
@@ -56,7 +56,7 @@ void AnimationManager::StartUp()
 	ani->Add(40001);
 	ani->Add(40002);
 	ani->Add(40003);
-	animations->Add(PLAYER,ATK_SIT, ani);
+	animations->Add(PLAYER, ATK_SIT, ani);
 
 	//Anim-Jumping [7]
 	ani = new Animation(100);

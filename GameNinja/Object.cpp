@@ -18,6 +18,17 @@ void Object::Render()
 {	
 }
 
+Hitbox Object::GetHitbox()
+{
+	Hitbox box;
+	box.top = y + (height >> 1);
+	box.left = x - (width >> 1);
+	box.right = box.left + width;
+	box.bottom = box.top - height;
+
+	return box;
+}
+
 void Object::AddAnimation(State _state)
 {
 }
