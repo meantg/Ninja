@@ -3,15 +3,16 @@
 PlayerFallingState::PlayerFallingState()
 {
 	_reverse = Player::GetInstance()->isReverse;
+	Player::GetInstance()->vy = -NINJA_FALLING_SPEED_Y;
 	StateName = FALLING;
-}
+}	
 
 void PlayerFallingState::Update(float dt)
 {
-	if (Player::GetInstance()->y == 120)
-		Player::GetInstance()->vy = 0;
-	if (Player::GetInstance()->vy == 0)
+	if (Player::GetInstance()->y <= 56)
 	{
+		Player::GetInstance()->y = 56;
+		Player::GetInstance()->vy = 0;
 		Player::GetInstance()->ChangeState(new PlayerStandingState());
 		return;
 	}

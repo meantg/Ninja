@@ -19,7 +19,7 @@ Player::Player()
 
 
 	this->x = 20.0f;
-	this->y = 120.0f;
+	this->y = 56.0f;
 	maxy = 60;
 	_state = STANDING;
 	_curAnimation = animations[_state];
@@ -54,7 +54,7 @@ Hitbox Player::GetHitbox()
 	return box;
 }
 
-void Player::Update(DWORD dt)
+void Player::Update(float dt)
 {
 	_curAnimation->Update(dt);
 	state->Update(dt);
@@ -63,13 +63,13 @@ void Player::Update(DWORD dt)
 	if (x >=2048-20)
 		x = 2048-20;
 	x += vx * dt;
-		y+= vy * dt;
+	y += vy * dt;
 }
 
 void Player::Render(float cameraX, float cameraY)
 {
 	animations[_state]->isReverse = isReverse;
-	animations[_state]->Render(x-cameraX, y);
+	animations[_state]->Render(x-cameraX, cameraY - y);
 }
 
 void Player::AddAnimation(State _state)

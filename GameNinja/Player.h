@@ -28,7 +28,7 @@ public:
 
 	Hitbox GetHitbox();
 	void Allow(State state, bool flag);
-	void Update(DWORD dt);
+	void Update(float dt);
 	void Render(float cameraX= 0, float cameraY= 0);
 	void AddAnimation(State _state);
 	void ChangeState(PlayerState * playerstate);

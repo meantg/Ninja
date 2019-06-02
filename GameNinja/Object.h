@@ -26,7 +26,7 @@ public:
 
 	//virtual void AddAnimation(State _state);
 	virtual Hitbox GetHitbox() { return Hitbox(); };
-	virtual void Update(DWORD dt);
+	virtual void Update(float dt);
 	virtual void Render();
 	~Object();
 };

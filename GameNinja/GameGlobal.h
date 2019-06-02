@@ -14,8 +14,9 @@
 #define WIN_TITLE "Game Ninja"
 #define KEYBOARD_BUFFER_SIZE	1024
 #define NINJA_WALKING_SPEED		0.2f
-#define NINJA_JUMPING_SPEED_Y	0.1f
-#define NINJA_GRAVITY			0.1f
+#define NINJA_JUMPING_SPEED_Y	0.3f
+#define NINJA_FALLING_SPEED_Y   0.15f
+#define NINJA_GRAVITY			0.015f
 
 //State
 #define NINJA_ATK				10

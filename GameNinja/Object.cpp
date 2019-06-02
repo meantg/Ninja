@@ -4,7 +4,7 @@ Object::Object()
 {
 }
 
-void Object::Update(DWORD dt)
+void Object::Update(float dt)
 {
 }
 

@@ -4,6 +4,7 @@ PlayerStandingState::PlayerStandingState()
 {
 	Player::GetInstance()->vx = 0;
 	Player::GetInstance()->vy = 0;
+	Player::GetInstance()->_allow[ATTACKING] = true;
 	StateName = STANDING;
 }
 
