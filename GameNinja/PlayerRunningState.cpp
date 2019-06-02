@@ -24,7 +24,6 @@ void PlayerRunningState::HandleKeyboard()
 		Player::GetInstance()->isReverse = true;
 		Player::GetInstance()->vx = -NINJA_WALKING_SPEED;
 	}
-
 	else
 		Player::GetInstance()->ChangeState(new PlayerStandingState());
 }

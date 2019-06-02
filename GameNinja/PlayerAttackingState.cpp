@@ -17,7 +17,11 @@ PlayerAttackingState::PlayerAttackingState()
 void PlayerAttackingState::Update(float dt)
 {
 	this->HandleKeyboard();
-	if (Player::GetInstance()->_curAnimation->isLastFrame)
+	if (Player::GetInstance()->y < 40)
+		Player::GetInstance()->y = 40;
+	else if (Player::GetInstance()->y > 120)
+		Player::GetInstance()->y = 120;
+	if (Player::GetInstance()->_curanimation->isLastFrame)
 	{
 		Player::GetInstance()->_allow[ATTACKING] = true;
 		switch (_curState)
@@ -33,9 +37,6 @@ void PlayerAttackingState::Update(float dt)
 			return;
 		case JUMPING:
 			Player::GetInstance()->ChangeState(new PlayerJumpingState());
-		default:
-			Player::GetInstance()->ChangeState(new PlayerStandingState());
-			return;
 		}
 	}
 	else
@@ -49,21 +50,24 @@ void PlayerAttackingState::Update(float dt)
 			break;
 		case JUMPING:
 		{
-			Player::GetInstance()->vy -= NINJA_GRAVITY;
-			if ((Player::GetInstance()->vx == SCREEN_WIDTH - Player::GetInstance()->width ||
-				Player::GetInstance()->vx == (Player::GetInstance()->width) / 2))
-			{
-				Player::GetInstance()->ChangeState(new PlayerClingingState());
-				return;
-			}
+			//Player::GetInstance()->_allow[JUMPING] = false;
+				Player::GetInstance()->vy = -NINJA_GRAVITY;
+			//if ((Player::GetInstance()->vx == SCREEN_WIDTH - Player::GetInstance()->width ||
+			//	Player::GetInstance()->vx == (Player::GetInstance()->width) / 2))
+			//{
+			//	Player::GetInstance()->ChangeState(new PlayerClingingState());
+			//	return;
+			//}
 
-			else if (Player::GetInstance()->vy <= 0)
-			{
-				_curState = FALLING;
-				Player::GetInstance()->vy = NINJA_GRAVITY;
-			}
+			//else if (Player::GetInstance()->vy <= 0)
+			//{
+			//	_curState = FALLING;
+			//	Player::GetInstance()->vy = NINJA_GRAVITY;
+			//}
 			break;
 		}
+		case FALLING:
+			Player::GetInstance()->vy = NINJA_GRAVITY;
 		}
 	}
 }

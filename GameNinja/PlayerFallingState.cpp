@@ -2,17 +2,26 @@
 
 PlayerFallingState::PlayerFallingState()
 {
-	_reverse = Player::GetInstance()->isReverse;
-	Player::GetInstance()->vy = -NINJA_FALLING_SPEED_Y;
+
 	StateName = FALLING;
-}	
+	_reverse = Player::GetInstance()->isReverse;
+
+	Player::GetInstance()->_allow[ATTACKING] = true;
+	Player::GetInstance()->_allow[CLINGING] = true;
+	Player::GetInstance()->_allow[SITTING] = false;
+	Player::GetInstance()->_allow[JUMPING] = false;
+
+}
 
 void PlayerFallingState::Update(float dt)
 {
-	if (Player::GetInstance()->y <= 56)
+	if (Player::GetInstance()->y >= 120)
 	{
-		Player::GetInstance()->y = 56;
 		Player::GetInstance()->vy = 0;
+		Player::GetInstance()->y = 120;
+	}
+	if (Player::GetInstance()->vy == 0)
+	{
 		Player::GetInstance()->ChangeState(new PlayerStandingState());
 		return;
 	}
@@ -24,13 +33,13 @@ void PlayerFallingState::HandleKeyboard()
 {
 	if (keyCode[DIK_LEFT])
 	{
-		Player::GetInstance()->vx = _reverse ? -NINJA_WALKING_SPEED : NINJA_WALKING_SPEED /2;
+		Player::GetInstance()->vx = _reverse ? -NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED /4;
 		Player::GetInstance()->isReverse = true;
 	}
 
 	else if (keyCode[DIK_RIGHT])
 	{
-		Player::GetInstance()->vx = _reverse ? NINJA_WALKING_SPEED / 2 : NINJA_WALKING_SPEED;
+		Player::GetInstance()->vx = _reverse ? NINJA_WALKING_SPEED / 4 : NINJA_WALKING_SPEED;
 		Player::GetInstance()->isReverse = false;
 	}
 
