@@ -32,9 +32,6 @@ void PlayerAttackingState::Update(float dt)
 		default:
 			Player::GetInstance()->ChangeState(new PlayerStandingState());
 			return;
-		default:
-			Player::GetInstance()->ChangeState(new PlayerStandingState());
-			return;
 		}
 	}
 	else

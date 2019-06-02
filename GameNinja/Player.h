@@ -14,7 +14,7 @@ public:
 	Player();
 	~Player();
 
-	float vx, vy, nx, width, height;
+	float vx, vy, width, height, maxy;
 	LPANIMATION _curanimation ;
 	State _state, _lastState;
 	static Player* GetInstance();
