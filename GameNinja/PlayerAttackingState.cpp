@@ -4,6 +4,7 @@ PlayerAttackingState::PlayerAttackingState()
 {
 	_curState = Player::GetInstance()->state->StateName;
 	_reverse = Player::GetInstance()->isReverse;
+	Player::GetInstance()->_allow[JUMPING] = false;
 	if (_curState == SITTING)
 	{
 		StateName = ATK_SIT;
@@ -18,17 +19,20 @@ void PlayerAttackingState::Update(float dt)
 	this->HandleKeyboard();
 	if (Player::GetInstance()->_curanimation->isLastFrame)
 	{
+		Player::GetInstance()->_allow[ATTACKING] = true;
 		switch (_curState)
 		{
 		case STANDING: case RUNNING:
 			Player::GetInstance()->ChangeState(new PlayerStandingState());
 			return;
 		case SITTING:
-			Player::GetInstance()->ChangeState(new PlayerSittingState());
+			Player::GetInstance()->ChangeState(new PlayerSittingState());		
 			return;
 		case FALLING:
 			Player::GetInstance()->ChangeState(new PlayerFallingState());
 			return;
+		case JUMPING:
+			Player::GetInstance()->ChangeState(new PlayerJumpingState());
 		default:
 			Player::GetInstance()->ChangeState(new PlayerStandingState());
 			return;
@@ -36,6 +40,7 @@ void PlayerAttackingState::Update(float dt)
 	}
 	else
 	{
+		Player::GetInstance()->_allow[ATTACKING] = false;
 		switch (_curState)
 		{
 		case RUNNING: case STANDING: case SITTING:

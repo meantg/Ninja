@@ -17,10 +17,17 @@ Player::Player()
 	this->AddAnimation(JUMPING_ATK);
 	this->AddAnimation(FALLING);
 
+
 	this->SetPosition(20.0f, 120.0f);
 	maxy = 60;
 	_state = STANDING;
 	_curanimation = animations[_state];
+
+
+	_allow[JUMPING] = true;
+	_allow[ATTACKING] = true;
+	_allow[RUNNING] = true;
+	_allow[THROWING] = true;
 }
 
 Player::~Player()
@@ -131,11 +138,15 @@ void Player::OnKeyDown(int keyCode)
 		SetState(RUNNING_LEFT);
 		break;*/
 	case DIK_A:
-		ChangeState(new PlayerAttackingState());
-		if (isStanding == true)
-			SetState(ATK_STAND);
-		else
-			SetState(ATK_SIT);
+		if (_allow[ATTACKING])
+		{
+			_allow[ATTACKING] = false;
+			ChangeState(new PlayerAttackingState());
+			if (isStanding == true)
+				SetState(ATK_STAND);
+			else
+				SetState(ATK_SIT);
+		}
 		break;
 	case DIK_DOWN:
 		ChangeState(new PlayerSittingState());

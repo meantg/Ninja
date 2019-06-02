@@ -21,6 +21,7 @@ public:
 	PlayerState* state;
 	State stateName;
 	bool isReverse = false, isStanding = true;
+	unordered_map<State, bool> _allow;
 
 	void Allow(State state, bool flag);
 	void Update(DWORD dt);

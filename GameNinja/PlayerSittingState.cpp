@@ -3,8 +3,10 @@
 PlayerSittingState::PlayerSittingState()
 {
 	StateName = SITTING;
+	Player::GetInstance()->_allow[JUMPING] = false;
 	Player::GetInstance()->vx = 0;
 	Player::GetInstance() -> vy = 0;
+	Player::GetInstance()->isStanding = false;
 }
 
 void PlayerSittingState::HandleKeyboard()

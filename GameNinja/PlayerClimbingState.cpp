@@ -3,6 +3,10 @@
 PlayerClimbingState::PlayerClimbingState()
 {
 	StateName = CLIMBING;
+
+	Player::GetInstance()->_allow[ATTACKING] = false;
+	Player::GetInstance()->_allow[JUMPING] = true;
+	Player::GetInstance()->_allow[SITTING] = false;
 }
 
 void PlayerClimbingState::Update(float dt)
