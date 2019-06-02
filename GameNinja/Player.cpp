@@ -15,8 +15,10 @@ Player::Player()
 	this->AddAnimation(ATTACKING);
 	this->AddAnimation(JUMPING);
 	this->AddAnimation(JUMPING_ATK);
+	this->AddAnimation(FALLING);
 
-	this->SetPosition(10.0f, 100.0f);
+	this->SetPosition(20.0f, 120.0f);
+	maxy = 60;
 	_state = STANDING;
 	_curanimation = animations[_state];
 	//width = _curanimation->GetcurFrame()->GetSprite()->getWidth();
@@ -36,21 +38,6 @@ Player * Player::GetInstance()
 
 void Player::Update(DWORD dt)
 {
-	//if (_state == RUNNING)
-	//{
-	//	if (x <= SCREEN_WIDTH && x >= 0)
-	//		if(isReverse==false)
-	//		x += 0.2f * dt;
-	//		else x -= 0.2f * dt;
-	//	if (x < 0)
-	//		x = 0;
-	//	if (x >= SCREEN_WIDTH /2)
-	//		x = SCREEN_WIDTH /2;
-	//}
-	//if (_state == NINJA_JUMP)
-	//{
-	//	y += dt * vy;
-	//}
 	animations[_state]->Update(dt);
 	state->Update(dt);
 	if (x < 0)
@@ -58,6 +45,7 @@ void Player::Update(DWORD dt)
 	if (x >=2048-20)
 		x = 2048-20;
 	x += vx * dt;
+		y+= vy * dt;
 }
 
 void Player::Render(float cameraX, float cameraY)
@@ -178,7 +166,7 @@ void Player::OnKeyUp(int keyCode)
 
 	// Khi thả phím DOWN: state hiện tại chuyển thành đứng
 		case DIK_DOWN:
-			if (_state == SITTING)
+			if (isStanding == true)
 			{
 				isStanding = true;
 				stateName = STANDING;

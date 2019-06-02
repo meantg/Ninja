@@ -8,6 +8,8 @@ PlayerFallingState::PlayerFallingState()
 
 void PlayerFallingState::Update(float dt)
 {
+	if (Player::GetInstance()->y == 120)
+		Player::GetInstance()->vy = 0;
 	if (Player::GetInstance()->vy == 0)
 	{
 		Player::GetInstance()->ChangeState(new PlayerStandingState());
@@ -21,7 +23,7 @@ void PlayerFallingState::HandleKeyboard()
 {
 	if (keyCode[DIK_LEFT])
 	{
-		Player::GetInstance()->vx = _reverse ? -NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED /2;
+		Player::GetInstance()->vx = _reverse ? -NINJA_WALKING_SPEED : NINJA_WALKING_SPEED /2;
 		Player::GetInstance()->isReverse = true;
 	}
 
