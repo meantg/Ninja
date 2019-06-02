@@ -121,6 +121,9 @@
     <ClCompile Include="PlayerStandingState.cpp">
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -197,6 +200,9 @@
     </ClInclude>
     <ClInclude Include="PlayerStandingState.h">
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>FrameWork</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

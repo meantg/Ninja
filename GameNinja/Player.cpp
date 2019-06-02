@@ -7,6 +7,7 @@ Player::Player()
 
 	this->AddAnimation(STANDING);
 	this->AddAnimation(ATK_STAND);
+	this->AddAnimation(ATK_SIT);
 	this->AddAnimation(THROWING);
 	this->AddAnimation(CLIMBING);
 	this->AddAnimation(RUNNING);
@@ -18,6 +19,8 @@ Player::Player()
 	this->SetPosition(10.0f, 100.0f);
 	_state = STANDING;
 	_curanimation = animations[_state];
+	//width = _curanimation->GetcurFrame()->GetSprite()->getWidth();
+	//height = _curanimation->GetcurFrame()->GetSprite()->getHeight();
 }
 
 Player::~Player()
@@ -86,6 +89,9 @@ void Player::SetState(State state)
 	case ATK_STAND:
 		_state = ATK_STAND;
 		break;
+	case ATK_SIT:
+		_state = ATK_SIT;
+		break;
 	case SITTING:
 		_state = SITTING;
 		break;
@@ -143,10 +149,10 @@ void Player::OnKeyDown(int keyCode)
 		break;*/
 	case DIK_A:
 		ChangeState(new PlayerAttackingState());
-		if (isStanding = true)
+		if (isStanding == true)
 			SetState(ATK_STAND);
-		//else
-		//	SetState(ATK_SIT);
+		else
+			SetState(ATK_SIT);
 		break;
 	case DIK_DOWN:
 		ChangeState(new PlayerSittingState());
@@ -174,6 +180,7 @@ void Player::OnKeyUp(int keyCode)
 		case DIK_DOWN:
 			if (_state == SITTING)
 			{
+				isStanding = true;
 				stateName = STANDING;
 				SetState(STANDING);
 			}
