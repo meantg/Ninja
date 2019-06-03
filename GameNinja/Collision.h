@@ -26,5 +26,4 @@ public:
 	bool isCollision(Hitbox obj1, Hitbox obj2);
 	CollisionResult SweptAABB(Hitbox obj1, Hitbox obj2);
 	Hitbox GetBroadphaseBox(Hitbox obj);
-
 };

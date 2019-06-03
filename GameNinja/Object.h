@@ -6,6 +6,7 @@
 #include "Animation.h"
 #include "AnimationManager.h"
 #include "Collision.h"
+#include "GameGlobal.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ public:
 	virtual Hitbox GetHitbox() { return Hitbox(); };
 	virtual void Update(float dt);
 	virtual void Render();
+	void RenderBoundingBox(float x, float y);
 	~Object();
 };
 

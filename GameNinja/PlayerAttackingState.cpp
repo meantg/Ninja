@@ -21,7 +21,7 @@ void PlayerAttackingState::Update(float dt)
 		Player::GetInstance()->y = 40;
 	else if (Player::GetInstance()->y > 120)
 		Player::GetInstance()->y = 120;
-	if (Player::GetInstance()->_curanimation->isLastFrame)
+	if (Player::GetInstance()->_curAnimation->isLastFrame)
 	{
 		Player::GetInstance()->_allow[ATTACKING] = true;
 		switch (_curState)

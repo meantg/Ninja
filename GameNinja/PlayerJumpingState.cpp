@@ -10,19 +10,14 @@ PlayerJumpingState::PlayerJumpingState()
 	Player::GetInstance()->_allow[SITTING] = false;
 
 	if (_lastState == RUNNING || _lastState == STANDING || _lastState == CLINGING)
-		Player::GetInstance()->vy = -NINJA_JUMPING_SPEED_Y;
+		Player::GetInstance()->vy = NINJA_JUMPING_SPEED_Y;
 	StateName = JUMPING;
 }
 
 void PlayerJumpingState::Update(float dt)
 {
-	if (Player::GetInstance()->y >= 40)
-	{
-		Player::GetInstance()->vy = -NINJA_JUMPING_SPEED_Y;
-	}
-	else 
-	{
-		Player::GetInstance()->vy = NINJA_GRAVITY;
+	Player::GetInstance()->vy -= NINJA_GRAVITY;
+	if (Player::GetInstance()->vy <= 0) {
 		Player::GetInstance()->ChangeState(new PlayerFallingState());
 		return;
 	}
