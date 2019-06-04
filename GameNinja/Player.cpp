@@ -54,7 +54,7 @@ Hitbox Player::GetHitbox()
 	return box;
 }
 
-void Player::Update(DWORD dt)
+void Player::Update(float dt)
 {
 	_curAnimation->Update(dt);
 	state->Update(dt);
@@ -163,12 +163,11 @@ void Player::OnKeyDown(int keyCode)
 				SetState(ATK_SIT);*/
 		}
 		break;
-	case DIK_DOWN:
-		ChangeState(new PlayerSittingState());
-		/*SetState(SITTING);*/
-		break;
 	case DIK_SPACE:
-		ChangeState(new PlayerJumpingState());
+		if (_allow[JUMPING])
+		{
+			ChangeState(new PlayerJumpingState());
+		}
 		/*SetState(JUMPING);*/
 		break;
 	}
