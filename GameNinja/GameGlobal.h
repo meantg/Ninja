@@ -13,9 +13,15 @@
 #define WIN_NAME "Game Ninja"
 #define WIN_TITLE "Game Ninja"
 #define KEYBOARD_BUFFER_SIZE	1024
+
+//State
 #define NINJA_WALKING_SPEED		0.2f
-#define NINJA_JUMPING_SPEED_Y	0.2f
-#define NINJA_GRAVITY			0.2f
+#define NINJA_JUMPING_SPEED_Y	0.3f
+#define NINJA_FALLING_SPEED_Y   0.15f
+#define NINJA_GRAVITY			0.015f
+#define NINJA_STANDING_HEIGHT   26
+#define NINJA_SITTING_HEIGHT    18
+#define NINJA_WIDTH				18
 
 //State
 #define NINJA_ATK				10
@@ -73,6 +79,7 @@ extern enum Tag
 {
 	Ninja_Text,
 	Stage3_1,
+	BBox_Texture,
 };
 
 extern enum TypeItem

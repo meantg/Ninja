@@ -7,6 +7,7 @@ PlayerSittingState::PlayerSittingState()
 	Player::GetInstance()->vx = 0;
 	Player::GetInstance() -> vy = 0;
 	Player::GetInstance()->isStanding = false;
+	Player::GetInstance()->_allow[ATTACKING] = true;
 }
 
 void PlayerSittingState::HandleKeyboard()

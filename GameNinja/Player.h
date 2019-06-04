@@ -5,6 +5,7 @@
 #include "PlayerInjuredState.h"
 #include "Camera.h"
 #include <map>
+#include "GameGlobal.h"
 
 class Player : public Object
 {

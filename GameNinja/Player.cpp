@@ -19,7 +19,10 @@ Player::Player()
 
 
 	this->x = 20.0f;
-	this->y = 120.0f;
+	this->y = 56.0f;
+	this->width = NINJA_WIDTH;
+	this->height = NINJA_STANDING_HEIGHT;
+
 	maxy = 60;
 	_state = STANDING;
 	_curAnimation = animations[_state];
@@ -63,13 +66,14 @@ void Player::Update(float dt)
 	if (x >=2048-20)
 		x = 2048-20;
 	x += vx * dt;
-		y+= vy * dt;
+	y += vy * dt;
 }
 
 void Player::Render(float cameraX, float cameraY)
 {
 	animations[_state]->isReverse = isReverse;
-	animations[_state]->Render(x-cameraX, y);
+	animations[_state]->Render(x-cameraX, cameraY - y);
+	this->RenderBoundingBox(x - cameraX, cameraY - y);
 }
 
 void Player::AddAnimation(State _state)

@@ -27,8 +27,8 @@ public:
 	//bool isFlipVertical();
 	bool isFlipHorizontal();
 
-	int getWidth();
-	int getHeight();
+	//int getWidth();
+	//int getHeight();
 };
 
 typedef CSprite * LPSPRITE;

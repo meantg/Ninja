@@ -43,7 +43,6 @@ void CSprite::Draw(float x, float y, bool _isFlipHorizontal)
 	spriteHandler->Draw(texture, &r, &pCenter, &pPosition, D3DCOLOR_XRGB(255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);
 }
-
 //
 void CSprite::FlipHorizontal(bool flip)
 {
@@ -66,15 +65,15 @@ bool CSprite::isFlipHorizontal()
 	return _isFlipHorizontal;
 }
 
-int CSprite::getWidth()
-{
-	return right-left;
-}
-
-int CSprite::getHeight()
-{
-	return bottom-top;
-}
+//int CSprite::getWidth()
+//{
+//	return right-left;
+//}
+//
+//int CSprite::getHeight()
+//{
+//	return bottom-top;
+//}
 
 //bool Sprite::isFlipVertical()
 //{
