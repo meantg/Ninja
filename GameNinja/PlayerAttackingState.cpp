@@ -17,10 +17,10 @@ PlayerAttackingState::PlayerAttackingState()
 void PlayerAttackingState::Update(float dt)
 {
 	this->HandleKeyboard();
-	if (Player::GetInstance()->y < 40)
-		Player::GetInstance()->y = 40;
-	else if (Player::GetInstance()->y > 120)
-		Player::GetInstance()->y = 120;
+	if (Player::GetInstance()->y <= 56)
+		Player::GetInstance()->y = 56;
+
+	// Kiem tra xem danh xong chua
 	if (Player::GetInstance()->_curAnimation->isLastFrame)
 	{
 		Player::GetInstance()->_allow[ATTACKING] = true;
@@ -37,8 +37,10 @@ void PlayerAttackingState::Update(float dt)
 			return;
 		case JUMPING:
 			Player::GetInstance()->ChangeState(new PlayerJumpingState());
+			return;
 		}
 	}
+	// Neu chua danh xong
 	else
 	{
 		Player::GetInstance()->_allow[ATTACKING] = false;
@@ -51,7 +53,7 @@ void PlayerAttackingState::Update(float dt)
 		case JUMPING:
 		{
 			//Player::GetInstance()->_allow[JUMPING] = false;
-				Player::GetInstance()->vy = -NINJA_GRAVITY;
+			Player::GetInstance()->vy -= NINJA_GRAVITY;
 			//if ((Player::GetInstance()->vx == SCREEN_WIDTH - Player::GetInstance()->width ||
 			//	Player::GetInstance()->vx == (Player::GetInstance()->width) / 2))
 			//{
@@ -67,7 +69,7 @@ void PlayerAttackingState::Update(float dt)
 			break;
 		}
 		case FALLING:
-			Player::GetInstance()->vy = NINJA_GRAVITY;
+			Player::GetInstance()->vy = -NINJA_FALLING_SPEED_Y;
 		}
 	}
 }

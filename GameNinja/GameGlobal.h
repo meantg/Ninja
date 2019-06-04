@@ -17,7 +17,7 @@
 //State
 #define NINJA_WALKING_SPEED		0.2f
 #define NINJA_JUMPING_SPEED_Y	0.3f
-#define NINJA_FALLING_SPEED_Y   0.15f
+#define NINJA_FALLING_SPEED_Y   0.2f
 #define NINJA_GRAVITY			0.015f
 #define NINJA_STANDING_HEIGHT   26
 #define NINJA_SITTING_HEIGHT    18
@@ -80,6 +80,9 @@ extern enum Tag
 	Ninja_Text,
 	Stage3_1,
 	BBox_Texture,
+	Enemy_Texture,
+	Holder_Texture,
+	Item_Texture
 };
 
 extern enum TypeItem

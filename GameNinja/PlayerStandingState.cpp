@@ -2,6 +2,7 @@
 
 PlayerStandingState::PlayerStandingState()
 {
+	Player::GetInstance()->height = NINJA_STANDING_HEIGHT;
 	Player::GetInstance()->vx = 0;
 	Player::GetInstance()->vy = 0;
 

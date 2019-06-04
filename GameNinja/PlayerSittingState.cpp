@@ -8,6 +8,7 @@ PlayerSittingState::PlayerSittingState()
 	Player::GetInstance() -> vy = 0;
 	Player::GetInstance()->isStanding = false;
 	Player::GetInstance()->_allow[ATTACKING] = true;
+	Player::GetInstance()->height = NINJA_SITTING_HEIGHT;
 }
 
 void PlayerSittingState::HandleKeyboard()
