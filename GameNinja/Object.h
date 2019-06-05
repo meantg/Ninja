@@ -16,16 +16,17 @@ class Object
 public:
 	Object();
 
-
 	float x, y;
+	float vx, vy;
+	float spawnX, spawnY;
 	int width, height;
+	bool isDead, isReverse = false;
 	RECT GetRect();
 	//State _curState;
 	//bool isOnGround = true;
 	//void SetPosition(float x, float y) { this->x = x; this->y = y; }
 	//void SetState(State _state) { this->_curState = _state; }
 
-	//virtual void AddAnimation(State _state);
 	virtual Hitbox GetHitbox() { return Hitbox(); };
 	virtual void Update(float dt);
 	virtual void Render();

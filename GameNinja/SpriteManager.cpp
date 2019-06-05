@@ -14,7 +14,7 @@ void SpriteManager::StartUp()
 	//------------------Load Sprite Ninja
 	SpriteManager * sprites = SpriteManager::GetInstance();
 	LPDIRECT3DTEXTURE9 texPeople = TextureManager::GetInstance()->GetTexture(Ninja_Text);
-	//Idle
+	//Standing
 	sprites->Add(00000, 2, 5, 21, 37, texPeople);
 	//Attack-Standing
 	sprites->Add(00001, 41, 5, 60, 37, texPeople);
@@ -103,6 +103,7 @@ void SpriteManager::StartUp()
 	sprites->Add(15001, 471, 54, 497, 92, texEnemy);
 	sprites->Add(15002, 500, 54, 526, 92, texEnemy);
 
+
 	//----------------------LoadSprite Bullet
 	LPDIRECT3DTEXTURE9 texBullet = TextureManager::GetInstance()->GetTexture(Enemy_Texture);
 
@@ -139,6 +140,9 @@ void SpriteManager::StartUp()
 	sprites->Add(16008, 227, 6, 245, 26, texItem);
 	//RedShuriken
 	sprites->Add(16009, 70, 8, 86, 24, texItem);
+	//DEAD sprite for Enemy
+	sprites->Add(17001, 363, 40, 397, 79, texItem);
+	sprites->Add(17002, 316, 0, 350, 39, texItem);
 
 	//----------------------LoadSprite Holder
 	LPDIRECT3DTEXTURE9 texHolder = TextureManager::GetInstance()->GetTexture(Item_Texture);

@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Camera.h"
 #include "GameMap.h"
+#include "ESwordMan.h"
 
 class PlayScene : public Scene
 {
@@ -15,6 +16,7 @@ private:
 	Camera *mCamera;
 	GameMap *mMap;
 
+	ESwordMan *swordMan;
 	int MapWidth, MapHeight;
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:

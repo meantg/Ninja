@@ -61,6 +61,7 @@ void Camera::ConvertToViewport(float x, float y)
 	this->SetPosition(newx, newy);
 }
 
+
 int Camera::GetWidth()
 {
 	return cmWidth;

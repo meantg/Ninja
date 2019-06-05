@@ -8,6 +8,7 @@ private:
 	int cmWidth;
 	int cmHeight;
 	float x, y;
+
 public:
 	Camera(int width, int height);
 

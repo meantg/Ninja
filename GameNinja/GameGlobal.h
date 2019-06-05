@@ -14,7 +14,10 @@
 #define WIN_TITLE "Game Ninja"
 #define KEYBOARD_BUFFER_SIZE	1024
 
-//State
+
+//---------INFOR
+	//NINJA 
+
 #define NINJA_WALKING_SPEED		0.2f
 #define NINJA_JUMPING_SPEED_Y	0.3f
 #define NINJA_FALLING_SPEED_Y   0.2f
@@ -28,17 +31,11 @@
 #define NINJA_RUN				11
 #define NINJA_STAND
 
-//Animation
-#define NINJA_IDLE				0
-#define NINJA_ATK_STANDING		1
-#define NINJA_THROWING			2
-#define NINJA_CLIMBING			3
-#define NINJA_RUN_RIGHT			4
-#define NINJA_RUN_LEFT			9
-#define NINJA_SITTING			5
-#define NINJA_ATK_SITTING		6
-#define NINJA_JUMP				7
-#define NINJA_JUMP_ATK			8
+	//ENEMY
+#define ENEMY_SWORDMAN_WIDTH 25
+#define ENEMY_SWORDMAN_HEIGHT 40
+#define ENEMY_SWORDMAN_SPEED 0.02f
+
 
 
 extern LPD3DXSPRITE spriteHandler; //con tro sprite
@@ -66,13 +63,22 @@ extern enum State
 	CLIMBING,			//11
 	CLINGING,
 	INJURED,
-	DEAD
+	DEAD,
+	E_SW_STANDING,
+	E_SW_RUNNING,
 };					
 
 extern enum TypeObject
 {
 	PLAYER,
 	ENEMY,
+	E_SWORDMAN,
+	E_BAZOKA,
+	E_RUNMAN,
+	E_GUNMAN,
+	E_CLOAKMAN,
+	E_PANTHER,
+	E_EAGLE,
 };
 
 extern enum Tag

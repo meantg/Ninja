@@ -41,6 +41,9 @@
     <Filter Include="FrameWork\GameObjects\Entity\Player\State">
       <UniqueIdentifier>{8035c7bd-cc7b-407e-a020-07c24e222344}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Enemy">
+      <UniqueIdentifier>{db9cbb23-67e1-4fad-9bdb-11d26d99a539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -121,6 +124,12 @@
     <ClCompile Include="Collision.cpp">
       <Filter>FrameWork\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ESwordMan.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -200,6 +209,12 @@
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>FrameWork\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ESwordMan.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

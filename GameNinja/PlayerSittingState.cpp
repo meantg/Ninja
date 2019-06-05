@@ -24,6 +24,16 @@ void PlayerSittingState::HandleKeyboard()
 			Player::GetInstance()->ChangeState(new PlayerStandingState());
 		}
 	}
+	if (keyCode[DIK_LEFT])
+	{
+		Player::GetInstance()->isReverse = true;
+		Player::GetInstance()->ChangeState(new PlayerRunningState());
+	}
+	if (keyCode[DIK_RIGHT])
+	{
+		Player::GetInstance()->isReverse = false;
+		Player::GetInstance()->ChangeState(new PlayerRunningState());
+	}
 }
 
 void PlayerSittingState::Update(float dt)

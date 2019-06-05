@@ -30,9 +30,8 @@ void PlayScene::LoadMap(const char * filePath)
 void PlayScene::Update(float dt)
 {
 	Player::GetInstance()->Update(dt);
-	
 
-	mMap->Update();
+	mMap->Update(dt);
 
 	/*if (mCamera->GetBound().right + 8 <= MapWidth)
 	mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(8,0,0));*/

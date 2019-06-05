@@ -23,9 +23,8 @@ Player::Player()
 	this->width = NINJA_WIDTH;
 	this->height = NINJA_STANDING_HEIGHT;
 
-	maxy = 60;
 	_state = STANDING;
-	_curAnimation = animations[_state];
+	//_curAnimation = animations[_state];
 
 
 	_allow[JUMPING] = true;

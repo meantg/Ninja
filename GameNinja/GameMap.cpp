@@ -4,6 +4,8 @@
 GameMap::GameMap(const char* filePath)
 {
 	LoadMap(filePath);
+	swordMan = new ESwordMan();
+	swordMan->ChangeState(E_SW_RUNNING);
 }
 
 GameMap::~GameMap()
@@ -42,6 +44,7 @@ void GameMap::Render()
 			SpriteManager::GetInstance()->GetSprite(70000 + mapMatrix[i][j])->Draw((j << 4) + (16 >> 1) - (int)mCamera->GetPositionX(), ((i << 4) + (16 >> 1)));
 		}
 	}
+	swordMan->Render();
 }
 
 int GameMap::getRow()
@@ -59,9 +62,10 @@ void GameMap::SetCamera(Camera * camera)
 	this->mCamera = camera;
 }
 
-void GameMap::Update()
+void GameMap::Update(float dt)
 {
 	mCamera->Update(mWidth, mHeight);
 	cBegin = max(0, mCamera->GetPositionX() / 16);
 	cEnd = min(cBegin + ((SCREEN_WIDTH >> 4) + 1), columns);
+	swordMan->Update(dt);
 }

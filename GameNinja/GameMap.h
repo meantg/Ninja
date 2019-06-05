@@ -11,6 +11,7 @@
 #include <fstream>
 #include "string"
 #include <math.h>
+#include "ESwordMan.h"
 
 class GameMap
 {
@@ -18,7 +19,7 @@ public:
 	GameMap(const char* filePath);
 	int mWidth, mHeight;
 	void SetCamera(Camera *camera);
-	void Update();
+	void Update(float dt);
 	void Render();
 	int getRow();
 	int getColumn();
@@ -27,6 +28,7 @@ public:
 private:
 	void LoadMap(const char* filePath);
 
+	ESwordMan *swordMan;
 	int **mapMatrix;
 	int rows, columns;
 	int cBegin, cEnd;
