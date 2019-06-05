@@ -80,10 +80,10 @@ void AnimationManager::StartUp()
 	////SwordMan
 	ani = new Animation(100);
 	ani->Add(80001);
-	animations->Add(E_SWORDMAN, E_SW_STANDING, ani);
+	animations->Add(E_SWORDMAN, STANDING, ani);
 	ani->Add(80002);
 	ani->Add(80003);
-	animations->Add(E_SWORDMAN, E_SW_RUNNING, ani);
+	animations->Add(E_SWORDMAN, RUNNING, ani);
 
 	////Bazoka
 	//ani = new Animation(100);
@@ -155,12 +155,17 @@ void AnimationManager::Add(TypeObject _type, State _state, LPANIMATION ani)
 {
 	unordered_map<TypeObject, LPANIMATION> anim;
 	anim[_type] = ani;
-	oAnimations[_state] = anim;
+	oAnimations.insert({ _state , anim });
 }
 
 LPANIMATION AnimationManager::Get(TypeObject _type, State _state)
 {
-	unordered_map<TypeObject, LPANIMATION> anim;
-	anim = oAnimations[_state];
-	return anim[_type];
+	pair< unordered_multimap<State, unordered_map<TypeObject, LPANIMATION>>::iterator, unordered_multimap<State, unordered_map<TypeObject, LPANIMATION>>::iterator> range = oAnimations.equal_range(_state);
+	unordered_multimap<State, unordered_map<TypeObject, LPANIMATION>>::iterator it;
+	for (it = range.first; it != range.second; ++it) {
+		if (it->second.find(_type) != it->second.end()) {
+			return it->second[_type];
+		}	
+	}
+	return NULL;
 }

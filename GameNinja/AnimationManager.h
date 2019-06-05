@@ -1,10 +1,11 @@
 #pragma once
 #include "Animation.h"
+#include <iostream>
 
 class AnimationManager
 {
 	static AnimationManager * _instance;
-	unordered_map<State, unordered_map<TypeObject, LPANIMATION>> oAnimations;
+	unordered_multimap<State, unordered_map<TypeObject, LPANIMATION>> oAnimations;
 public:
 	void StartUp();
 	void ShutDown();

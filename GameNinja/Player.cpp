@@ -12,7 +12,6 @@ Player::Player()
 	this->AddAnimation(CLIMBING);
 	this->AddAnimation(RUNNING);
 	this->AddAnimation(SITTING);
-	this->AddAnimation(ATTACKING);
 	this->AddAnimation(JUMPING);
 	this->AddAnimation(JUMPING_ATK);
 	this->AddAnimation(FALLING);

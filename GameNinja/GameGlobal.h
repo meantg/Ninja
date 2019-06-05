@@ -47,7 +47,6 @@ extern std::unordered_map<int, bool> keyCode;
 
 extern enum State
 {
-	IDLE,
 	STANDING,			//0		
 	RUNNING,//1
 	RUNNING_LEFT,		//2

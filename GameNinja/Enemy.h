@@ -16,7 +16,7 @@ public:
 	Enemy();
 	~Enemy() {};
 
-	void Render();
+	void Render(float cameraX, float cameraY);
 	virtual void Update(float dt);
 	virtual void UpdatePosition(float dt);
 	bool isOnScreen();

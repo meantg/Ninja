@@ -6,11 +6,11 @@ Enemy::Enemy()
 	isActive = false;
 }
 
-void Enemy::Render()
+void Enemy::Render(float cameraX, float cameraY)
 {
 	animations[_state]->isReverse = isReverse;
-	animations[_state]->Render(this->x, this->y);
-	/*this->RenderBoundingBox(x - cameraX, cameraY - y);*/
+	animations[_state]->Render(this->x - cameraX, cameraY - this->y);
+	this->RenderBoundingBox(x - cameraX, cameraY - y);
 }
 
 void Enemy::Update(float dt)
@@ -38,8 +38,8 @@ void Enemy::Update(float dt)
 
 void Enemy::UpdatePosition(float dt)
 {
-	this->x = vx * dt;
-	this->y = vy * dt;
+	this->x += vx * dt;
+	this->y += vy * dt;
 }
 
 //bool Enemy::isOnScreen()
