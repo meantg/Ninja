@@ -7,4 +7,5 @@ public:
 	ESwordMan();
 	~ESwordMan() {};
 	void UpdatePosition(float dt);
+	virtual void Update(float dt);
 };

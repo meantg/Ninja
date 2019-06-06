@@ -11,7 +11,7 @@ protected:
 public:
 	float speed;
 	State _state;
-	bool isActive, isDoneAtk, isFrozen = false;
+	bool isActive = false, isDoneAtk, isFrozen = false;
 	int totalBullet, bullets;
 	Enemy();
 	~Enemy() {};

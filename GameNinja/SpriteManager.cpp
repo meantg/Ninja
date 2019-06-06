@@ -141,15 +141,15 @@ void SpriteManager::StartUp()
 	//RedShuriken
 	sprites->Add(16009, 70, 8, 86, 24, texItem);
 	//DEAD sprite for Enemy
-	sprites->Add(17001, 363, 40, 397, 79, texItem);
-	sprites->Add(17002, 316, 0, 350, 39, texItem);
+	sprites->Add(18001, 363, 40, 397, 79, texItem);
+	sprites->Add(18002, 316, 0, 350, 39, texItem);
 
 	//----------------------LoadSprite Holder
 	LPDIRECT3DTEXTURE9 texHolder = TextureManager::GetInstance()->GetTexture(Item_Texture);
 
 	//ButterFly
-	sprites->Add(17001, 83, 55, 96, 70, texItem);
-	sprites->Add(17002, 96, 53, 114, 70, texItem);
+	sprites->Add(17001, 83, 55, 96, 70, texHolder);
+	sprites->Add(17002, 96, 53, 114, 70, texHolder);
 	//Bird
 	sprites->Add(17003, 116, 50, 136, 70, texItem);
 	sprites->Add(17004, 139, 51, 159, 70, texItem);

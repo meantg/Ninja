@@ -36,7 +36,7 @@ void PlayerJumpingState::HandleKeyboard()
 	else if (keyCode[DIK_RIGHT])
 	{
 		Player::GetInstance()->isReverse = false;
-		Player::GetInstance()->vx = _reverse ? NINJA_WALKING_SPEED/2 : NINJA_WALKING_SPEED;
+		Player::GetInstance()->vx = _reverse ? NINJA_WALKING_SPEED: NINJA_WALKING_SPEED/2;
 	}
 
 }

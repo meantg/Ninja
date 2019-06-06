@@ -11,7 +11,11 @@
 #include <fstream>
 #include "string"
 #include <math.h>
+
+// Entity
 #include "ESwordMan.h"
+#include "IHButterfly.h"
+#include "ECloakMan.h"
 
 class GameMap
 {
@@ -28,7 +32,11 @@ public:
 private:
 	void LoadMap(const char* filePath);
 
+	//Test Entity
 	ESwordMan *swordMan;
+	IHButterfly *butterfly;
+	ECloakMan *cloakMan;
+
 	int **mapMatrix;
 	int rows, columns;
 	int cBegin, cEnd;
