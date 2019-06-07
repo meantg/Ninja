@@ -66,8 +66,10 @@ void Player::Update(float dt)
 	x += vx * dt;
 
 	y += vy * dt;
-	if (y < 56) {
-		y = 56;
+	if (_state != SITTING) {
+		if (y <= 56) {
+			y = 56;
+		}
 	}
 }
 
@@ -75,7 +77,7 @@ void Player::Render(float cameraX, float cameraY)
 {
 	animations[_state]->isReverse = isReverse;
 	animations[_state]->Render(x-cameraX, cameraY - y);
-	this->RenderBoundingBox(x - cameraX, cameraY - y);
+	//this->RenderBoundingBox(x - cameraX, cameraY - y);
 }
 
 void Player::AddAnimation(State _state)
@@ -123,6 +125,7 @@ void Player::OnKeyUp(int keyCode)
 		case DIK_DOWN:
 			if (isStanding == true)
 			{
+				/*Player::GetInstance()->y += 7;*/
 				_state = STANDING;
 			}
 			break;

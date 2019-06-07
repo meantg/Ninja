@@ -28,7 +28,7 @@ public:
 private:
 	void LoadMap(const char* filePath);
 
-	ESwordMan *swordMan;
+	vector<ESwordMan*> swordMans;
 	int **mapMatrix;
 	int rows, columns;
 	int cBegin, cEnd;

@@ -4,7 +4,7 @@
 class ESwordMan : public Enemy
 {
 public:
-	ESwordMan();
+	ESwordMan(float spawnX, float spawnY);
 	~ESwordMan() {};
 	void UpdatePosition(float dt);
 };

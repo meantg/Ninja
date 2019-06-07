@@ -81,6 +81,7 @@ void AnimationManager::StartUp()
 	ani = new Animation(100);
 	ani->Add(80001);
 	animations->Add(E_SWORDMAN, STANDING, ani);
+	ani = new Animation(100);
 	ani->Add(80002);
 	ani->Add(80003);
 	animations->Add(E_SWORDMAN, RUNNING, ani);
