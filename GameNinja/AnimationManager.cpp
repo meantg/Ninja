@@ -21,7 +21,7 @@ void AnimationManager::StartUp()
 	animations->Add(PLAYER, STANDING, ani);
 
 	// Anim-Attack-Standing [1]
-	ani = new Animation(100);
+	ani = new Animation(120);
 	ani->Add(00001);
 	ani->Add(00002);
 	ani->Add(00003);
@@ -53,7 +53,7 @@ void AnimationManager::StartUp()
 	animations->Add(PLAYER, SITTING, ani);
 
 	//Anim-Attack-Sitting [6]
-	ani = new Animation(100);
+	ani = new Animation(120);
 	ani->Add(40001);
 	ani->Add(40002);
 	ani->Add(40003);
@@ -77,79 +77,103 @@ void AnimationManager::StartUp()
 	animations->Add(PLAYER, JUMPING_ATK, ani);
 
 	////--------------LoadAnimation ENEMY
+
 	////SwordMan
 	ani = new Animation(100);
 	ani->Add(80001);
 	animations->Add(E_SWORDMAN, STANDING, ani);
-	ani = new Animation(100);
+	ani = new Animation(200);
+	ani->Add(80001);
 	ani->Add(80002);
 	ani->Add(80003);
 	animations->Add(E_SWORDMAN, RUNNING, ani);
+	ani = new Animation(100);
+	ani->Add(18001);
+	ani->Add(18002);
+	animations->Add(E_SWORDMAN, DEAD, ani);
 
 	////Bazoka
-	//ani = new Animation(100);
-	//ani->Add(90001);
-	//animations->Add(E_BAZOKA, STANDING, ani);
-	//animations->Add(E_BAZOKA, RUNNING, ani);
-	//ani->Add(90002);
-	//animations->Add(E_BAZOKA, ATTACKING, ani);
+	ani = new Animation(100);
+	ani->Add(90001);
+	animations->Add(E_BAZOKA, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(90001);
+	animations->Add(E_BAZOKA, RUNNING, ani);
+	ani = new Animation(100);
+	ani->Add(90001);
+	ani->Add(90002);
+	animations->Add(E_BAZOKA, ATTACKING, ani);
 
-	////RunMan
-	//ani = new Animation(100);
-	//ani->Add(11001);
-	//animations->Add(E_RUNMAN, STANDING, ani);
-	//ani->Add(11002);
-	//animations->Add(E_RUNMAN, RUNNING, ani);
+	//RunMan
+	ani = new Animation(100);
+	ani->Add(11001);
+	animations->Add(E_RUNMAN, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(11002);
+	animations->Add(E_RUNMAN, RUNNING, ani);
 
-	////GunMan
-	//ani = new Animation(100);
-	//ani->Add(12001);
-	//animations->Add(E_GUNMAN, STANDING, ani);
-	//animations->Add(E_GUNMAN, RUNNING, ani);
-	//ani->Add(12002);
-	//animations->Add(E_GUNMAN, RUNNING, ani);
-	//ani->Add(12003);
-	//ani->Add(12004);
-	//animations->Add(E_GUNMAN, ATTACKING, ani);
-	//ani->Add(12005);
+	//GunMan
+	ani = new Animation(100);
+	ani->Add(12001);
+	animations->Add(E_GUNMAN, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(12001);
+	ani->Add(12002);
+	animations->Add(E_GUNMAN, RUNNING, ani);
+	ani = new Animation(100);
+	ani->Add(12003);
+	ani->Add(12004);
+	animations->Add(E_GUNMAN, ATTACKING, ani);
+	ani->Add(12005);
 
-	////CLOAKMAN
-	//ani = new Animation(100);
-	//ani->Add(13001);
-	//animations->Add(E_CLOAKMAN, STANDING, ani);
-	//animations->Add(E_CLOAKMAN, RUNNING, ani);
-	//ani->Add(13002);
-	//animations->Add(E_CLOAKMAN, RUNNING, ani);
-	//animations->Add(E_CLOAKMAN, ATTACKING, ani);
-	//ani->Add(13003);
-	//animations->Add(E_CLOAKMAN, ATTACKING, ani);
+	//CLOAKMAN
+	ani = new Animation(100);
+	ani->Add(13001);
+	animations->Add(E_CLOAKMAN, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(13001);
+	ani->Add(13002);
+	animations->Add(E_CLOAKMAN, RUNNING, ani);
+	ani = new Animation(100);
+	ani->Add(13002);
+	ani->Add(13003);
+	animations->Add(E_CLOAKMAN, ATTACKING, ani);
 
-	////PANTHER
-	//ani = new Animation(100);
-	//ani->Add(14001);
-	//animations->Add(E_PANTHER, STANDING, ani);
-	//animations->Add(E_PANTHER, RUNNING, ani);
-	//ani->Add(14002);
-	//animations->Add(E_PANTHER, RUNNING, ani);
-	//
-	////EAGLE
-	//ani = new Animation(100);
-	//ani->Add(15001);
-	//animations->Add(E_EAGLE, STANDING, ani);
-	//animations->Add(E_EAGLE, RUNNING, ani);
-	//ani->Add(15002);
-	//animations->Add(E_EAGLE, RUNNING, ani);
+	//PANTHER
+	ani = new Animation(100);
+	ani->Add(14001);
+	animations->Add(E_PANTHER, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(14001);
+	ani->Add(14002);
+	animations->Add(E_PANTHER, RUNNING, ani);
+	
+	//EAGLE
+	ani = new Animation(100);
+	ani->Add(15001);
+	animations->Add(E_EAGLE, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(15001);
+	ani->Add(15002);
+	animations->Add(E_EAGLE, RUNNING, ani);
 
-	//ani = new Animation(100);
-	//ani->Add(17001);
-	//ani->Add(17002);
-	//animations->Add(E_EAGLE, DEAD, ani);
-	//animations->Add(E_PANTHER, DEAD, ani);
-	//animations->Add(E_CLOAKMAN, DEAD, ani);
-	//animations->Add(E_GUNMAN, DEAD, ani);
-	//animations->Add(E_RUNMAN, DEAD, ani);
-	//animations->Add(E_BAZOKA, DEAD, ani);
-	//animations->Add(E_SWORDMAN, DEAD, ani);
+	//DEAD
+	/*ani = new Animation(100);
+	ani->Add(17001);
+	ani->Add(17002);
+	animations->Add(E_EAGLE, DEAD, ani);
+	animations->Add(E_PANTHER, DEAD, ani);
+	animations->Add(E_CLOAKMAN, DEAD, ani);
+	animations->Add(E_GUNMAN, DEAD, ani);
+	animations->Add(E_RUNMAN, DEAD, ani);
+	animations->Add(E_BAZOKA, DEAD, ani);*/
+
+	//------------LoadAnimation Item Holder
+	ani = new Animation(100);
+	ani->Add(17001);
+	ani->Add(17002);
+	animations->Add(IH_BUTTERFLY, STANDING, ani);
+	
 }
 
 void AnimationManager::Add(TypeObject _type, State _state, LPANIMATION ani)

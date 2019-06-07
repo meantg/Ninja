@@ -44,6 +44,9 @@
     <Filter Include="FrameWork\GameObjects\Entity\Enemy">
       <UniqueIdentifier>{db9cbb23-67e1-4fad-9bdb-11d26d99a539}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Item Holder">
+      <UniqueIdentifier>{d85b6874-56e8-4ce0-8a8d-b441ae8e63e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -130,6 +133,12 @@
     <ClCompile Include="ESwordMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="IHButterfly.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Item Holder</Filter>
+    </ClCompile>
+    <ClCompile Include="ECloakMan.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -214,6 +223,12 @@
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ESwordMan.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="IHButterfly.h">
+      <Filter>FrameWork\GameObjects\Entity\Item Holder</Filter>
+    </ClInclude>
+    <ClInclude Include="ECloakMan.h">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClInclude>
   </ItemGroup>

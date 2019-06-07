@@ -21,7 +21,7 @@
 #define NINJA_WALKING_SPEED		0.2f
 #define NINJA_JUMPING_SPEED_Y	0.3f
 #define NINJA_FALLING_SPEED_Y   0.2f
-#define NINJA_GRAVITY			0.015f
+#define NINJA_GRAVITY			0.013f
 #define NINJA_STANDING_HEIGHT   26
 #define NINJA_SITTING_HEIGHT    18
 #define NINJA_WIDTH				18
@@ -78,6 +78,8 @@ extern enum TypeObject
 	E_CLOAKMAN,
 	E_PANTHER,
 	E_EAGLE,
+	ITEMHOLDER,
+	IH_BUTTERFLY
 };
 
 extern enum Tag
