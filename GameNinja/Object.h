@@ -21,7 +21,7 @@ public:
 	float vx, vy;
 	float dx, dy;
 	float spawnX, spawnY;
-	int width, height;
+	float width, height;
 	bool isDead, isReverse = false;
 	RECT GetRect();
 	//State _curState;

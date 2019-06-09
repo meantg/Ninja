@@ -112,7 +112,7 @@ void Game::GameRun()
 
 		// Vòng lặp game chính (cập nhật thời gian, thông số và Render lại Frame hình)
 		auto now = GetTickCount();
-		float dt = now - frameStart;
+		auto dt = now - frameStart;
 
 		if (dt >= tickPerFrame)
 		{
