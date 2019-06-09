@@ -34,7 +34,7 @@ public:
 
 	//virtual void Update(int dt); //cap nhat game theo 1 khoang thoi gian dt
 	void Render();//ve khung hinh
-	void Update(int dt);
+	void Update(float dt);
 
 	//Xu ly ban phim
 	int IsKeyDown(int KeyCode);

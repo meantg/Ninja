@@ -18,10 +18,10 @@
 //---------INFOR
 	//NINJA 
 
-#define NINJA_WALKING_SPEED		0.2f
-#define NINJA_JUMPING_SPEED_Y	0.3f
-#define NINJA_FALLING_SPEED_Y   0.2f
-#define NINJA_GRAVITY			0.013f
+#define NINJA_WALKING_SPEED		10.0f
+#define NINJA_JUMPING_SPEED_Y	20.0f
+#define NINJA_FALLING_SPEED_Y   8.0f
+#define NINJA_GRAVITY			0.8f
 #define NINJA_STANDING_HEIGHT   26
 #define NINJA_SITTING_HEIGHT    18
 #define NINJA_WIDTH				18
@@ -34,7 +34,7 @@
 	//ENEMY
 #define ENEMY_SWORDMAN_WIDTH 16
 #define ENEMY_SWORDMAN_HEIGHT 25
-#define ENEMY_SWORDMAN_SPEED 0.02f
+#define ENEMY_SWORDMAN_SPEED 4.0f
 
 
 
@@ -89,7 +89,8 @@ extern enum Tag
 	BBox_Texture,
 	Enemy_Texture,
 	Holder_Texture,
-	Item_Texture
+	Item_Texture,
+	Font_Texture
 };
 
 extern enum TypeItem
@@ -97,4 +98,9 @@ extern enum TypeItem
 	MANA,
 	HEAL,
 	TIME,
+};
+
+extern enum Font
+{
+	A,C,E,S,O,R,M,N,I,J,P,T,Y,G,Cross,Point
 };

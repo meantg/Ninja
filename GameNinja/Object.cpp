@@ -16,10 +16,10 @@ void Object::RenderBoundingBox(float x, float y)
 {
 	Hitbox hitbox = GetHitbox();
 	RECT r;
-	r.left = hitbox.left;
-	r.top = hitbox.top;
-	r.right = hitbox.right;
-	r.bottom = hitbox.bottom;
+	r.left = hitbox.x;
+	r.top = hitbox.y;
+	r.right = hitbox.x + hitbox.width;
+	r.bottom = hitbox.y + hitbox.height;
 	LPDIRECT3DTEXTURE9 texture = TextureManager::GetInstance()->GetTexture(BBox_Texture);
 	D3DXVECTOR3 p(x, y, 0);
 	int _width = r.right - r.left;
@@ -42,8 +42,8 @@ void Object::RenderBoundingBox(float x, float y)
 RECT Object::GetRect()
 {
 	RECT box;
-	box.top = y + (height >> 1);
-	box.left = x - (width >> 1);
+	box.top = y ;
+	box.left = x ;
 	box.right = box.left + width;
 	box.bottom = box.top - height;
 	return box;

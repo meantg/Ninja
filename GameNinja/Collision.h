@@ -1,7 +1,7 @@
 #pragma once
 #include "GameGlobal.h"
 struct Hitbox {
-	float top, left, right, bottom;
+	float x, y, width, height;
 	float vx, vy;
 };
 

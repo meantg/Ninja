@@ -13,7 +13,7 @@ ESwordMan::ESwordMan(float spawnX, float spawnY)
 	this->x = spawnX;
 	this->spawnX = x;
 	this->y = spawnY;
-	this->ChangeState(STANDING);
+	this->ChangeState(RUNNING);
 }
 
 void ESwordMan::UpdatePosition(float dt)
@@ -35,10 +35,10 @@ void ESwordMan::Update(float dt)
 		ChangeState(RUNNING);
 		if (isReverse == true)
 		{
-			vx = -0.02f;
+			vx = -4.0f;
 		}
 		else
-			vx = 0.02f;
+			vx = 4.0f;
 	}
 }
 

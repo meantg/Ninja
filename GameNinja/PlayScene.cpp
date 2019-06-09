@@ -11,9 +11,9 @@ PlayScene::PlayScene(AnimationManager* gAnimationManager)
 	animations = gAnimationManager;
 	LoadMap("MapReader/Map1_matrix.txt");
 	MapWidth = 2048; MapHeight = 176;
-	//swordMans.push_back(new ESwordMan(1000, 56));
-	//swordMans.push_back(new ESwordMan(500, 56));
-	swordMans.push_back(new ESwordMan(300, 56));
+	/*swordMans.push_back(new ESwordMan(1000, 60));
+	swordMans.push_back(new ESwordMan(500, 60));*/
+	swordMans.push_back(new ESwordMan(300, 60));
 }
 
 PlayScene::~PlayScene()
@@ -25,7 +25,7 @@ void PlayScene::LoadMap(const char * filePath)
 {
 	mMap = new GameMap(filePath);
 	mCamera = new Camera(SCREEN_WIDTH, mMap->mHeight);
-
+	scoreboard = new ScoreBoard();
 	//Goc toa do camera la bottom left
 	mCamera->SetPosition(0, SCREEN_HEIGHT);
 
@@ -52,6 +52,7 @@ void PlayScene::Update(float dt)
 void PlayScene::Render()
 {
 	mMap->Render();
+	scoreboard->Render();
 	Player::GetInstance()->Render(mCamera->GetPositionX(),mCamera->GetPositionY());
 	for (auto i = 0; i < swordMans.size(); ++i)
 		swordMans[i]->Render(mCamera->GetPositionX(), mCamera->GetPositionY());

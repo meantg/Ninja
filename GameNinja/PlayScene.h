@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Camera.h"
 #include "GameMap.h"
+#include "ScoreBoard.h"
 
 class PlayScene : public Scene
 {
@@ -12,6 +13,7 @@ private:
 	AnimationManager *animations;
 	float _timeCounter;			
 	
+	ScoreBoard *scoreboard;
 	Camera *mCamera;
 	GameMap *mMap;
 

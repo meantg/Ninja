@@ -8,7 +8,8 @@ void TextureManager::StartUp()
 	textures->Add(Stage3_1, "MapReader/tiles.png", D3DCOLOR_XRGB(255, 163, 177));
 	textures->Add(BBox_Texture, "Bbox.png", D3DCOLOR_XRGB(255, 163, 177));
 	textures->Add(Enemy_Texture, "Enemy.png", D3DCOLOR_XRGB(255, 255, 255));
-	textures->Add(Item_Texture, "item.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(Item_Texture, "item.png", D3DCOLOR_XRGB(0, 0, 0));
+	textures->Add(Font_Texture, "FontScoreBoard.png", D3DCOLOR_XRGB(255, 255, 255));
 }
 
 void TextureManager::Add(Tag tag, LPCSTR filePath, D3DCOLOR transparentColor)

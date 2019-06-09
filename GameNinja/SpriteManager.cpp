@@ -15,11 +15,7 @@ void SpriteManager::StartUp()
 	SpriteManager * sprites = SpriteManager::GetInstance();
 	LPDIRECT3DTEXTURE9 texPeople = TextureManager::GetInstance()->GetTexture(Ninja_Text);
 	//Standing
-	sprites->Add(00000, 2, 5, 21, 37, texPeople);
-	//Attack-Standing
-	sprites->Add(00001, 41, 5, 60, 37, texPeople);
-	sprites->Add(00002, 66, 5, 101, 37, texPeople);
-	sprites->Add(00003, 111, 5, 141, 37, texPeople);
+	sprites->Add(10000, 2, 5, 21, 37, texPeople);
 
 	//Throwing
 	sprites->Add(10001, 164, 5, 182, 37, texPeople);
@@ -54,6 +50,11 @@ void SpriteManager::StartUp()
 	sprites->Add(60002, 293, 45, 321, 77, texPeople);
 	sprites->Add(60003, 325, 45, 353, 77, texPeople);
 	sprites->Add(60004, 357, 45, 385, 77, texPeople);
+
+	//Attack-Standing
+	sprites->Add(1001, 41, 5, 60, 37, texPeople);
+	sprites->Add(1002, 66, 5, 101, 37, texPeople);
+	sprites->Add(1003, 111, 5, 141, 37, texPeople);
 
 	////BBox
 	//LPDIRECT3DTEXTURE9 BBoxText = TextureManager::GetInstance()->GetTexture(BBox_Texture);
@@ -153,6 +154,44 @@ void SpriteManager::StartUp()
 	sprites->Add(17003, 116, 50, 136, 70, texItem);
 	sprites->Add(17004, 139, 51, 159, 70, texItem);
 
+	//----------------------LoadSprite FontScoreBoard
+	LPDIRECT3DTEXTURE9 texFont = TextureManager::GetInstance()->GetTexture(Font_Texture);
+
+	//Text
+	sprites->AddFont(A, 5, 10, 14, 19, texFont);
+	sprites->AddFont(C, 23, 10, 32, 19, texFont);
+	sprites->AddFont(E, 42, 10, 51, 19, texFont);
+	sprites->AddFont(S, 172, 10, 181, 19, texFont);
+	sprites->AddFont(O, 135, 10, 144, 19, texFont);
+	sprites->AddFont(R, 163, 10, 172, 19, texFont);
+	sprites->AddFont(T, 183, 10, 192, 19, texFont);
+	sprites->AddFont(G, 60, 10, 70, 20, texFont);
+	sprites->AddFont(I, 80, 9, 88, 19, texFont);
+	sprites->AddFont(M, 116, 9, 126, 23, texFont);
+	sprites->AddFont(N, 125, 9, 135, 20, texFont);
+	sprites->AddFont(J, 89, 9, 98, 19, texFont);
+	sprites->AddFont(P, 144, 9, 154, 19, texFont);
+	sprites->AddFont(Y, 228, 9, 237, 19, texFont);
+	sprites->AddFont(Point, 185, 9, 188, 19, texFont);
+
+	//Number
+	sprites->Add(0, 4, 19, 15, 29, texFont);
+	sprites->Add(1, 14, 19, 23, 29, texFont);
+	sprites->Add(2, 23, 19, 33, 29, texFont);
+	sprites->Add(3, 33, 19, 42, 29, texFont);
+	sprites->Add(4, 42, 19, 51, 29, texFont);
+	sprites->Add(5, 51, 19, 60, 29, texFont);
+	sprites->Add(6, 60, 19, 70, 29, texFont);
+	sprites->Add(7, 70, 19, 78, 29, texFont);
+	sprites->Add(8, 79, 19, 88, 29, texFont);
+	sprites->Add(9, 88, 19, 98, 29, texFont);
+	sprites->AddFont(Cross, 256, 19, 166, 31, texFont);
+}
+
+void SpriteManager::AddFont(Font id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)
+{
+	CSprite* s = new CSprite(id, left, top, right, bottom, tex);
+	_fonts[id] = s;
 }
 
 void SpriteManager::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)

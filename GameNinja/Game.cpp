@@ -8,7 +8,7 @@ Game::Game()
 {
 	gSceneManager = SceneManager::GetInstance();
 	gAnimationManager = AnimationManager::GetInstance();
-	gTextureManager =TextureManager::GetInstance();
+	gTextureManager = TextureManager::GetInstance();
 	gSpriteManager = SpriteManager::GetInstance();
 }
 
@@ -42,7 +42,7 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		SCREEN_WIDTH,
-		SCREEN_HEIGHT+32,
+		SCREEN_HEIGHT + 32,
 		NULL,
 		NULL,
 		hInstance,
@@ -73,9 +73,9 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 
 	// Tạo Sprite Handler
 	D3DXCreateSprite(d3ddev, &spriteHandler);
-	
+
 	DirectInput8Create((HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&di8, NULL);
-	
+
 	di8->CreateDevice(GUID_SysKeyboard, &didv8, NULL);
 	didv8->SetDataFormat(&c_dfDIKeyboard);
 	didv8->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
@@ -89,7 +89,7 @@ void Game::GameInit(HINSTANCE hInstance, int cmdShow)
 
 	didv8->SetProperty(DIPROP_BUFFERSIZE, &dipwd.diph);
 	didv8->Acquire();
-	
+
 }
 
 void Game::GameRun()
@@ -112,12 +112,12 @@ void Game::GameRun()
 
 		// Vòng lặp game chính (cập nhật thời gian, thông số và Render lại Frame hình)
 		auto now = GetTickCount();
-		auto dt = now - frameStart;
+		float dt = now - frameStart;
 
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			Update(dt);
+			Update(dt*0.01);
 			ProcessKeyboard();
 			Render();
 		}
@@ -128,7 +128,7 @@ void Game::GameRun()
 	}
 }
 
-void Game::Update(int dt)
+void Game::Update(float dt)
 {
 	gSceneManager->GetCurScene()->Update(dt);
 }

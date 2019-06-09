@@ -124,9 +124,6 @@
     <ClCompile Include="PlayerStandingState.cpp">
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>FrameWork\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClCompile>
@@ -138,6 +135,12 @@
     </ClCompile>
     <ClCompile Include="ECloakMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreBoard.cpp">
+      <Filter>FrameWork\Game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>FrameWork\Game\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="ECloakMan.h">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreBoard.h">
+      <Filter>FrameWork\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
