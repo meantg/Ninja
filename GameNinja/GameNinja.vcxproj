@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{829F6512-2625-4881-BA5F-5BAD1CFA922B}</ProjectGuid>
     <RootNamespace>GameNinja</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="ECloakMan.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="IHButterfly.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -165,6 +167,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="ECloakMan.h" />
     <ClInclude Include="Enemy.h" />
@@ -172,6 +175,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="GameMap.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="IHButterfly.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
