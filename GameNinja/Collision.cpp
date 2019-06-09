@@ -10,15 +10,20 @@ Collision * Collision::GetInstance()
 
 bool Collision::isCollision(Hitbox obj1, Hitbox obj2)
 {
-	return !(obj1.left > obj2.right || obj1.right < obj2.left || obj1.top < obj2.bottom || obj1.bottom > obj2.top);
+	return !(obj1.left > obj2.right || obj1.right < obj2.left || obj1.top > obj2.bottom || obj1.bottom < obj2.top);
 }
 
 CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 {
 	CollisionResult result;
-	Hitbox rect = GetBroadphaseBox(obj1);
+
 	result.entryTime = 1.0f;
 	result.nx = result.ny = 0;
+
+	obj1.vx = obj1.vx - obj2.vx;
+	obj2.vy = obj1.vy - obj2.vy;
+
+	Hitbox rect = GetBroadphaseBox(obj1);
 
 	if (!isCollision(rect, obj2)) {
 		return result;
@@ -33,6 +38,7 @@ CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 		dxExit = obj2.left - obj1.right;
 	}
 
+		
 	if (obj1.vy > 0.0f) {
 		dyEntry = obj2.top - obj1.bottom;
 		dyExit = obj2.bottom - obj1.top;
@@ -86,8 +92,8 @@ Hitbox Collision::GetBroadphaseBox(Hitbox obj)
 	Hitbox broadphaseBox;
 	broadphaseBox.left = obj.vx > 0 ? obj.left : obj.left + obj.vx;
 	broadphaseBox.top = obj.vy > 0 ? obj.top : obj.top + obj.vy;
-	broadphaseBox.right = obj.right + abs(obj.vx);
-	broadphaseBox.bottom = obj.bottom + abs(obj.vy);
+	broadphaseBox.right = broadphaseBox.left + obj.right - obj.left + abs(obj.vx);
+	broadphaseBox.bottom = broadphaseBox.top + obj.bottom - obj.top + abs(obj.vy);
 	return broadphaseBox;
 
 }

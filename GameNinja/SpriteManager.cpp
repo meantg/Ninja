@@ -55,7 +55,6 @@ void SpriteManager::StartUp()
 	sprites->Add(60003, 325, 45, 353, 77, texPeople);
 	sprites->Add(60004, 357, 45, 385, 77, texPeople);
 
-
 	////BBox
 	//LPDIRECT3DTEXTURE9 BBoxText = TextureManager::GetInstance()->GetTexture(BBox_Texture);
 	//sprites->Add(99999, 0, 0, 222, 118, BBoxText);

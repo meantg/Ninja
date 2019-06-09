@@ -43,29 +43,37 @@ Player * Player::GetInstance()
 		return _instance;
 }
 
-Hitbox Player::GetHitbox()
-{
-	Hitbox box;
-	box.top = y + (height >> 1);
-	box.left = x - (width >> 1);
-	box.right = box.left + width;
-	box.bottom = box.top - height;
-	box.vx = vx;
-	box.vy = vy;
-	return box;
-}
+//Hitbox Player::GetHitbox()
+//{
+//	Hitbox box;
+//	box.top = y + (height >> 1);
+//	box.left = x - (width >> 1);
+//	box.right = box.left + width;
+//	box.bottom = box.top - height;
+//	box.vx = vx;
+//	box.vy = vy;
+//	return box;
+//}
 
-void Player::Update(float dt)
+void Player::Update(float dt, vector<Object*> gameObj)
 {
 	_curAnimation->Update(dt);
 	state->Update(dt);
+
+	CollisionResult result;
+	result.nx = result.ny = 0;
+	result.entryTime = 1.0f;
+	
+	result = Collision::GetInstance()->SweptAABB(this->GetHitbox(), gameObj[0]->GetHitbox());
+	if (result.entryTime > 0 && result.entryTime < 1.0f)
+		this->ChangeState(new PlayerJumpingState());
 	if (x < 0)
 		x = 0;
 	if (x >=2048-20)
 		x = 2048-20;
 	x += vx * dt;
-
 	y += vy * dt;
+	dx += vx * dt;
 	if (_state != SITTING) {
 		if (y <= 56) {
 			y = 56;
@@ -77,7 +85,7 @@ void Player::Render(float cameraX, float cameraY)
 {
 	animations[_state]->isReverse = isReverse;
 	animations[_state]->Render(x-cameraX, cameraY - y);
-	//this->RenderBoundingBox(x - cameraX, cameraY - y);
+	/*this->RenderBoundingBox(x - cameraX, cameraY - y);*/
 }
 
 void Player::AddAnimation(State _state)

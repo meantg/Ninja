@@ -13,6 +13,7 @@ void Enemy::Render(float cameraX, float cameraY)
 		animations[_state]->isReverse = isReverse;
 		animations[_state]->Render(this->x - cameraX, cameraY - this->y);
 	}
+	this->RenderBoundingBox(this->x - cameraX, cameraY - this->y);
 }
 
 void Enemy::Update(float dt)
@@ -20,9 +21,8 @@ void Enemy::Update(float dt)
 	if (abs(Player::GetInstance()->x - this->spawnX) <= 140)
 	{
 		this->isActive = true;
-		this->x += vx * dt;
 	}
-	else if(abs(Player::GetInstance()->x - this->x) > 140)
+	else if(abs(Player::GetInstance()->x - this->x) > 1400)
 	{
 		this->isActive = false;
 		this->x = spawnX;
@@ -89,3 +89,15 @@ void Enemy::AddAnimation(TypeObject _type,State _state)
 	LPANIMATION ani = AnimationManager::GetInstance()->Get(_type, _state);
 	animations[_state] = ani;
 }
+//
+//Hitbox Enemy::GetHitBox()
+//{
+//	Hitbox box;
+//	box.top = y + (height >> 1);
+//	box.left = x - (width >> 1);
+//	box.right = box.left + width;
+//	box.bottom = box.top - height;
+//	box.vx = vx;
+//	box.vy = vy;
+//	return box;
+//}

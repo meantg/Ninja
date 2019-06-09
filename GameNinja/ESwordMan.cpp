@@ -1,6 +1,6 @@
 #include "ESwordMan.h"
 
-ESwordMan::ESwordMan()
+ESwordMan::ESwordMan(float spawnX, float spawnY)
 {
 	this->_state = STANDING;
 	this->AddAnimation(E_SWORDMAN, STANDING);
@@ -9,10 +9,11 @@ ESwordMan::ESwordMan()
 	this->width = ENEMY_SWORDMAN_WIDTH;
 	this->height = ENEMY_SWORDMAN_HEIGHT;
 	this->speed = ENEMY_SWORDMAN_SPEED;
-	this->x = 200.0f;
+	this->vx = speed;
+	this->x = spawnX;
 	this->spawnX = x;
-	this->y = 60.0f;
-	this->vx = 0.02f;
+	this->y = spawnY;
+	this->ChangeState(STANDING);
 }
 
 void ESwordMan::UpdatePosition(float dt)
@@ -22,18 +23,22 @@ void ESwordMan::UpdatePosition(float dt)
 	else
 		this->isReverse = false;
 	this->x += vx * dt;
+	dx += vx * dt;
+	dy += vy * dt;
 }
 
 void ESwordMan::Update(float dt)
 {
 	Enemy::Update(dt);
 	if (isActive == true)
+	{
+		ChangeState(RUNNING);
 		if (isReverse == true)
 		{
 			vx = -0.02f;
 		}
-		else 
+		else
 			vx = 0.02f;
-		_state = RUNNING;
+	}
 }
 

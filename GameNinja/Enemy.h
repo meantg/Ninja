@@ -22,4 +22,5 @@ public:
 	bool isOnScreen();
 	virtual void ChangeState(State StateName);
 	void AddAnimation(TypeObject _type,State _state);
+	//Hitbox GetHitBox();
 };

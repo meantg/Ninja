@@ -5,7 +5,9 @@
 #include "PlayerInjuredState.h"
 #include "Camera.h"
 #include <map>
+#include "Enemy.h"
 #include "GameGlobal.h"
+#include "Collision.h"
 
 class Player : public Object
 {
@@ -25,8 +27,8 @@ public:
 
 	static Player* GetInstance();
 
-	Hitbox GetHitbox();
-	void Update(float dt);
+	/*Hitbox GetHitbox();*/
+	void Update(float dt, vector<Object*> gameObj);
 	void Render(float cameraX= 0, float cameraY= 0);
 	void AddAnimation(State _state);
 	void ChangeState(PlayerState * playerstate);
