@@ -15,7 +15,7 @@ void Enemy::Render(float cameraX, float cameraY)
 		animations[_state]->isReverse = isReverse;
 		animations[_state]->Render(screenX, screenY);
 	}
-	this->RenderBoundingBox(screenX, screenY);
+	this->RenderBoundingBox(screenX,screenY);
 }
 
 void Enemy::Update(float dt)
@@ -24,7 +24,7 @@ void Enemy::Update(float dt)
 	{
 		this->isActive = true;
 	}
-	else if(abs(Player::GetInstance()->x - this->x) > 140)
+	else if(abs(Player::GetInstance()->x - this->x) > 1400)
 	{
 		this->isActive = false;
 		this->x = spawnX;
@@ -39,7 +39,7 @@ void Enemy::Update(float dt)
 
 	if (this->_state == DEAD)
 	{
-		this-> vx = this-> vy = 0;
+		this->x = this->y = 0;
 		if (isFrozen)
 			_curAnimation->Update(dt);
 		if (_curAnimation->isLastFrame)

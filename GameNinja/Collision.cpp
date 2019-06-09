@@ -39,7 +39,7 @@ CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 		dxExit = obj2.x - (obj1.x + obj1.width);
 	}
 
-
+		
 	if (obj1.vy > 0.0f) {
 		dyEntry = obj2.y - (obj1.y + obj1.height);
 		dyExit = (obj2.y + obj2.height) - obj1.y;
@@ -79,7 +79,7 @@ CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 	else {
 		result.entryTime = entryTime;
 		if (txEntry > tyEntry) {
-			result.nx = dxEntry < 0.0f ? 1 : -1;
+			result.nx = dxEntry < 0.0f ? 1 : -1;		
 		}
 		else {
 			result.ny = dyEntry < 0.0f ? 1 : -1;
@@ -91,8 +91,8 @@ CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 Hitbox Collision::GetBroadphaseBox(Hitbox obj)
 {
 	Hitbox broadphaseBox;
-	broadphaseBox.x = obj.vx > 0 ? obj.x : obj.x + obj.vx;
-	broadphaseBox.y = obj.vy > 0 ? obj.y : obj.y + obj.vy;
+	broadphaseBox.x = obj.vx > 0 ? obj.x  : obj.x + obj.vx;
+	broadphaseBox.y = obj.vy > 0 ? obj.y  : obj.y + obj.vy;
 	broadphaseBox.width = obj.width + abs(obj.vx);
 	broadphaseBox.height = obj.height + abs(obj.vy);
 	return broadphaseBox;

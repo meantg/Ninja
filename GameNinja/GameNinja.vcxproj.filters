@@ -47,6 +47,9 @@
     <Filter Include="FrameWork\GameObjects\Entity\Item Holder">
       <UniqueIdentifier>{d85b6874-56e8-4ce0-8a8d-b441ae8e63e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Collision">
+      <UniqueIdentifier>{73d261ec-e632-4371-89e4-961e1915b689}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -124,6 +127,9 @@
     <ClCompile Include="PlayerStandingState.cpp">
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>FrameWork\Game</Filter>
+    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClCompile>
@@ -136,11 +142,11 @@
     <ClCompile Include="ECloakMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreBoard.cpp">
-      <Filter>FrameWork\Game\src</Filter>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>FrameWork\Game\src</Filter>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,8 +240,11 @@
     <ClInclude Include="ECloakMan.h">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreBoard.h">
-      <Filter>FrameWork\Game</Filter>
+    <ClInclude Include="Cell.h">
+      <Filter>FrameWork\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>FrameWork\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

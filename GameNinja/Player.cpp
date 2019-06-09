@@ -63,13 +63,13 @@ void Player::Update(float dt, vector<Object*> gameObj)
 	CollisionResult result;
 	result.nx = result.ny = 0;
 	result.entryTime = 1.0f;
-
-
-	result = Collision::GetInstance()->SweptAABB(gameObj[0]->GetHitbox(), this->GetHitbox());
+	
+	result = Collision::GetInstance()->SweptAABB(gameObj[0]->GetHitbox(),this->GetHitbox());
 	if (result.entryTime > 0 && result.entryTime < 1.0f) {
 		this->ChangeState(new PlayerStandingState());
 		x = x - 10;
 	}
+		
 	if (x < 0)
 		x = 0;
 	if (x >=2048-20)

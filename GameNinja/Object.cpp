@@ -42,8 +42,8 @@ void Object::RenderBoundingBox(float x, float y)
 RECT Object::GetRect()
 {
 	RECT box;
-	box.top = y ;
-	box.left = x ;
+	box.top = y;
+	box.left = x;
 	box.right = box.left + width;
 	box.bottom = box.top - height;
 	return box;
