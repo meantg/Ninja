@@ -45,6 +45,6 @@ void Animation::Update(float dt)
 	else
 	{
 		isLastFrame = false;
-		curFrameTime += dt;
+		curFrameTime += dt*100;
 	}
 }

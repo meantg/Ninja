@@ -9,7 +9,7 @@
 
 #define SCREEN_WIDTH 320			// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176			// Chiều dài cửa sổ
-#define MAX_FRAME_RATE 120					// FPS
+#define MAX_FRAME_RATE 120				// FPS
 #define WIN_NAME "Game Ninja"
 #define WIN_TITLE "Game Ninja"
 #define KEYBOARD_BUFFER_SIZE	1024
@@ -18,10 +18,10 @@
 //---------INFOR
 	//NINJA 
 
-#define NINJA_WALKING_SPEED		0.2f
-#define NINJA_JUMPING_SPEED_Y	0.3f
-#define NINJA_FALLING_SPEED_Y   0.2f
-#define NINJA_GRAVITY			0.013f
+#define NINJA_WALKING_SPEED		10.0f
+#define NINJA_JUMPING_SPEED_Y	20.0f
+#define NINJA_FALLING_SPEED_Y   8.0f
+#define NINJA_GRAVITY			0.45f
 #define NINJA_STANDING_HEIGHT   26
 #define NINJA_SITTING_HEIGHT    18
 #define NINJA_WIDTH				18
@@ -34,7 +34,7 @@
 	//ENEMY
 #define ENEMY_SWORDMAN_WIDTH 16
 #define ENEMY_SWORDMAN_HEIGHT 25
-#define ENEMY_SWORDMAN_SPEED 0.02f
+#define ENEMY_SWORDMAN_SPEED 4.0f
 
 
 

@@ -112,12 +112,12 @@ void Game::GameRun()
 
 		// Vòng lặp game chính (cập nhật thời gian, thông số và Render lại Frame hình)
 		auto now = GetTickCount();
-		auto dt = now - frameStart;
+		float dt = now - frameStart;
 
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			Update(dt);
+			Update(dt*0.01);
 			ProcessKeyboard();
 			Render();
 		}
@@ -128,7 +128,7 @@ void Game::GameRun()
 	}
 }
 
-void Game::Update(int dt)
+void Game::Update(float dt)
 {
 	gSceneManager->GetCurScene()->Update(dt);
 }

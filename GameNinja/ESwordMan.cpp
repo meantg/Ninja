@@ -35,10 +35,10 @@ void ESwordMan::Update(float dt)
 		ChangeState(RUNNING);
 		if (isReverse == true)
 		{
-			vx = -0.02f;
+			vx = -4.0f;
 		}
 		else
-			vx = 0.02f;
+			vx = 4.0f;
 	}
 }
 

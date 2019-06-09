@@ -17,10 +17,11 @@ public:
 	Object();
 
 	float x, y;
+	float screenX, screenY;
 	float vx, vy;
 	float dx, dy;
 	float spawnX, spawnY;
-	int width, height;
+	float width, height;
 	bool isDead, isReverse = false;
 	RECT GetRect();
 	//State _curState;
@@ -30,12 +31,12 @@ public:
 
 	Hitbox GetHitbox() {
 		Hitbox box;
-		box.top = y;
-		box.left = x -(width >>1);
-		box.right = box.left + width;
-		box.bottom = y + height;
-		box.vx = dx;
-		box.vy = dy;
+		box.x = screenX;
+		box.y = screenY;
+		box.width = width;
+		box.height = height;
+		box.vx = vx;
+		box.vy = vy;
 		return box;
 	};
 	virtual void Update(float dt);
