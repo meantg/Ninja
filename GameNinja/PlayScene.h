@@ -1,11 +1,10 @@
 ﻿#pragma once
 #include "AnimationManager.h"
 #include "Scene.h"
-#include "Player.h"
+#include "Object.h"
 #include "Game.h"
 #include "Camera.h"
 #include "GameMap.h"
-#include "ESwordMan.h"
 
 class PlayScene : public Scene
 {
@@ -16,8 +15,9 @@ private:
 	Camera *mCamera;
 	GameMap *mMap;
 
-	ESwordMan *swordMan;
 	int MapWidth, MapHeight;
+
+	vector<Object*> swordMans;
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
 

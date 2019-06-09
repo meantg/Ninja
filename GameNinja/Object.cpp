@@ -8,13 +8,18 @@ void Object::Update(float dt)
 {
 }
 
-void Object::Render()
+void Object::Render(float cameraX, float cameraY)
 {	
 }
 
 void Object::RenderBoundingBox(float x, float y)
 {
-	RECT r = GetRect();
+	Hitbox hitbox = GetHitbox();
+	RECT r;
+	r.left = hitbox.left;
+	r.top = hitbox.top;
+	r.right = hitbox.right;
+	r.bottom = hitbox.bottom;
 	LPDIRECT3DTEXTURE9 texture = TextureManager::GetInstance()->GetTexture(BBox_Texture);
 	D3DXVECTOR3 p(x, y, 0);
 	int _width = r.right - r.left;

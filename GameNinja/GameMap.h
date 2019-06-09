@@ -33,7 +33,6 @@ private:
 	void LoadMap(const char* filePath);
 
 	//Test Entity
-	ESwordMan *swordMan;
 	IHButterfly *butterfly;
 	ECloakMan *cloakMan;
 

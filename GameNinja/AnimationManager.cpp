@@ -19,7 +19,7 @@ void AnimationManager::StartUp()
 	ani = new Animation(100);
 	ani->Add(00000);
 	animations->Add(PLAYER, STANDING, ani);
-
+	animations->Add(PLAYER, INJURED, ani);
 	// Anim-Attack-Standing [1]
 	ani = new Animation(120);
 	ani->Add(00001);
@@ -82,7 +82,7 @@ void AnimationManager::StartUp()
 	ani = new Animation(100);
 	ani->Add(80001);
 	animations->Add(E_SWORDMAN, STANDING, ani);
-	ani = new Animation(200);
+	ani = new Animation(400);
 	ani->Add(80001);
 	ani->Add(80002);
 	ani->Add(80003);

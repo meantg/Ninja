@@ -11,6 +11,9 @@ PlayScene::PlayScene(AnimationManager* gAnimationManager)
 	animations = gAnimationManager;
 	LoadMap("MapReader/Map1_matrix.txt");
 	MapWidth = 2048; MapHeight = 176;
+	//swordMans.push_back(new ESwordMan(1000, 56));
+	//swordMans.push_back(new ESwordMan(500, 56));
+	swordMans.push_back(new ESwordMan(300, 56));
 }
 
 PlayScene::~PlayScene()
@@ -22,16 +25,20 @@ void PlayScene::LoadMap(const char * filePath)
 {
 	mMap = new GameMap(filePath);
 	mCamera = new Camera(SCREEN_WIDTH, mMap->mHeight);
-	mCamera->SetPosition(0, SCREEN_HEIGHT >> 1);
+
+	//Goc toa do camera la bottom left
+	mCamera->SetPosition(0, SCREEN_HEIGHT);
 
 	mMap->SetCamera(mCamera);
 }
 
 void PlayScene::Update(float dt)
 {
-	Player::GetInstance()->Update(dt);
-
+	mCamera->SetPosition(Player::GetInstance()->x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
 	mMap->Update(dt);
+	for (auto i = 0; i < swordMans.size(); ++i)
+		swordMans[i]->Update(dt);
+	Player::GetInstance()->Update(dt, swordMans);
 
 	/*if (mCamera->GetBound().right + 8 <= MapWidth)
 	mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(8,0,0));*/
@@ -46,7 +53,10 @@ void PlayScene::Render()
 {
 	mMap->Render();
 	Player::GetInstance()->Render(mCamera->GetPositionX(),mCamera->GetPositionY());
-	mCamera->SetPosition(Player::GetInstance()->x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
+	for (auto i = 0; i < swordMans.size(); ++i)
+		swordMans[i]->Render(mCamera->GetPositionX(), mCamera->GetPositionY());
+	//mCamera->SetPosition(Player::GetInstance()->x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
+
 }
 
 void PlayScene::OnKeyDown(int key)

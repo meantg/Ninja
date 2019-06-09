@@ -18,6 +18,7 @@ public:
 
 	float x, y;
 	float vx, vy;
+	float dx, dy;
 	float spawnX, spawnY;
 	int width, height;
 	bool isDead, isReverse = false;
@@ -27,9 +28,18 @@ public:
 	//void SetPosition(float x, float y) { this->x = x; this->y = y; }
 	//void SetState(State _state) { this->_curState = _state; }
 
-	virtual Hitbox GetHitbox() { return Hitbox(); };
+	Hitbox GetHitbox() {
+		Hitbox box;
+		box.top = y;
+		box.left = x -(width >>1);
+		box.right = box.left + width;
+		box.bottom = y + height;
+		box.vx = dx;
+		box.vy = dy;
+		return box;
+	};
 	virtual void Update(float dt);
-	virtual void Render();
+	virtual void Render(float cameraX, float cameraY);
 	void RenderBoundingBox(float x, float y);
 	~Object();
 };
