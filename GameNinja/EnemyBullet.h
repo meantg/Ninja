@@ -1,15 +1,14 @@
-#pragma once
-#include "Enemy.h"
-
-class EnemyBullet : public Enemy
-{
-private:
-
-	int countbullet;
-public:
-	EnemyBullet();
-	~EnemyBullet();
-
-	virtual void Update(float dt);
-	virtual void Render();
-};
+//#pragma once
+//#include "Bullet.h"
+//
+//class EnemyBullet 
+//{
+//public:
+//	static Bullet* CreateBullet(TypeObject bulletType)
+//	{
+//		switch (bulletType)
+//		{
+//			case E_CLOAKMAN: return new CloakManBullet();
+//		}
+//	}
+//};

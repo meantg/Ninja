@@ -6,14 +6,14 @@
 #include "Camera.h"
 #include "GameMap.h"
 #include "ScoreBoard.h"
-
+#include "Bullet.h"
+#include <unordered_set>
 class PlayScene : public Scene
 {
 private:
 	AnimationManager *animations;
 	float _timeCounter;			
 	
-	ScoreBoard *scoreboard;
 	Camera *mCamera;
 	GameMap *mMap;
 	ScoreBoard *scoreboard;
@@ -21,6 +21,7 @@ private:
 	int MapWidth, MapHeight;
 
 	vector<Object*> enemy;
+	unordered_set<Object*> listObj;
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
 
@@ -28,7 +29,8 @@ public:
 	~PlayScene();
 
 	void LoadMap(const char *filePath);
-	virtual void Update(float dt);							// Update các thông số các đối tượng trong Scene
+	virtual void Update(float dt);	// Update các thông số các đối tượng trong Scene
+	void UpdateObject(float dt);
 	void Render();									// Tải Scene lên màn hình
 
 	void OnKeyDown(int key);

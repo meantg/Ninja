@@ -4,11 +4,9 @@
 class ECloakMan : public Enemy
 {
 private:
-	float bulletvx, bulletvy;
-	float bulletx, bullety;
+	float delayTime;
 public:
 	ECloakMan(float spawnX, float spawnY);
-	~ECloakMan() {};
 	void UpdatePosition(float dt);
 	void Update(float dt);
 };
