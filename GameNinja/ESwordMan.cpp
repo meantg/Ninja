@@ -16,7 +16,7 @@ ESwordMan::ESwordMan(float spawnX, float spawnY)
 	this->x = spawnX;
 	this->spawnX = x;
 	this->y = spawnY;
-	this->ChangeState(STANDING);
+	this->ChangeState(RUNNING);
 }
 
 void ESwordMan::UpdatePosition(float dt)
