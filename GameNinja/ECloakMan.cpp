@@ -1,14 +1,23 @@
 #include "ECloakMan.h"
 
-ECloakMan::ECloakMan()
+ECloakMan::ECloakMan(float spawnX, float spawnY)
 {
-	this->_state = STANDING;
+	this->_state = RUNNING;
 	this->AddAnimation(E_CLOAKMAN, STANDING);
 	this->AddAnimation(E_CLOAKMAN, RUNNING);
 	this->AddAnimation(E_CLOAKMAN, ATTACKING);
-	this->x = 1220;
-	this->y = 130;
-	this->vx = 0.02f;
+	this->AddAnimation(E_CLOAKMAN, DEAD);
+
+	this->width = 18;
+	this->height = 35;
+	this->speed = 4.0f;
+
+	this->vy = 0;
+	this->x = spawnX;
+	this->spawnX = x;
+	this->y = spawnY;
+	this->vx = 2.5f;
+	ChangeState(RUNNING);
 }
 
 void ECloakMan::UpdatePosition(float dt)
@@ -19,15 +28,28 @@ void ECloakMan::UpdatePosition(float dt)
 		this->isReverse = false;
 	if (_state == RUNNING)
 	{
-		if (x > 1245)
+		if (x > 1235)
 		{
-			x = 1245;
-			vx = -0.02f;
+			x = 1235;
+			vx = -2.5f;
 		}
 		else if (x < 1225)
 		{
 			x = 1225;
-			vx = 0.02f;
+			vx = 2.5f;
+		}
+	}
+	if (_state == ATTACKING)
+	{
+		if (x > 1235)
+		{
+			x = 1235;
+			vx = -2.5f;
+		}
+		else if (x < 1225)
+		{
+			x = 1225;
+			vx = 2.5f;
 		}
 	}
 	x += vx * dt;
@@ -38,12 +60,18 @@ void ECloakMan::Update(float dt)
 	Enemy::Update(dt);
 	if (abs(Player::GetInstance()->x - this->x) <= 130)
 	{
-		isActive = true;
-		if (abs(Player::GetInstance()->x - this->x) <= 80)
-			_state = ATTACKING;
+		if (abs(Player::GetInstance()->x - this->x) <= 60)
+		{
+			if (isActive == true && isAttacked == false)
+				ChangeState(ATTACKING);
+			else
+				ChangeState(DEAD);
+		}
 		else
-			_state = RUNNING;
+		{
+			ChangeState(RUNNING);
+			isAttacked = false;
+		}
 	}
-	else
-		isActive = false;
+
 }

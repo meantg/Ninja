@@ -24,7 +24,7 @@ void Enemy::Update(float dt)
 	{
 		this->isActive = true;
 	}
-	else if(abs(Player::GetInstance()->x - this->x) > 1400)
+	else if(abs(Player::GetInstance()->x - this->x) > 140)
 	{
 		this->isActive = false;
 		this->x = spawnX;
@@ -39,7 +39,7 @@ void Enemy::Update(float dt)
 
 	if (this->_state == DEAD)
 	{
-		this->x = this->y = 0;
+		this-> vx = this-> vy = 0;
 		if (isFrozen)
 			_curAnimation->Update(dt);
 		if (_curAnimation->isLastFrame)
@@ -82,6 +82,8 @@ void Enemy::ChangeState(State StateName)
 		this->isActive = true;
 		break;
 	}
+	case DEAD:
+		this->isDead = true;
 	}
 
 	this->_state = StateName;

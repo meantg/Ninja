@@ -15,6 +15,7 @@ class Object
 
 public:
 	Object();
+	TypeObject type;
 
 	float x, y;
 	float screenX, screenY;
@@ -22,7 +23,7 @@ public:
 	float dx, dy;
 	float spawnX, spawnY;
 	float width, height;
-	bool isDead, isReverse = false;
+	bool isDead,isAttacked = false, isReverse = false;
 	RECT GetRect();
 	//State _curState;
 	//bool isOnGround = true;

@@ -21,6 +21,9 @@ CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 {
 	CollisionResult result;
 
+	/*obj1.vx = obj1.vx - obj2.vx;
+	obj1.vy = obj1.vy - obj2.vy;*/
+
 	result.entryTime = 1.0f;
 	result.nx = result.ny = 0;
 
@@ -79,7 +82,7 @@ CollisionResult Collision::SweptAABB(Hitbox obj1, Hitbox obj2)
 	else {
 		result.entryTime = entryTime;
 		if (txEntry > tyEntry) {
-			result.nx = dxEntry < 0.0f ? 1 : -1;		
+			result.nx = dxEntry < 0.0f ? -1 : 1;		
 		}
 		else {
 			result.ny = dyEntry < 0.0f ? 1 : -1;

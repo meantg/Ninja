@@ -4,6 +4,7 @@ Player * Player::_instance = NULL;
 
 Player::Player()
 {
+	type = PLAYER;
 
 	this->AddAnimation(STANDING);
 	this->AddAnimation(ATK_STAND);
@@ -15,6 +16,7 @@ Player::Player()
 	this->AddAnimation(JUMPING);
 	this->AddAnimation(JUMPING_ATK);
 	this->AddAnimation(FALLING);
+	this->AddAnimation(INJURED);
 
 
 	this->x = 20.0f;
@@ -63,20 +65,53 @@ void Player::Update(float dt, vector<Object*> gameObj)
 	CollisionResult result;
 	result.nx = result.ny = 0;
 	result.entryTime = 1.0f;
-	
-	result = Collision::GetInstance()->SweptAABB(gameObj[0]->GetHitbox(),this->GetHitbox());
-	if (result.entryTime > 0 && result.entryTime < 1.0f) {
-		this->ChangeState(new PlayerStandingState());
-		x = x - 10;
-	}
+
+
+		result = Collision::GetInstance()->SweptAABB(gameObj[0]->GetHitbox(), this->GetHitbox());
+		if (result.entryTime > 0 && result.entryTime < 1.0f)
+		{
+			if (_state != ATK_SIT && _state != ATK_STAND)
+			{
+				this->ChangeState(new PlayerInjuredState());
+				if (isReverse == true)
+				{
+					if (result.nx > 0)
+						Player::GetInstance()->vx = NINJA_WALKING_SPEED;
+					else
+					{
+						Player::GetInstance()->vx = -NINJA_WALKING_SPEED;
+						Player::isReverse = false;
+					}
+				}
+				else
+					if (result.nx > 0)
+					{
+						Player::GetInstance()->vx = NINJA_WALKING_SPEED;
+						Player::GetInstance()->isReverse = true;
+					}
+					else
+						Player::GetInstance()->vx = -NINJA_WALKING_SPEED;
+			}
+			else if (_state == ATK_SIT || _state == ATK_STAND)
+			{
+				if (_curAnimation->isLastFrame == false)
+					gameObj[0]->isAttacked = true;
+			}
+
+		}
+		else
+		{
+			x += vx * dt;
+			y += vy * dt;
+			dx = vx * dt;
+			dy = vy * dt;
+		}
 		
 	if (x < 0)
 		x = 0;
 	if (x >=2048-20)
 		x = 2048-20;
-	x += vx * dt;
-	y += vy * dt;
-	dx = vx * dt;
+
 	if (_state != SITTING) {
 		if (y <= 56) {
 			y = 56;

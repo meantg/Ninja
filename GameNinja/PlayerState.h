@@ -9,5 +9,5 @@ public:
 	virtual void Update(float dt) = 0;
 	virtual void HandleKeyboard() = 0;
 	State StateName, _curState;
-	bool _reverse;
+	bool _reverse, isInjured = false;
 };

@@ -6,9 +6,12 @@ ESwordMan::ESwordMan(float spawnX, float spawnY)
 	this->AddAnimation(E_SWORDMAN, STANDING);
 	this->AddAnimation(E_SWORDMAN, RUNNING);
 	this->AddAnimation(E_SWORDMAN, DEAD);
-	this->width = ENEMY_SWORDMAN_WIDTH;
+
+	this->width =ENEMY_SWORDMAN_WIDTH;
 	this->height = ENEMY_SWORDMAN_HEIGHT;
 	this->speed = ENEMY_SWORDMAN_SPEED;
+
+	this->vy = 0;
 	this->vx = speed;
 	this->x = spawnX;
 	this->spawnX = x;
@@ -22,23 +25,27 @@ void ESwordMan::UpdatePosition(float dt)
 		this->isReverse = true;
 	else
 		this->isReverse = false;
+
 	this->x += vx * dt;
-	dx += vx * dt;
-	dy += vy * dt;
+	this->y += vy * dt;
+	this->dx = vx * dt;
+	this->dy = vy * dt;
 }
 
 void ESwordMan::Update(float dt)
 {
 	Enemy::Update(dt);
-	if (isActive == true)
+	if (isActive == true && isAttacked == false)
 	{
 		ChangeState(RUNNING);
 		if (isReverse == true)
 		{
-			vx = -4.0f;
+			vx = -ENEMY_SWORDMAN_SPEED;
 		}
 		else
-			vx = 4.0f;
+			vx = ENEMY_SWORDMAN_SPEED;
 	}
+	else 
+		ChangeState(DEAD);
 }
 

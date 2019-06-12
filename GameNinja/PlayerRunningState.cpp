@@ -4,6 +4,8 @@ PlayerRunningState::PlayerRunningState()
 {
 	StateName = RUNNING;
 	Player::GetInstance()->vy = 0;
+	Player::GetInstance()->isStanding = false;
+
 }
 
 void PlayerRunningState::Update(float dt)

@@ -17,14 +17,14 @@ void AnimationManager::StartUp()
 	//--------------LoadAnimation PLAYER
 	// Anim-Idle [0]
 	ani = new Animation(100);
-	ani->Add(00000);
-	animations->Add(PLAYER, STANDING, ani);
-	animations->Add(PLAYER, INJURED, ani);
-	// Anim-Attack-Standing [1]
+	ani->Add(10000);
+	animations->Add(PLAYER, STANDING, ani);	
+
+	//Anim - ATK STAND
 	ani = new Animation(120);
-	ani->Add(00001);
-	ani->Add(00002);
-	ani->Add(00003);
+	ani->Add(1001);		
+	ani->Add(1002);		
+	ani->Add(1003);
 	animations->Add(PLAYER, ATK_STAND, ani);
 
 	// Anim-Throwing [2]
@@ -75,6 +75,11 @@ void AnimationManager::StartUp()
 	ani->Add(60003);
 	ani->Add(60004);
 	animations->Add(PLAYER, JUMPING_ATK, ani);
+
+	//Anim-Injured
+	ani = new Animation(100);
+	ani->Add(50001);
+	animations->Add(PLAYER, INJURED, ani);
 
 	////--------------LoadAnimation ENEMY
 
@@ -134,10 +139,17 @@ void AnimationManager::StartUp()
 	ani->Add(13001);
 	ani->Add(13002);
 	animations->Add(E_CLOAKMAN, RUNNING, ani);
-	ani = new Animation(100);
+	ani = new Animation(300);
 	ani->Add(13002);
 	ani->Add(13003);
 	animations->Add(E_CLOAKMAN, ATTACKING, ani);
+		//WEAPON CLOAKMAN
+	ani = new Animation(200);
+	ani->Add(13004);
+	ani->Add(13005);
+	ani->Add(13006);
+	ani->Add(13007);
+	animations->Add(E_CLOAKMAN, ATK_WITH_WEAPON, ani);
 
 	//PANTHER
 	ani = new Animation(100);
@@ -158,15 +170,17 @@ void AnimationManager::StartUp()
 	animations->Add(E_EAGLE, RUNNING, ani);
 
 	//DEAD
-	/*ani = new Animation(100);
-	ani->Add(17001);
-	ani->Add(17002);
+	ani = new Animation(100);
+	ani->Add(18001);
+	ani->Add(18002);
 	animations->Add(E_EAGLE, DEAD, ani);
 	animations->Add(E_PANTHER, DEAD, ani);
 	animations->Add(E_CLOAKMAN, DEAD, ani);
 	animations->Add(E_GUNMAN, DEAD, ani);
 	animations->Add(E_RUNMAN, DEAD, ani);
-	animations->Add(E_BAZOKA, DEAD, ani);*/
+	animations->Add(E_BAZOKA, DEAD, ani);
+	animations->Add(E_SWORDMAN, DEAD, ani);
+	/*animations->Add(ENEMY, DEAD, ani);*/
 
 	//------------LoadAnimation Item Holder
 	ani = new Animation(100);

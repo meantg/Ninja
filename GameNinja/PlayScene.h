@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Camera.h"
 #include "GameMap.h"
+#include "ScoreBoard.h"
 
 class PlayScene : public Scene
 {
@@ -14,10 +15,11 @@ private:
 	
 	Camera *mCamera;
 	GameMap *mMap;
+	ScoreBoard *scoreboard;
 
 	int MapWidth, MapHeight;
 
-	vector<Object*> swordMans;
+	vector<Object*> enemy;
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
 

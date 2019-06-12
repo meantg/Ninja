@@ -15,11 +15,11 @@ void SpriteManager::StartUp()
 	SpriteManager * sprites = SpriteManager::GetInstance();
 	LPDIRECT3DTEXTURE9 texPeople = TextureManager::GetInstance()->GetTexture(Ninja_Text);
 	//Standing
-	sprites->Add(00000, 2, 5, 21, 37, texPeople);
+	sprites->Add(10000, 2, 5, 21, 37, texPeople);
 	//Attack-Standing
-	sprites->Add(00001, 41, 5, 60, 37, texPeople);
-	sprites->Add(00002, 66, 5, 101, 37, texPeople);
-	sprites->Add(00003, 111, 5, 141, 37, texPeople);
+	sprites->Add(1001, 41, 5, 60, 37, texPeople);
+	sprites->Add(1002, 66, 5, 101, 37, texPeople);
+	sprites->Add(1003, 111, 5, 141, 37, texPeople);
 
 	//Throwing
 	sprites->Add(10001, 164, 5, 182, 37, texPeople);
@@ -107,17 +107,18 @@ void SpriteManager::StartUp()
 	LPDIRECT3DTEXTURE9 texBullet = TextureManager::GetInstance()->GetTexture(Enemy_Texture);
 
 	//Bullet CloakMan
-	sprites->Add(13004, 519, 5, 527, 21, texEnemy);
-	sprites->Add(13005, 519, 23, 527, 38, texEnemy);
-	sprites->Add(13006, 534, 7, 550, 17, texEnemy);
-	sprites->Add(13007, 534, 27, 550, 38, texEnemy);
+	sprites->Add(13004, 519, 5, 527, 21, texBullet);
+	sprites->Add(13005, 519, 23, 527, 38, texBullet);
+	sprites->Add(13006, 534, 7, 550, 17, texBullet);
+	sprites->Add(13007, 534, 27, 550, 38, texBullet);
 
 	//Bullet GunMan
-	sprites->Add(12006, 192, 63, 203, 71, texEnemy);
+	sprites->Add(12006, 192, 63, 203, 71, texBullet);
 
 	//Bullet BazokaMan
-	sprites->Add(90003, 443, 60, 455, 75, texEnemy);
-	sprites->Add(90004, 458, 62, 470, 77, texEnemy);
+	sprites->Add(90003, 443, 60, 455, 75, texBullet);
+	sprites->Add(90004, 458, 62, 470, 77, texBullet);
+
 	//----------------------LoadSprite Item
 	LPDIRECT3DTEXTURE9 texItem = TextureManager::GetInstance()->GetTexture(Item_Texture);
 
@@ -153,7 +154,49 @@ void SpriteManager::StartUp()
 	sprites->Add(17003, 116, 50, 136, 70, texItem);
 	sprites->Add(17004, 139, 51, 159, 70, texItem);
 
+	//----------------------LoadSprite FontScoreBoard
+	LPDIRECT3DTEXTURE9 texFont = TextureManager::GetInstance()->GetTexture(Font_Texture);
+
+	//Text
+
+	sprites->AddFont(A, 9,   19, 9+18,   37, texFont);
+	sprites->AddFont(C, 46,  19, 46+18,  37, texFont);
+	sprites->AddFont(E, 81,  19, 81+18,  37, texFont);
+	sprites->AddFont(S, 333, 19, 18+333, 37, texFont);
+	sprites->AddFont(O, 261, 19, 261+18, 37, texFont);
+	sprites->AddFont(R, 315, 19, 315+18, 37, texFont);
+	sprites->AddFont(T, 352, 19, 352+18, 37, texFont);
+	sprites->AddFont(G, 117, 19, 117+18, 37, texFont);
+	sprites->AddFont(I, 155, 19, 155+18, 37, texFont);
+	sprites->AddFont(M, 225, 19, 225+18, 37, texFont);
+	sprites->AddFont(N, 243, 19, 243+18, 37, texFont);
+	sprites->AddFont(J, 171, 19, 171+18, 37, texFont);
+	sprites->AddFont(P, 279, 19, 279+18, 37, texFont);
+	sprites->AddFont(Y, 441, 19, 441+18, 37, texFont);
+	sprites->AddFont(Cross, 498, 41, 502, 54, texFont);
+	sprites->AddFont(Line, 208, 19, 216, 37, texFont);
+
+	//Number
+
+	int i = 0;
+	for (int c = 0; c <= 9; c++)
+	{
+		int left = 9 + i * 18;
+		int top = 37;
+		int right = left + 18;
+		int bottom = top + 18;
+		sprites->Add(c, left, top, right, bottom,texFont);
+		i++;
+	}
+
+	
 }
+
+void SpriteManager::AddFont(Font id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)
+{
+	CSprite* s = new CSprite(id, left, top, right, bottom, tex);
+	_fonts[id] = s;
+}	
 
 void SpriteManager::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)
 {
@@ -164,4 +207,9 @@ void SpriteManager::Add(int id, int left, int top, int right, int bottom, LPDIRE
 LPSPRITE SpriteManager::GetSprite(int id)
 {
 	return _sprites[id];
+}
+
+LPSPRITE SpriteManager::GetSprite(Font character)
+{
+	return _fonts[character];
 }
