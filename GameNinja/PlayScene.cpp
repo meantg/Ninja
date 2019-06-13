@@ -61,7 +61,19 @@ void PlayScene::LoadMap(const char * filePath)
 	listObj.insert(new EEagle(1570, 125));
 	listObj.insert(new EEagle(1730, 140));
 
-
+	//Insert ItemHolder
+		//Butterfly
+	listObj.insert(new IHButterfly(330,80));
+	listObj.insert(new IHButterfly(430, 80));
+	listObj.insert(new IHButterfly(567, 80));
+	listObj.insert(new IHButterfly(631, 104));
+	listObj.insert(new IHButterfly(758, 121));
+	listObj.insert(new IHButterfly(1146, 80));
+	listObj.insert(new IHButterfly(884, 152));
+	listObj.insert(new IHButterfly(1174, 152));
+	listObj.insert(new IHButterfly(1321, 152));
+	listObj.insert(new IHButterfly(1655, 80));
+	listObj.insert(new IHButterfly(1850, 80));
 
 
 	//grounds.insert(new Ground(0, 38, 540, 10));

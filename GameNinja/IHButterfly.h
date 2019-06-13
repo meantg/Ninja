@@ -4,7 +4,6 @@
 class IHButterfly : public Enemy
 {
 public:
-	IHButterfly();
+	IHButterfly(float spawnX, float spawnY);
 	~IHButterfly() {};
-	void UpdateBeingAtk();
 };

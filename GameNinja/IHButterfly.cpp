@@ -1,9 +1,15 @@
 #include "IHButterfly.h"
 
-IHButterfly::IHButterfly()
+IHButterfly::IHButterfly(float spawnX, float spawnY)
 {
-	_state = STANDING;
+	this->tag = PLAYER;
+	this->type = ENEMY;
+	this->_state = STANDING;
+	this->isActive = true;
 	this->AddAnimation(IH_BUTTERFLY, STANDING);
-	this->x = 900;
-	this->y = 85;
+	this->x = spawnX;
+	this->spawnX = x;
+	this->y = spawnY;
+	this->ChangeState(STANDING);
 }
+

@@ -32,9 +32,6 @@
     <Filter Include="FrameWork\GameObjects\Entity">
       <UniqueIdentifier>{e07fc3b7-de4b-4d91-829c-a4261843349e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\GameObjects\Entity\Item">
-      <UniqueIdentifier>{4e686d2b-530a-4e29-a85f-edd6c49b3a1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FrameWork\GameObjects\Entity\Player">
       <UniqueIdentifier>{90f1fdf6-d8ba-4640-9637-aa1ab47ae291}</UniqueIdentifier>
     </Filter>
@@ -50,7 +47,7 @@
     <Filter Include="FrameWork\Collision">
       <UniqueIdentifier>{73d261ec-e632-4371-89e4-961e1915b689}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet">
+    <Filter Include="FrameWork\GameObjects\Entity\Enemy_Bullet">
       <UniqueIdentifier>{853b3917-be7b-41e1-be48-5cba269084f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -155,7 +152,7 @@
       <Filter>FrameWork\Collision</Filter>
     </ClCompile>
     <ClCompile Include="CloakManBullet.cpp">
-      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
     </ClCompile>
     <ClCompile Include="EGunMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
@@ -176,7 +173,7 @@
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="GunManBullet.cpp">
-      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,13 +274,13 @@
       <Filter>FrameWork\Game</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBullet.h">
-      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
     </ClInclude>
     <ClInclude Include="CloakManBullet.h">
-      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>FrameWork\Collision</Filter>
@@ -307,7 +304,7 @@
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="GunManBullet.h">
-      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+      <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
