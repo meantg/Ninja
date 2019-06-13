@@ -19,8 +19,8 @@ Player::Player()
 	this->AddAnimation(INJURED);
 
 
-	this->x = 50.0f;
-	this->y = 100.0f;
+	this->x = 56.0f;
+	this->y = 56.0f;
 	this->width = NINJA_WIDTH;
 	this->height = NINJA_STANDING_HEIGHT;
 

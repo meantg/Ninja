@@ -129,7 +129,9 @@ void AnimationManager::StartUp()
 	ani->Add(12003);
 	ani->Add(12004);
 	animations->Add(E_GUNMAN, ATTACKING, ani);
+	ani = new Animation(100);
 	ani->Add(12005);
+	animations->Add(E_GUNMAN, ATK_WITH_WEAPON, ani);
 
 	//CLOAKMAN
 	ani = new Animation(100);
@@ -155,16 +157,17 @@ void AnimationManager::StartUp()
 	ani = new Animation(100);
 	ani->Add(14001);
 	animations->Add(E_PANTHER, STANDING, ani);
-	ani = new Animation(100);
+	ani = new Animation(200);
 	ani->Add(14001);
 	ani->Add(14002);
 	animations->Add(E_PANTHER, RUNNING, ani);
+
 	
 	//EAGLE
 	ani = new Animation(100);
 	ani->Add(15001);
 	animations->Add(E_EAGLE, STANDING, ani);
-	ani = new Animation(100);
+	ani = new Animation(200);
 	ani->Add(15001);
 	ani->Add(15002);
 	animations->Add(E_EAGLE, RUNNING, ani);

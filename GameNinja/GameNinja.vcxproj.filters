@@ -157,6 +157,27 @@
     <ClCompile Include="CloakManBullet.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="EGunMan.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EPanther.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EBazoka.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EEagle.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EBoss.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ERunMan.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GunManBullet.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -266,6 +287,27 @@
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>FrameWork\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="EGunMan.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EPanther.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EEagle.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EBoss.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EBazoka.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ERunMan.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GunManBullet.h">
+      <Filter>FrameWork\GameObjects\Entity\Enemy\Enemy_Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

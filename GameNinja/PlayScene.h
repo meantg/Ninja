@@ -9,6 +9,7 @@
 #include "Bullet.h"
 #include <unordered_set>
 #include "Grid.h"
+
 class PlayScene : public Scene
 {
 private:
@@ -25,6 +26,7 @@ private:
 	vector<Object*> enemy;
 	unordered_set<Object*> listObj;
 	unordered_set<Ground*> grounds;
+
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
 

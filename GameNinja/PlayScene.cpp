@@ -1,6 +1,7 @@
 ﻿#include "PlayScene.h"
-
-
+#include "EPanther.h"
+#include "EGunMan.h"
+#include "EEagle.h"
 
 PlayScene::PlayScene(AnimationManager* gAnimationManager)
 {
@@ -29,10 +30,42 @@ void PlayScene::LoadMap(const char * filePath)
 	mCamera->SetPosition(0, SCREEN_HEIGHT);
 
 	mMap->SetCamera(mCamera);
-	listObj.insert(new ESwordMan(300, 56));
-	listObj.insert(new ECloakMan(1230, 123));
-	grounds.insert(new Ground(0, 38, 540, 10));
-	grounds.insert(new Ground(580, 42, 22, 10));
+	//Insert Enemy
+		//SwordMan
+	listObj.insert(new ESwordMan(255, 57));
+	listObj.insert(new ESwordMan(349, 57));
+	listObj.insert(new ESwordMan(445, 57));
+	listObj.insert(new ESwordMan(1292, 120));
+	listObj.insert(new ESwordMan(1452, 120));
+	listObj.insert(new ESwordMan(1484, 140));
+	listObj.insert(new ESwordMan(1883,57));
+	listObj.insert(new ESwordMan(1963, 57));
+
+		//CloakMan
+	listObj.insert(new ECloakMan(820, 100));
+	listObj.insert(new ECloakMan(1230, 119));
+
+		//Panther
+	listObj.insert(new EPanther(234, 46));
+	listObj.insert(new EPanther(912, 118));
+	listObj.insert(new EPanther(945, 118));
+	listObj.insert(new EPanther(1281, 46));
+
+		//GunMan
+	listObj.insert(new EGunMan(1373, 57));
+
+		//Eagle
+	listObj.insert(new EEagle(560, 140));
+	listObj.insert(new EEagle(720, 140));
+	listObj.insert(new EEagle(1060, 130));
+	listObj.insert(new EEagle(1570, 125));
+	listObj.insert(new EEagle(1730, 140));
+
+
+
+
+	//grounds.insert(new Ground(0, 38, 540, 10));
+	//grounds.insert(new Ground(580, 42, 22, 10));
 }
 
 void PlayScene::Update(float dt)
@@ -68,7 +101,7 @@ void PlayScene::UpdateObject(float dt)
 
 			switch (e->type)
 			{
-			case E_CLOAKMAN:
+			//case E_CLOAKMAN:
 			case E_GUNMAN:
 			case E_BAZOKA:
 			{
@@ -105,7 +138,7 @@ void PlayScene::UpdatePlayer(float dt)
 {
 	Player::GetInstance()->Update(dt, enemy);
 	/*if(!Player::GetInstance()->isOnGround)*/
-	Player::GetInstance()->CheckGroundCollision(grounds);
+	/*Player::GetInstance()->CheckGroundCollision(grounds);*/
 }
 
 // Tải Scene lên màn hình bằng cách vẽ các Sprite trong Scene

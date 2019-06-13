@@ -36,11 +36,13 @@ void ESwordMan::Update(float dt)
 	Enemy::Update(dt);
 	if (isActive == true && isAttacked == false)
 	{
-		ChangeState(RUNNING);
 		if (isReverse == true)
 		{
 			vx = -ENEMY_SWORDMAN_SPEED;
 		}
+		else
+			vx = ENEMY_SWORDMAN_SPEED;
+		ChangeState(RUNNING);	
 	}
 	else 
 		ChangeState(DEAD);

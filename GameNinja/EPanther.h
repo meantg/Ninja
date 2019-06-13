@@ -1,11 +1,11 @@
 #pragma once
 #include "Enemy.h"
 
-class ESwordMan : public Enemy
+class EPanther : public Enemy
 {
-public:
-	ESwordMan(float spawnX, float spawnY);
-	~ESwordMan() {};
+public :
+	EPanther(float spawnX, float spawnY);
+	~EPanther() {};
 	void UpdatePosition(float dt);
 	virtual void Update(float dt);
 };

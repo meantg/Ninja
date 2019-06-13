@@ -16,7 +16,7 @@ void Enemy::Render(float cameraX, float cameraY)
 		animations[_state]->isReverse = isReverse;
 		animations[_state]->Render(screenX, screenY);
 	}
-	this->RenderBoundingBox(screenX,screenY);
+	//this->RenderBoundingBox(screenX,screenY);
 }
 
 void Enemy::Update(float dt)

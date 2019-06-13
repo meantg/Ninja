@@ -84,7 +84,7 @@ void SpriteManager::StartUp()
 
 	//GunMan
 	sprites->Add(12001, 51, 56, 77, 87, texEnemy);
-	sprites->Add(12002, 77, 56, 103, 877, texEnemy);
+	sprites->Add(12002, 77, 56, 103, 87, texEnemy);
 	sprites->Add(12003, 129, 56, 159, 87, texEnemy);
 	sprites->Add(12004, 159, 56, 189, 87, texEnemy);
 	sprites->Add(12005, 190, 62, 206, 73, texEnemy);
