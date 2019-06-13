@@ -1,6 +1,5 @@
 #pragma once
 #include "GameGlobal.h"
-#include "Player.h"
 
 class Camera
 {

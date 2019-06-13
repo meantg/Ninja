@@ -31,16 +31,17 @@ void PlayScene::LoadMap(const char * filePath)
 	mMap->SetCamera(mCamera);
 	listObj.insert(new ESwordMan(300, 56));
 	listObj.insert(new ECloakMan(1230, 123));
+	grounds.insert(new Ground(0, 38, 540, 10));
+	grounds.insert(new Ground(580, 42, 22, 10));
 }
 
 void PlayScene::Update(float dt)
 {
-
 	mCamera->SetPosition(Player::GetInstance()->x - (mCamera->GetWidth() >> 1), SCREEN_HEIGHT);
 	mMap->Update(dt);
-	Player::GetInstance()->Update(dt, enemy);
 	scoreboard->Update(dt);
 	UpdateObject(dt);
+	UpdatePlayer(dt);
 	
 
 	/*if (mCamera->GetBound().right + 8 <= MapWidth)
@@ -73,9 +74,7 @@ void PlayScene::UpdateObject(float dt)
 			{
 				if (e->_state == ATTACKING && e->_curAnimation->isLastFrame)
 				{
-					auto bullet = new Bullet();
-					if (e->type == E_CLOAKMAN)
-						bullet = new CloakManBullet();
+					auto bullet = EnemyBullet::CreateBullet(e->type);
 					listObj.insert(bullet);
 					bullet->isReverse = e->isReverse;
 					if (bullet->isReverse)
@@ -100,6 +99,13 @@ void PlayScene::UpdateObject(float dt)
 		++it;
 
 	}
+}
+
+void PlayScene::UpdatePlayer(float dt)
+{
+	Player::GetInstance()->Update(dt, enemy);
+	/*if(!Player::GetInstance()->isOnGround)*/
+	Player::GetInstance()->CheckGroundCollision(grounds);
 }
 
 // Tải Scene lên màn hình bằng cách vẽ các Sprite trong Scene

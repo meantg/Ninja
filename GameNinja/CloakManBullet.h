@@ -5,7 +5,7 @@ class CloakManBullet : public Bullet
 {
 private:
 	float delay;
-public :
+public:
 	CloakManBullet();
 	void UpdateDistance(float dt);
 };

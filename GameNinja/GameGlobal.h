@@ -133,17 +133,7 @@ extern enum Font
 	A, C, E, S, O, R, M, N, I, J, P, T, Y, G, Cross, Point,Line
 };
 
-struct Ground {
-	float x, y;
-	float width, height;
-	Ground(float x, float y, float width, float height)
-	{
-		this->x = x;
-		this->y = y;
-		this->width = width;
-		this->height = height;
-	}
-};
+
 struct Wall
 {
 	RECT wall;

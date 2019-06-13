@@ -62,6 +62,12 @@ void Enemy::UpdatePosition(float dt)
 	this->dy = vy * dt;
 }
 
+bool Enemy::DetectGround(unordered_set<Ground*> grounds)
+{
+	return false;
+	
+}
+
 //bool Enemy::isOnScreen()
 //{
 //	RECT bCam = Camera::GetInstance()->GetBound();

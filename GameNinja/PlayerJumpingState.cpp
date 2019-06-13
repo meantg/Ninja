@@ -8,6 +8,7 @@ PlayerJumpingState::PlayerJumpingState()
 	Player::GetInstance()->_allow[ATTACKING] = true;
 	Player::GetInstance()->_allow[CLINGING] = true;
 	Player::GetInstance()->_allow[SITTING] = false;
+	Player::GetInstance()->isOnGround = false;
 
 	if (_lastState == RUNNING || _lastState == STANDING || _lastState == CLINGING)
 		Player::GetInstance()->vy = NINJA_JUMPING_SPEED_Y;

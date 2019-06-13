@@ -3,7 +3,7 @@
 #include "Object.h"
 #include "Camera.h"
 #include "EnemyBullet.h"
-#include "CloakManBullet.h"
+#include "Grid.h"
 
 class Enemy : public Object
 {
@@ -23,6 +23,7 @@ public:
 	void Render(float cameraX, float cameraY);
 	virtual void Update(float dt);
 	virtual void UpdatePosition(float dt);
+	virtual bool DetectGround(unordered_set<Ground*> grounds);
 	bool isOnScreen();
 	virtual void ChangeState(State StateName);
 	void AddAnimation(TypeObject _type,State _state);

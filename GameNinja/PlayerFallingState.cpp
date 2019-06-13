@@ -16,10 +16,7 @@ PlayerFallingState::PlayerFallingState()
 
 void PlayerFallingState::Update(float dt)
 {
-	if (Player::GetInstance()->y <= 56)
-	{
-		Player::GetInstance()->y = 56;
-		Player::GetInstance()->vy = 0;
+	if(Player::GetInstance()->isOnGround){
 		Player::GetInstance()->ChangeState(new PlayerStandingState());
 		return;
 	}

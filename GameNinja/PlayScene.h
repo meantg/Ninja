@@ -8,6 +8,7 @@
 #include "ScoreBoard.h"
 #include "Bullet.h"
 #include <unordered_set>
+#include "Grid.h"
 class PlayScene : public Scene
 {
 private:
@@ -17,11 +18,13 @@ private:
 	Camera *mCamera;
 	GameMap *mMap;
 	ScoreBoard *scoreboard;
+	Grid *grid;
 
 	int MapWidth, MapHeight;
 
 	vector<Object*> enemy;
 	unordered_set<Object*> listObj;
+	unordered_set<Ground*> grounds;
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
 
@@ -31,6 +34,7 @@ public:
 	void LoadMap(const char *filePath);
 	virtual void Update(float dt);	// Update các thông số các đối tượng trong Scene
 	void UpdateObject(float dt);
+	void UpdatePlayer(float dt);
 	void Render();									// Tải Scene lên màn hình
 
 	void OnKeyDown(int key);

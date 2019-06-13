@@ -34,8 +34,8 @@ public:
 
 	Hitbox GetHitbox() {
 		Hitbox box;
-		box.x = screenX;
-		box.y = screenY;
+		box.x = x;
+		box.y = y;
 		box.width = width;
 		box.height = height;
 		box.vx = vx;
@@ -48,7 +48,28 @@ public:
 	~Object();
 };
 
-
+struct Ground {
+	float x, y;
+	float width, height;
+	Ground() {}
+	Ground(float x, float y, float width, float height)
+	{
+		this->x = x;
+		this->y = y;
+		this->width = width;
+		this->height = height;
+	}
+	Hitbox GetGroundBound() {
+		Hitbox box;
+		box.x = x;
+		box.y = y;
+		box.width = width;
+		box.height = height;
+		box.vx = 0;
+		box.vy = 0;
+		return box;
+	}
+};
 
 
 

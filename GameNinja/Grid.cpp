@@ -165,8 +165,12 @@ unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 		{
 			if (x < 0 || x >= columns) continue;
 			//Tùy theo loại object (bullet, enemies, item) mà khởi tạo và insert vào objects
+			for (auto o : _cells[y][x]->objects) {
+				objs.insert(o);
+			}
 		}
 	}
+	return objs;
 }
 
 unordered_set<Wall*> Grid::GetColliableWalls(Object * obj)

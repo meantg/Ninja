@@ -19,14 +19,14 @@ Player::Player()
 	this->AddAnimation(INJURED);
 
 
-	this->x = 20.0f;
-	this->y = 56.0f;
+	this->x = 50.0f;
+	this->y = 100.0f;
 	this->width = NINJA_WIDTH;
 	this->height = NINJA_STANDING_HEIGHT;
 
 	_state = STANDING;
 	//_curAnimation = animations[_state];
-
+	isOnGround = true;
 
 	_allow[JUMPING] = true;
 	_allow[ATTACKING] = true;
@@ -36,6 +36,24 @@ Player::Player()
 
 Player::~Player()
 {
+}
+
+bool Player::DetectGround(unordered_set<Ground*> grounds)
+{
+	auto rbp = Collision::GetInstance()->GetBroadphaseBox(this->GetHitbox());					//rect broading-phase
+	auto bottom = rbp.y + rbp.height;
+	rbp.y = rbp.y + dy;
+	rbp.height = rbp.height - dy;
+	for (auto g : grounds)
+	{
+		auto groundBound = g->GetGroundBound();
+		if (Collision::GetInstance()->isCollision(groundBound, rbp) && (bottom >= groundBound.y))
+		{
+			_curGround = g;
+			return true;
+		}
+	}
+	return false;
 }
 
 Player * Player::GetInstance()
@@ -67,7 +85,7 @@ void Player::Update(float dt, vector<Object*> gameObj)
 	result.entryTime = 1.0f;
 
 
-		result = Collision::GetInstance()->SweptAABB(gameObj[0]->GetHitbox(), this->GetHitbox());
+		result = Collision::GetInstance()->SweptAABB(gameObj[1]->GetHitbox(), this->GetHitbox());
 		if (result.entryTime > 0 && result.entryTime < 1.0f)
 		{
 			if (_state != ATK_SIT && _state != ATK_STAND)
@@ -95,7 +113,7 @@ void Player::Update(float dt, vector<Object*> gameObj)
 			else if (_state == ATK_SIT || _state == ATK_STAND)
 			{
 				if (_curAnimation->isLastFrame == false)
-					gameObj[0]->isAttacked = true;
+					gameObj[1]->isAttacked = true;
 			}
 
 		}
@@ -112,12 +130,40 @@ void Player::Update(float dt, vector<Object*> gameObj)
 	if (x >=2048-20)
 		x = 2048-20;
 
-	if (_state != SITTING) {
-		if (y <= 56) {
-			y = 56;
+	//if (_state != SITTING) {
+	//	if (y <= 56) {
+	//		y = 56;
+	//	}
+	//}
+}
+void Player::CheckGroundCollision(unordered_set<Ground*> grounds)
+{
+	// Trên không
+	if (this->vy)
+	{
+		this->isOnGround = false;
+	}
+
+	// Tìm được vùng đất va chạm
+	if (DetectGround(grounds))
+	{
+		if (this->vy < 0)
+		{
+			this->isOnGround = true;
+			this->vy = this->dy = 0;
+			this->x = _curGround->y + this->height;
 		}
 	}
+
+	// Nếu không thì đang chạy -> rơi
+	else if (!this->vy)
+	{
+		this->ChangeState(new PlayerFallingState());
+	}
 }
+
+
+
 
 void Player::Render(float cameraX, float cameraY)
 {
