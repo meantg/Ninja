@@ -2,6 +2,8 @@
 
 ESwordMan::ESwordMan(float spawnX, float spawnY)
 {
+	this->tag = ENEMY;
+	this->type = E_SWORDMAN;
 	this->_state = STANDING;
 	this->AddAnimation(E_SWORDMAN, STANDING);
 	this->AddAnimation(E_SWORDMAN, RUNNING);
@@ -21,10 +23,7 @@ ESwordMan::ESwordMan(float spawnX, float spawnY)
 
 void ESwordMan::UpdatePosition(float dt)
 {
-	if (Player::GetInstance()->x - this->x < 0)
 		this->isReverse = true;
-	else
-		this->isReverse = false;
 
 	this->x += vx * dt;
 	this->y += vy * dt;
@@ -42,8 +41,6 @@ void ESwordMan::Update(float dt)
 		{
 			vx = -ENEMY_SWORDMAN_SPEED;
 		}
-		else
-			vx = ENEMY_SWORDMAN_SPEED;
 	}
 	else 
 		ChangeState(DEAD);

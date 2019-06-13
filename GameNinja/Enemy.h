@@ -2,17 +2,21 @@
 #include "Player.h"
 #include "Object.h"
 #include "Camera.h"
+#include "EnemyBullet.h"
+#include "CloakManBullet.h"
 
 class Enemy : public Object
 {
-protected:
+
+public:
 	unordered_map<State, LPANIMATION> animations;
 	LPANIMATION _curAnimation;
-public:
+
+	TypeObject tag;
 	float speed;
 	State _state;
-	bool isActive = false, isDoneAtk, isFrozen = false;
-	int totalBullet, bullets;
+	bool isDoneAtk;
+	int bulletCount, bulletTotal;
 	Enemy();
 	~Enemy() {};
 

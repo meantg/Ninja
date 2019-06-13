@@ -2,6 +2,7 @@
 
 Enemy::Enemy()
 {
+	tag = ENEMY;
 	isDead = false;
 	isActive = false;
 }
@@ -48,6 +49,9 @@ void Enemy::Update(float dt)
 			this->isActive = false;
 		}
 	}
+	if (this->_state == ATTACKING)
+		if (_curAnimation->isLastFrame)
+			isDoneAtk = true;
 }
 
 void Enemy::UpdatePosition(float dt)

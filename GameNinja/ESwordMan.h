@@ -1,5 +1,6 @@
 #pragma once
 #include "Enemy.h"
+#include "EnemyBullet.h"
 
 class ESwordMan : public Enemy
 {

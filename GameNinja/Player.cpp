@@ -4,7 +4,7 @@ Player * Player::_instance = NULL;
 
 Player::Player()
 {
-	type = PLAYER;
+	tag = PLAYER;
 
 	this->AddAnimation(STANDING);
 	this->AddAnimation(ATK_STAND);
