@@ -1,6 +1,5 @@
 ﻿#include "PlayScene.h"
-#include "GameGlobal.h"
-#include "Collision.h"
+
 
 
 PlayScene::PlayScene(AnimationManager* gAnimationManager)

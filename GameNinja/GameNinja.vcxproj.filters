@@ -139,17 +139,17 @@
     <ClCompile Include="ECloakMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>FrameWork\Game\src</Filter>
-    </ClCompile>
     <ClCompile Include="ScoreBoard.cpp">
       <Filter>FrameWork\Game\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>FrameWork\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>FrameWork\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>FrameWork\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,9 +228,6 @@
     <ClInclude Include="PlayerStandingState.h">
       <Filter>FrameWork\GameObjects\Entity\Player\State</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>FrameWork\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
     </ClInclude>
@@ -254,6 +251,9 @@
     </ClInclude>
     <ClInclude Include="EnemyBullet.h">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>FrameWork\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

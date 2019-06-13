@@ -13,7 +13,6 @@ private:
 	AnimationManager *animations;
 	float _timeCounter;			
 	
-	ScoreBoard *scoreboard;
 	Camera *mCamera;
 	GameMap *mMap;
 	ScoreBoard *scoreboard;
