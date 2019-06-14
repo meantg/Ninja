@@ -14,10 +14,8 @@ EEagle::EEagle(float spawnX, float spawnY)
 
 	this->vy = ENEMY_EAGLE_SPEED;
 	this->vx = speed;
-	this->x = spawnX;
-	this->spawnX = x;
-	this->y = spawnY;
-	this->spawnY = spawnY;
+	this->spawnX = this->x = spawnX;
+	this->spawnY = this->y = spawnY;
 	this->ChangeState(STANDING);
 	this->activeDistance = 70.0f;
 }
@@ -71,8 +69,6 @@ void EEagle::UpdatePosition(float dt)
 	{
 		this->vy += 0.4;
 	}
-	this->dx = vx * dt;
-	this->dy = vy * dt;
 }
 
 void EEagle::Update(float dt)
@@ -82,7 +78,7 @@ void EEagle::Update(float dt)
 	{
 		ChangeState(RUNNING);
 	}
-	else
+	else if(isAttacked==true)
 		ChangeState(DEAD);
 }
 
@@ -95,6 +91,7 @@ void EEagle::ChangeState(State StateName)
 		this->isOutScreen = false;
 		this->isActive = false;
 		this->isDead = false;
+		this->isAttacked = false;
 		break;
 	}
 

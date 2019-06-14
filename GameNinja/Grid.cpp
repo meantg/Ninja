@@ -23,24 +23,25 @@ Grid::Grid(int mapWidth, int mapHeight)
 	AddObject(new ESwordMan(1963, 57));
 
 	//	//CloakMan
-	//AddObject(new ECloakMan(820, 100));
-	//AddObject(new ECloakMan(1230, 120));
+	AddObject(new ECloakMan(820, 100));
+	AddObject(new ECloakMan(1230, 120));
 
-		//Panther
+	////	Panther
 	AddObject(new EPanther(234, 46));
 	AddObject(new EPanther(912, 118));
 	AddObject(new EPanther(945, 118));
 	AddObject(new EPanther(1281, 46));
 
 	//	//GunMan
-	//AddObject(new EGunMan(1373, 57));
+	/*AddObject(new EGunMan(1373, 57));*/
+	/*AddObject(new EGunMan(250, 57));*/
 
 	//	//Eagle
-	//AddObject(new EEagle(560, 140));
-	//AddObject(new EEagle(720, 140));
-	//AddObject(new EEagle(1060, 130));
-	//AddObject(new EEagle(1570, 125));
-	//AddObject(new EEagle(1730, 140));
+	AddObject(new EEagle(560, 140));
+	AddObject(new EEagle(720, 140));
+	AddObject(new EEagle(1060, 130));
+	AddObject(new EEagle(1570, 125));
+	AddObject(new EEagle(1730, 140));
 
 	//Insert ItemHolder
 		//Butterfly
@@ -58,10 +59,10 @@ Grid::Grid(int mapWidth, int mapHeight)
 
 	//Grounds
 	AddGround(new Rect(0, 38, 540, 10));
-	AddGround(new Rect(584, 42, 22, 10));
-	AddGround(new Rect(648, 42, 22, 10));
-	AddGround(new Rect(712, 42, 22, 10));
-	AddGround(new Rect(776, 42, 22, 10));
+	AddGround(new Rect(580, 42, 22, 10));
+	AddGround(new Rect(644, 42, 22, 10));
+	AddGround(new Rect(708, 42, 22, 10));
+	AddGround(new Rect(772, 42, 22, 10));
 	AddGround(new Rect(800, 73, 32, 10));
 	AddGround(new Rect(836, 104, 128, 10));
 	AddGround(new Rect(1026, 42, 66, 10));
@@ -448,7 +449,7 @@ unordered_set<Object*> Grid::GetVisibleObjects()
 				case ENEMY:
 				{
 					auto e = (Enemy*)o;
-					if (e->isDead)
+ 					if (e->isDead)
 					{
 						it = c->objects.erase(it);
 						respawnObjects.insert(e);

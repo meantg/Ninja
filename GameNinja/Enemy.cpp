@@ -51,11 +51,19 @@ void Enemy::UpdatePosition(float dt)
 	this->dy = vy * dt;
 }
 
-bool Enemy::DetectGround(unordered_set<Rect*> grounds)
+void Enemy::DetectGround(unordered_set<Rect*> grounds)
 {
-	return false;
+	for (auto g : grounds)
+	{
+		if (g->x < this->x && this->x < g->x + g->width
+			&& g->y >= groundBound.y && this->y > g->y)
+		{
+			groundBound = *g;
+		}
+	}
+	this->spawnY = this->y = this->groundBound.y + (this->height >> 1);
 	
-}
+	}
 
 Rect Enemy::GetSpawnRect()
 {

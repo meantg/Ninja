@@ -109,39 +109,39 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 	CollisionResult result;
 	result.nx = result.ny = 0;
 	result.entryTime = 1.0f;
-		for (auto o : gameObj)
+	for (auto o : gameObj)
+	{
+		result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
+		if (result.entryTime > 0 && result.entryTime < 1.0f)
 		{
-			result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
-			if (result.entryTime > 0 && result.entryTime < 1.0f)
+			if (_state != ATK_SIT && _state != ATK_STAND)
 			{
-				if (_state != ATK_SIT && _state != ATK_STAND)
+				this->ChangeState(new PlayerInjuredState());
+				if (isReverse == true)
 				{
-					this->ChangeState(new PlayerInjuredState());
-					if (isReverse == true)
+					if (result.nx > 0)
+						player->vx = NINJA_WALKING_SPEED;
+					else
 					{
-						if (result.nx > 0)
-							player->vx = NINJA_WALKING_SPEED;
-						else
-						{
-							player->vx = -NINJA_WALKING_SPEED;
-							Player::isReverse = false;
-						}
+						player->vx = -NINJA_WALKING_SPEED;
+						Player::isReverse = false;
+					}
+				}
+				else
+					if (result.nx > 0)
+					{
+						player->vx = NINJA_WALKING_SPEED;
+						player->isReverse = true;
 					}
 					else
-						if (result.nx > 0)
-						{
-							player->vx = NINJA_WALKING_SPEED;
-							player->isReverse = true;
-						}
-						else
-							player->vx = -NINJA_WALKING_SPEED;
-				}
-				else if (_state == ATK_SIT || _state == ATK_STAND)
+						player->vx = -NINJA_WALKING_SPEED;
+			}
+			else if (_state == ATK_SIT || _state == ATK_STAND)
+			{
+				if (_curAnimation->isLastFrame == false)
 				{
-					if (_curAnimation->isLastFrame == false)
-					{
-						o->isAttacked = true;
-					}
+					o->isAttacked = true;
+				}
 			}
 		}
 	}

@@ -119,6 +119,7 @@ void PlayScene::Render()
 
 void PlayScene::UpdateVisibleObjects()
 {
+	//visibleObjects.clear();
 	auto it = visibleObjects.begin();
 	while (it != visibleObjects.end())
 	{
