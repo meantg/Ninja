@@ -22,12 +22,13 @@ public:
 	LPANIMATION _curAnimation;
 	State _state;
 	PlayerState* state;
+	Wall wallBound;
 	Rect _curGround;
 	bool isStanding = true, isOnGround;
 	bool DetectGround(unordered_set<Rect*> grounds);
-	float delayInjured;
+	bool DetectWall(unordered_set<Wall*> walls);
 	void CheckGroundCollision(unordered_set<Rect*> grounds);
-
+	void CheckWallCollision(std::unordered_set<Wall*> walls);
 	unordered_map<State, bool> _allow;
 
 	static Player* GetInstance();
