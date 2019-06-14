@@ -14,10 +14,8 @@ EEagle::EEagle(float spawnX, float spawnY)
 
 	this->vy = ENEMY_EAGLE_SPEED;
 	this->vx = speed;
-	this->x = spawnX;
-	this->spawnX = x;
-	this->y = spawnY;
-	this->spawnY = spawnY;
+	this->spawnX = this->x = spawnX;
+	this->spawnY = this->y = spawnY;
 	this->ChangeState(STANDING);
 	this->activeDistance = 70.0f;
 }
@@ -76,18 +74,12 @@ void EEagle::UpdatePosition(float dt)
 void EEagle::Update(float dt)
 {
 	Enemy::Update(dt);
-	//if (isActive == true && isAttacked == false)
-	//{
-	//	if (isReverse == true)
-	//	{
-	//		vx = -ENEMY_EAGLE_SPEED;
-	//	}
-	//	else
-	//		vx = ENEMY_EAGLE_SPEED;
-	//	ChangeState(RUNNING);
-	//}
-	//else
-	//	ChangeState(DEAD);
+	if (isActive == true && isAttacked == false)
+	{
+		ChangeState(RUNNING);
+	}
+	else if(isAttacked==true)
+		ChangeState(DEAD);
 }
 
 void EEagle::ChangeState(State StateName)
@@ -99,6 +91,7 @@ void EEagle::ChangeState(State StateName)
 		this->isOutScreen = false;
 		this->isActive = false;
 		this->isDead = false;
+		this->isAttacked = false;
 		break;
 	}
 
@@ -115,9 +108,9 @@ void EEagle::ChangeState(State StateName)
 	}
 	case DEAD:
 	{
-		this->isDead = true;
-		//this->isActive = false;
-		this->isAttacked = false;
+		//this->isDead = true;
+		////this->isActive = false;
+		//this->isAttacked = false;
 		break;
 	}
 	}

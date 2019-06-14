@@ -7,9 +7,7 @@ IHButterfly::IHButterfly(float spawnX, float spawnY)
 	this->AddAnimation(IH_BUTTERFLY, STANDING);
 	this->AddAnimation(IH_BUTTERFLY, RUNNING);
 
-	this->x = spawnX;
-	this->spawnX = x;
-	this->y = spawnY;
-	this->ChangeState(STANDING);
+	this->spawnX = this->x = spawnX;
+	this->spawnY = this->y = spawnY;
 }
 

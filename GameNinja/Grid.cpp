@@ -23,14 +23,14 @@ Grid::Grid(int mapWidth, int mapHeight)
 	AddObject(new ESwordMan(1963, 57));
 
 	//	//CloakMan
-	//AddObject(new ECloakMan(820, 100));
-	//AddObject(new ECloakMan(1230, 120));
+	AddObject(new ECloakMan(820, 100));
+	AddObject(new ECloakMan(1230, 120));
 
 	////	Panther
-	//AddObject(new EPanther(234, 46));
-	//AddObject(new EPanther(912, 118));
-	//AddObject(new EPanther(945, 118));
-	//AddObject(new EPanther(1281, 46));
+	AddObject(new EPanther(234, 46));
+	AddObject(new EPanther(912, 118));
+	AddObject(new EPanther(945, 118));
+	AddObject(new EPanther(1281, 46));
 
 	//	//GunMan
 	/*AddObject(new EGunMan(1373, 57));*/
@@ -79,12 +79,12 @@ Grid::Grid(int mapWidth, int mapHeight)
 
 	//Walls
 	AddWall(new Wall(0, 160, 35, 160, 0));
-	AddWall(new Wall(800, 61, 32, 32, 0));
-	AddWall(new Wall(832, 91, 32, 32, 0));
-	AddWall(new Wall(1410, 61, 32, 32, 0));
-	AddWall(new Wall(1442, 91, 32, 32, 0));
-	AddWall(new Wall(1474, 128, 32, 32, 0));
-	AddWall(new Wall(2000, 170, 20, 170, 0));
+	//AddWall(new Wall(800, 61, 32, 32, 0));
+	//AddWall(new Wall(832, 91, 32, 32, 0));
+	//AddWall(new Wall(1410, 61, 32, 32, 0));
+	//AddWall(new Wall(1442, 91, 32, 32, 0));
+	//AddWall(new Wall(1474, 128, 32, 32, 0));
+	//AddWall(new Wall(2000, 170, 20, 170, 0));
 }
 
 Grid::~Grid()
@@ -449,7 +449,7 @@ unordered_set<Object*> Grid::GetVisibleObjects()
 				case ENEMY:
 				{
 					auto e = (Enemy*)o;
-					if (e->isDead)
+ 					if (e->isDead)
 					{
 						it = c->objects.erase(it);
 						respawnObjects.insert(e);

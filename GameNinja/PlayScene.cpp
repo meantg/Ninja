@@ -119,15 +119,16 @@ void PlayScene::Render()
 
 void PlayScene::UpdateVisibleObjects()
 {
-	//auto it = visibleObjects.begin();
-	//while (it != visibleObjects.end())
-	//{
-	//	if ((*it)->tag != WEAPON)
-	//	{
-	//		it = visibleObjects.erase(it);
-	//	}
-	//	else ++it;
-	//}
+	//visibleObjects.clear();
+	auto it = visibleObjects.begin();
+	while (it != visibleObjects.end())
+	{
+		if ((*it)->tag != WEAPON)
+		{
+			it = visibleObjects.erase(it);
+		}
+		else ++it;
+	}
  	for (auto o : grid->GetVisibleObjects())
 	{
 		visibleObjects.insert(o);
