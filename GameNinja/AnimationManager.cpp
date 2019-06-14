@@ -173,7 +173,7 @@ void AnimationManager::StartUp()
 	animations->Add(E_EAGLE, RUNNING, ani);
 
 	//DEAD
-	ani = new Animation(100);
+	ani = new Animation(500);
 	ani->Add(18001);
 	ani->Add(18002);
 	animations->Add(E_EAGLE, DEAD, ani);
@@ -190,6 +190,10 @@ void AnimationManager::StartUp()
 	ani->Add(17001);
 	ani->Add(17002);
 	animations->Add(IH_BUTTERFLY, STANDING, ani);
+	ani = new Animation(100);
+	ani->Add(17001);
+	ani->Add(17002);
+	animations->Add(IH_BUTTERFLY, RUNNING, ani);
 	
 }
 

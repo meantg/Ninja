@@ -2,13 +2,13 @@
 
 PlayerStandingState::PlayerStandingState()
 {
-	Player::GetInstance()->height = NINJA_STANDING_HEIGHT;
-	Player::GetInstance()->vx = 0;
-	Player::GetInstance()->vy = 0;
+	player->height = NINJA_STANDING_HEIGHT;
+	player->vx = 0;
+	player->vy = 0;
 
-	Player::GetInstance()->_allow[ATTACKING] = true;
-	Player::GetInstance()->_allow[JUMPING] = true;
-	Player::GetInstance()->_allow[RUNNING] = true;
+	player->_allow[ATTACKING] = true;
+	player->_allow[JUMPING] = true;
+	player->_allow[RUNNING] = true;
 	StateName = STANDING;
 }
 
@@ -21,10 +21,10 @@ void PlayerStandingState::HandleKeyboard()
 {
 	if (keyCode[DIK_LEFT] || keyCode[DIK_RIGHT])
 	{
-		Player::GetInstance()->ChangeState(new PlayerRunningState());
+		player->ChangeState(new PlayerRunningState());
 	}
 	if(keyCode[DIK_DOWN])
 	{
-		Player::GetInstance()->ChangeState(new PlayerSittingState());
+		player->ChangeState(new PlayerSittingState());
 	}
 }

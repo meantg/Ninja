@@ -22,7 +22,6 @@ class GameMap
 public:
 	GameMap(const char* filePath);
 	int mWidth, mHeight;
-	void SetCamera(Camera *camera);
 	void Update(float dt);
 	void Render();
 	int getRow();
@@ -39,8 +38,6 @@ private:
 	int **mapMatrix;
 	int rows, columns;
 	int cBegin, cEnd;
-
-	Camera *mCamera;
 };
 
 

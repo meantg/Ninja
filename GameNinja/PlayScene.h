@@ -16,7 +16,6 @@ private:
 	AnimationManager *animations;
 	float _timeCounter;			
 	
-	Camera *mCamera;
 	GameMap *mMap;
 	ScoreBoard *scoreboard;
 	Grid *grid;
@@ -24,8 +23,8 @@ private:
 	int MapWidth, MapHeight;
 
 	vector<Object*> enemy;
-	unordered_set<Object*> listObj;
-	unordered_set<Ground*> grounds;
+	unordered_set<Object*> visibleObjects;
+	unordered_set<Rect*> grounds;
 
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
@@ -38,7 +37,7 @@ public:
 	void UpdateObject(float dt);
 	void UpdatePlayer(float dt);
 	void Render();									// Tải Scene lên màn hình
-
+	void UpdateVisibleObjects();
 	void OnKeyDown(int key);
 	void OnKeyUp(int key);
 };

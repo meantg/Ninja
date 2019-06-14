@@ -16,7 +16,7 @@ public:
 
 	Bullet()
 	{
-		type = BULLET;
+		this->tag = BULLET;
 		this->deadAnimation = AnimationManager::GetInstance()->Get(E_CLOAKMAN, DEAD);
 	}
 

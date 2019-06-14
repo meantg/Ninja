@@ -3,8 +3,7 @@
 #include "Object.h"
 #include "Camera.h"
 #include "EnemyBullet.h"
-#include "Grid.h"
-
+#include <unordered_set>
 class Enemy : public Object
 {
 
@@ -12,7 +11,6 @@ public:
 	unordered_map<State, LPANIMATION> animations;
 	LPANIMATION _curAnimation;
 
-	TypeObject tag;
 	float speed;
 	State _state;
 	bool isDoneAtk;
@@ -23,8 +21,9 @@ public:
 	void Render(float cameraX, float cameraY);
 	virtual void Update(float dt);
 	virtual void UpdatePosition(float dt);
-	virtual bool DetectGround(unordered_set<Ground*> grounds);
-	bool isOnScreen();
+	virtual bool DetectGround(unordered_set<Rect*> grounds);
+	Rect GetSpawnRect();
+	bool isOutScreen;
 	virtual void ChangeState(State StateName);
 	void AddAnimation(TypeObject _type,State _state);
 	//Hitbox GetHitBox();

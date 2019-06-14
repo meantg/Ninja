@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 {
-	tag = ENEMY;
+	this->tag = ENEMY;
 	isDead = false;
 	isActive = false;
 }
@@ -21,15 +21,6 @@ void Enemy::Render(float cameraX, float cameraY)
 
 void Enemy::Update(float dt)
 {
-	if (abs(Player::GetInstance()->x - this->spawnX) <= 140)
-	{
-		this->isActive = true;
-	}
-	else if(abs(Player::GetInstance()->x - this->x) > 140)
-	{
-		this->isActive = false;
-		this->x = spawnX;
-	}
 	if (isFrozen)
 		this->vx = this->vy = 0;
 	else
@@ -56,16 +47,19 @@ void Enemy::Update(float dt)
 
 void Enemy::UpdatePosition(float dt)
 {
-	this->x += vx * dt;
-	this->y += vy * dt;
 	this->dx = vx * dt;
 	this->dy = vy * dt;
 }
 
-bool Enemy::DetectGround(unordered_set<Ground*> grounds)
+bool Enemy::DetectGround(unordered_set<Rect*> grounds)
 {
 	return false;
 	
+}
+
+Rect Enemy::GetSpawnRect()
+{
+	return Rect(spawnX, spawnY, width, height);
 }
 
 //bool Enemy::isOnScreen()
@@ -82,6 +76,7 @@ void Enemy::ChangeState(State StateName)
 	{
 	case STANDING:
 	{
+		this->isOutScreen = false;
 		this->isActive = false;
 		this->isDead = false;
 		break;
@@ -93,7 +88,12 @@ void Enemy::ChangeState(State StateName)
 		break;
 	}
 	case DEAD:
+	{
 		this->isDead = true;
+		//this->isActive = false;
+		this->isAttacked = false;
+		break;
+	}
 	}
 
 	this->_state = StateName;

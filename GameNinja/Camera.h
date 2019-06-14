@@ -7,16 +7,16 @@ private:
 	int cmWidth;
 	int cmHeight;
 	float x, y;
-
+	static Camera* _instance;
 public:
-	Camera(int width, int height);
-
+	Camera();
+	static Camera* GetInstance();
 	void SetPosition(float x, float y);
 	int GetWidth();
 	int GetHeight();
 	float GetPositionX();
 	float GetPositionY();
-	RECT GetBound();
+	Rect GetBound();
 	void Update(int mWidth, int mHeight);
 	void ConvertToViewport(float x, float y);
 	~Camera();

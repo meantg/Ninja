@@ -117,8 +117,8 @@ void Game::GameRun()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			Update(dt*0.01);
 			ProcessKeyboard();
+			Update(dt*0.01);
 			Render();
 		}
 		else

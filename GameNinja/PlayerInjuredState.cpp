@@ -3,27 +3,27 @@
 PlayerInjuredState::PlayerInjuredState()
 {
 	StateName = INJURED;
-	/*Player::GetInstance()->vx = Player::GetInstance()->isReverse ? NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED;*/
-	Player::GetInstance()->vy = NINJA_JUMPING_SPEED_Y;
-	Player::GetInstance()->_allow[ATTACKING] = false;
+	/*player->vx = player->isReverse ? NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED;*/
+	player->vy = NINJA_JUMPING_SPEED_Y;
+	player->_allow[ATTACKING] = false;
 }
 
 void PlayerInjuredState::Update(float dt)
 {
-	Player::GetInstance()->vy -= 1.5*NINJA_GRAVITY;
+	player->vy -= 1.5*NINJA_GRAVITY;
 
-	//if (Player::GetInstance()->vy <= 0 )
+	//if (player->vy <= 0 )
 	//{
-	//	Player::GetInstance()->ChangeState(new PlayerFallingState());
+	//	player->ChangeState(new PlayerFallingState());
 	//}
-	if (Player::GetInstance()->vy <= 0)
+	if (player->vy <= 0)
 	{
-		/*Player::GetInstance()->vy = NINJA_FALLING_SPEED_Y;*/
-		if (Player::GetInstance()->y <= 56)
+		/*player->vy = NINJA_FALLING_SPEED_Y;*/
+		if (player->y <= 56)
 		{
-			Player::GetInstance()->y = 56;
-			Player::GetInstance()->vy = 0;
-			Player::GetInstance()->ChangeState(new PlayerStandingState());
+			player->y = 56;
+			player->vy = 0;
+			player->ChangeState(new PlayerStandingState());
 			return;
 		}
 	}

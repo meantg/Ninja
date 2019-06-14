@@ -2,7 +2,7 @@
 
 EPanther::EPanther(float spawnX, float spawnY)
 {
-	this->tag = ENEMY;
+
 	this->type = E_PANTHER;
 	this->_state = STANDING;
 	this->AddAnimation(E_PANTHER, STANDING);
@@ -18,7 +18,8 @@ EPanther::EPanther(float spawnX, float spawnY)
 	this->x = spawnX;
 	this->spawnX = x;
 	this->y = spawnY;
-	this->ChangeState(RUNNING);
+	this->spawnY = spawnY;
+	this->ChangeState(STANDING);
 }
 
 void EPanther::UpdatePosition(float dt)
@@ -45,5 +46,6 @@ void EPanther::Update(float dt)
 		ChangeState(RUNNING);
 	}
 	else
+		if(isAttacked == true)
 		ChangeState(DEAD);
 }

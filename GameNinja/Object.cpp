@@ -39,16 +39,15 @@ void Object::RenderBoundingBox(float x, float y)
 	spriteHandler->SetTransform(&oldMatrix);
 }
 
-RECT Object::GetRect()
+Rect Object::GetRect()
 {
-	RECT box;
-	box.top = y;
-	box.left = x;
-	box.right = box.left + width;
-	box.bottom = box.top - height;
+	Rect box;
+	box.y = y;
+	box.x = x;
+	box.width = width;
+	box.height = height;
 	return box;
 }
-
 //void Object::AddAnimation(State _state)
 //{
 //}

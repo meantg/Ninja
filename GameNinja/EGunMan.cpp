@@ -2,7 +2,6 @@
 
 EGunMan::EGunMan(float spawnX, float spawnY)
 {
-	this->tag = ENEMY;
 	this->type = E_GUNMAN;
 	this->_state = STANDING;
 	this->AddAnimation(E_GUNMAN, STANDING);
@@ -19,13 +18,14 @@ EGunMan::EGunMan(float spawnX, float spawnY)
 	this->x = spawnX;
 	this->spawnX = x;
 	this->y = spawnY;
-	this->ChangeState(RUNNING);
+	this->spawnY = spawnY;
+	this->ChangeState(STANDING);
 }
 
 void EGunMan::UpdatePosition(float dt)
 {
 	delayTime -= dt * 100;
-	if (Player::GetInstance()->x - this->x < 0)
+	if (player->x - this->x < 0)
 		this->isReverse = true;
 	else
 		this->isReverse = false;
@@ -69,9 +69,9 @@ void EGunMan::UpdatePosition(float dt)
 void EGunMan::Update(float dt)
 {
 	Enemy::Update(dt);
-	if (abs(Player::GetInstance()->x - this->x) <= 130)
+	if (abs(player->x - this->x) <= 130)
 	{
-		if (abs(Player::GetInstance()->x - this->x) <= 60)
+		if (abs(player->x - this->x) <= 60)
 		{
 			if (isActive == true && isAttacked == false)
 			{

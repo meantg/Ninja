@@ -2,8 +2,8 @@
 
 PlayerDeadState::PlayerDeadState()
 {
-	Player::GetInstance()->vx = 0;
-	Player::GetInstance()->vy = 0;
+	player->vx = 0;
+	player->vy = 0;
 }
 
 State PlayerDeadState::GetName()

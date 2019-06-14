@@ -4,7 +4,8 @@ Player * Player::_instance = NULL;
 
 Player::Player()
 {
-	tag = PLAYER;
+	this->type = PLAYER;
+	this->tag = PLAYER;
 
 	this->AddAnimation(STANDING);
 	this->AddAnimation(ATK_STAND);
@@ -38,18 +39,20 @@ Player::~Player()
 {
 }
 
-bool Player::DetectGround(unordered_set<Ground*> grounds)
+bool Player::DetectGround(unordered_set<Rect*> grounds)
 {
-	auto rbp = Collision::GetInstance()->GetBroadphaseBox(this->GetHitbox());					//rect broading-phase
+	auto rbp = this->GetRect();					//rect broading-phase
 	auto bottom = rbp.y + rbp.height;
 	rbp.y = rbp.y + dy;
 	rbp.height = rbp.height - dy;
+	if (rbp.isContain(_curGround) && (bottom >= _curGround.y))
+		return true;
+
 	for (auto g : grounds)
 	{
-		auto groundBound = g->GetGroundBound();
-		if (Collision::GetInstance()->isCollision(groundBound, rbp) && (bottom >= groundBound.y))
+		if (rbp.isContain(*g) && (bottom >= g->y))
 		{
-			_curGround = g;
+			_curGround = *g;
 			return true;
 		}
 	}
@@ -75,7 +78,7 @@ Player * Player::GetInstance()
 //	return box;
 //}
 
-void Player::Update(float dt, vector<Object*> gameObj)
+void Player::Update(float dt, unordered_set<Object*> gameObj)
 {
 	_curAnimation->Update(dt);
 	state->Update(dt);
@@ -83,9 +86,9 @@ void Player::Update(float dt, vector<Object*> gameObj)
 	CollisionResult result;
 	result.nx = result.ny = 0;
 	result.entryTime = 1.0f;
-
-
-		result = Collision::GetInstance()->SweptAABB(gameObj[1]->GetHitbox(), this->GetHitbox());
+	for (auto o : gameObj)
+	{
+		result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
 		if (result.entryTime > 0 && result.entryTime < 1.0f)
 		{
 			if (_state != ATK_SIT && _state != ATK_STAND)
@@ -94,41 +97,34 @@ void Player::Update(float dt, vector<Object*> gameObj)
 				if (isReverse == true)
 				{
 					if (result.nx > 0)
-						Player::GetInstance()->vx = NINJA_WALKING_SPEED;
+						player->vx = NINJA_WALKING_SPEED;
 					else
 					{
-						Player::GetInstance()->vx = -NINJA_WALKING_SPEED;
+						player->vx = -NINJA_WALKING_SPEED;
 						Player::isReverse = false;
 					}
 				}
 				else
 					if (result.nx > 0)
 					{
-						Player::GetInstance()->vx = NINJA_WALKING_SPEED;
-						Player::GetInstance()->isReverse = true;
+						player->vx = NINJA_WALKING_SPEED;
+						player->isReverse = true;
 					}
 					else
-						Player::GetInstance()->vx = -NINJA_WALKING_SPEED;
+						player->vx = -NINJA_WALKING_SPEED;
 			}
 			else if (_state == ATK_SIT || _state == ATK_STAND)
 			{
 				if (_curAnimation->isLastFrame == false)
-					gameObj[1]->isAttacked = true;
+					o->isAttacked = true;
 			}
 
 		}
-		else
-		{
-			x += vx * dt;
-			y += vy * dt;
-			dx = vx * dt;
-			dy = vy * dt;
-		}
-		
+	}
 	if (x < 0)
 		x = 0;
-	if (x >=2048-20)
-		x = 2048-20;
+	if (x >= 2048 - 20)
+		x = 2048 - 20;
 
 	//if (_state != SITTING) {
 	//	if (y <= 56) {
@@ -136,7 +132,7 @@ void Player::Update(float dt, vector<Object*> gameObj)
 	//	}
 	//}
 }
-void Player::CheckGroundCollision(unordered_set<Ground*> grounds)
+void Player::CheckGroundCollision(unordered_set<Rect*> grounds)
 {
 	// Trên không
 	if (this->vy)
@@ -151,7 +147,7 @@ void Player::CheckGroundCollision(unordered_set<Ground*> grounds)
 		{
 			this->isOnGround = true;
 			this->vy = this->dy = 0;
-			this->x = _curGround->y + this->height;
+			this->x = _curGround.y + this->height;
 		}
 	}
 
@@ -219,7 +215,7 @@ void Player::OnKeyUp(int keyCode)
 		case DIK_DOWN:
 			if (isStanding == true)
 			{
-				/*Player::GetInstance()->y += 7;*/
+				/*player->y += 7;*/
 				_state = STANDING;
 			}
 			break;

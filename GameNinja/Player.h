@@ -22,18 +22,18 @@ public:
 	LPANIMATION _curAnimation;
 	State _state;
 	PlayerState* state;
-	Ground *_curGround;
+	Rect _curGround;
 	bool isStanding = true, isOnGround;
-	bool DetectGround(unordered_set<Ground*> grounds);
+	bool DetectGround(unordered_set<Rect*> grounds);
 
-	void CheckGroundCollision(unordered_set<Ground*> grounds);
+	void CheckGroundCollision(unordered_set<Rect*> grounds);
 
 	unordered_map<State, bool> _allow;
 
 	static Player* GetInstance();
 
 
-	void Update(float dt, vector<Object*> gameObj);
+	void Update(float dt, unordered_set<Object*> gameObj);
 	void Render(float cameraX= 0, float cameraY= 0);
 	void AddAnimation(State _state);
 	void ChangeState(PlayerState * playerstate);

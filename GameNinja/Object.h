@@ -24,7 +24,7 @@ public:
 	float spawnX, spawnY;
 	float width, height;
 	bool isDead,isAttacked = false, isReverse = false, isFrozen = false, isActive = false ;
-	RECT GetRect();
+	Rect GetRect();
 
 
 	//State _curState;
@@ -48,28 +48,6 @@ public:
 	~Object();
 };
 
-struct Ground {
-	float x, y;
-	float width, height;
-	Ground() {}
-	Ground(float x, float y, float width, float height)
-	{
-		this->x = x;
-		this->y = y;
-		this->width = width;
-		this->height = height;
-	}
-	Hitbox GetGroundBound() {
-		Hitbox box;
-		box.x = x;
-		box.y = y;
-		box.width = width;
-		box.height = height;
-		box.vx = 0;
-		box.vy = 0;
-		return box;
-	}
-};
 
 
 

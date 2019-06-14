@@ -2,7 +2,6 @@
 
 EEagle::EEagle(float spawnX, float spawnY)
 {
-	this->tag = ENEMY;
 	this->type = E_GUNMAN;
 	this->_state = STANDING;
 	this->AddAnimation(E_EAGLE, STANDING);
@@ -18,7 +17,8 @@ EEagle::EEagle(float spawnX, float spawnY)
 	this->x = spawnX;
 	this->spawnX = x;
 	this->y = spawnY;
-	this->ChangeState(RUNNING);
+	this->spawnY = spawnY;
+	this->ChangeState(STANDING);
 }
 
 void EEagle::UpdatePosition(float dt)

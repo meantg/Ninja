@@ -55,11 +55,6 @@ int GameMap::getColumn()
 	return columns;
 }
 
-void GameMap::SetCamera(Camera * camera)
-{
-	this->mCamera = camera;
-}
-
 void GameMap::Update(float dt)
 {
 	mCamera->Update(mWidth, mHeight);

@@ -8,7 +8,6 @@ ECloakMan::ECloakMan(float spawnX, float spawnY)
 	this->AddAnimation(E_CLOAKMAN, ATTACKING);
 	this->AddAnimation(E_CLOAKMAN, DEAD);
 
-	this->tag = ENEMY;
 	this->type = E_CLOAKMAN;
 
 	this->width = ENEMY_SWORDMAN_WIDTH;
@@ -20,15 +19,16 @@ ECloakMan::ECloakMan(float spawnX, float spawnY)
 	this->spawnX = x;
 	this->y = spawnY;
 	this->vx = 2.5f;
+	this->spawnY = spawnY;
 	this->bulletTotal = bulletCount = BULLET_CLOAKMAN_COUNT;
 	this->delayTime = ENEMY_CLOAKMAN_DELAY;
-	ChangeState(RUNNING);
+	ChangeState(STANDING);
 }
 
 void ECloakMan::UpdatePosition(float dt)
 {
 	delayTime -= dt * 100;
-	if (Player::GetInstance()->x - this->x < 0)
+	if (player->x - this->x < 0)
 		this->isReverse = true;
 	else
 		this->isReverse = false;
@@ -72,9 +72,9 @@ void ECloakMan::UpdatePosition(float dt)
 void ECloakMan::Update(float dt)
 {
 	Enemy::Update(dt);
-	if (abs(Player::GetInstance()->x - this->x) <= 130)
+	if (abs(player->x - this->x) <= 130)
 	{
-		if (abs(Player::GetInstance()->x - this->x) <= 60)
+		if (abs(player->x - this->x) <= 60)
 		{
 			if (isActive == true && isAttacked == false)
 			{

@@ -5,7 +5,7 @@ CloakManBullet::CloakManBullet()
 	this->type = E_CLOAKMAN;
 
 	this->activeAnimation = AnimationManager::GetInstance()->Get(E_CLOAKMAN, ATK_WITH_WEAPON);
-	this->isActive = true;
+
 	this->vx = BULLET_CLOAKMAN_SPEED;
 	this->vy = BULLET_CLOAKMAN_JUMPING_SPEED;
 	this->width = BULLET_CLOAKMAN_WIDTH;

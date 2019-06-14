@@ -13,7 +13,8 @@
 #define WIN_NAME "Game Ninja"
 #define WIN_TITLE "Game Ninja"
 #define KEYBOARD_BUFFER_SIZE	1024
-
+#define mCamera Camera::GetInstance()
+#define player Player::GetInstance()
 
 //---------INFOR
 	//NINJA 
@@ -112,8 +113,11 @@ extern enum State
 
 extern enum TypeObject
 {
-	PLAYER,
 	ENEMY,
+	PLAYER,
+	WEAPON,
+	ITEM,
+	BULLET,
 	E_SWORDMAN,
 	E_BAZOKA,
 	E_RUNMAN,
@@ -123,7 +127,6 @@ extern enum TypeObject
 	E_EAGLE,
 	ITEMHOLDER,
 	IH_BUTTERFLY,
-	BULLET,
 };
 
 extern enum Tag
@@ -151,18 +154,34 @@ extern enum Font
 };
 
 
+struct Rect {
+	float x, y;
+	float width, height;
+	Rect() {}
+	Rect(float x, float y, float width, float height)
+	{
+		this->x = x;
+		this->y = y;
+		this->width = width;
+		this->height = height;
+	}
+	bool isContain(Rect r)
+	{
+		return !((x + width < r.x) || (x > r.x + r.width) || (y < r.y - r.height) || (y - height > r.y));
+	}
+};
 struct Wall
 {
-	RECT wall;
+	Rect wall;
 	bool climbable;
 
 	Wall() {}
 	Wall(float x, float y, float width, float height, bool climbable)
 	{
-		this->wall.top = x;
-		this->wall.left = y;
-		this->wall.right = x + width;
-		this->wall.bottom = y + height;
+		this->wall.x = x;
+		this->wall.y = y;
+		this->wall.width = width;
+		this->wall.height = height;
 		this->climbable = climbable;
 	}
 };

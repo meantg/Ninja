@@ -14,13 +14,13 @@ Cell::Cell(int xID, int yID)
 {
 	this->xID = xID;
 	this->yID = yID;
-	rect.left = xID;
-	rect.top = yID;
-	rect.right = xID + _cellwidth;
-	rect.bottom = yID - _cellheight;
+	rect.x = xID * _cellwidth;
+	rect.y = yID * _cellheight;
+	rect.width = _cellwidth;
+	rect.height = _cellheight;
 }
 
-bool Cell::isContain(RECT r)
+bool Cell::isContain(Rect r)
 {
-	return !((rect.right < r.left) || (rect.left > r.right) || (rect.top < r.bottom) || (rect.bottom > r.top));
+	return rect.isContain(r);
 }

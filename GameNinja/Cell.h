@@ -8,18 +8,18 @@
 class Cell {
 private:
 	int xID, yID;
-	RECT rect;
+	Rect rect;
 public:
 	static int _cellwidth, _cellheight;
 	unordered_set<Object*>objects;
 	vector<Wall*> walls;
-	vector<Ground*> grounds;
+	vector<Rect*> grounds;
 
 	Cell(int xID, int yID);
 
 	void RemoveObject(Object *obj);
-	bool isContain(RECT r);
+	bool isContain(Rect r);
 
-	~Cell();
+	~Cell() {};
 
 };

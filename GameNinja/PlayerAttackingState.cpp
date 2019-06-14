@@ -2,13 +2,13 @@
 
 PlayerAttackingState::PlayerAttackingState()
 {
-	_curState = Player::GetInstance()->state->StateName;
-	_reverse = Player::GetInstance()->isReverse;
-	Player::GetInstance()->_allow[JUMPING] = false;
+	_curState = player->state->StateName;
+	_reverse = player->isReverse;
+	player->_allow[JUMPING] = false;
 	if (_curState == SITTING)
 	{
 		StateName = ATK_SIT;
-		Player::GetInstance()->isStanding = false;
+		player->isStanding = false;
 	}
 	else
 		StateName = ATK_STAND;
@@ -17,59 +17,59 @@ PlayerAttackingState::PlayerAttackingState()
 void PlayerAttackingState::Update(float dt)
 {
 	this->HandleKeyboard();
-	if (Player::GetInstance()->y <= 56)
-		Player::GetInstance()->y = 56;
+	if (player->y <= 56)
+		player->y = 56;
 
 	// Kiem tra xem danh xong chua
-	if (Player::GetInstance()->_curAnimation->isLastFrame)
+	if (player->_curAnimation->isLastFrame)
 	{
-		Player::GetInstance()->_allow[ATTACKING] = true;
+		player->_allow[ATTACKING] = true;
 		switch (_curState)
 		{
 		case STANDING: case RUNNING:
-			Player::GetInstance()->ChangeState(new PlayerStandingState());
+			player->ChangeState(new PlayerStandingState());
 			return;
 		case SITTING:
-			Player::GetInstance()->ChangeState(new PlayerSittingState());		
+			player->ChangeState(new PlayerSittingState());		
 			return;
 		case FALLING:
-			Player::GetInstance()->ChangeState(new PlayerFallingState());
+			player->ChangeState(new PlayerFallingState());
 			return;
 		case JUMPING:
-			Player::GetInstance()->ChangeState(new PlayerJumpingState());
+			player->ChangeState(new PlayerJumpingState());
 			return;
 		}
 	}
 	// Neu chua danh xong
 	else
 	{
-		Player::GetInstance()->_allow[ATTACKING] = false;
+		player->_allow[ATTACKING] = false;
 		switch (_curState)
 		{
 		case RUNNING: case STANDING: case SITTING:
-			Player::GetInstance()->vx = 0;
-			Player::GetInstance()->vy = 0;
+			player->vx = 0;
+			player->vy = 0;
 			break;
 		case JUMPING:
 		{
-			//Player::GetInstance()->_allow[JUMPING] = false;
-			Player::GetInstance()->vy -= NINJA_GRAVITY;
-			//if ((Player::GetInstance()->vx == SCREEN_WIDTH - Player::GetInstance()->width ||
-			//	Player::GetInstance()->vx == (Player::GetInstance()->width) / 2))
+			//player->_allow[JUMPING] = false;
+			player->vy -= NINJA_GRAVITY;
+			//if ((player->vx == SCREEN_WIDTH - player->width ||
+			//	player->vx == (player->width) / 2))
 			//{
-			//	Player::GetInstance()->ChangeState(new PlayerClingingState());
+			//	player->ChangeState(new PlayerClingingState());
 			//	return;
 			//}
 
-			//else if (Player::GetInstance()->vy <= 0)
+			//else if (player->vy <= 0)
 			//{
 			//	_curState = FALLING;
-			//	Player::GetInstance()->vy = NINJA_GRAVITY;
+			//	player->vy = NINJA_GRAVITY;
 			//}
 			break;
 		}
 		case FALLING:
-			Player::GetInstance()->vy = -NINJA_FALLING_SPEED_Y;
+			player->vy = -NINJA_FALLING_SPEED_Y;
 		}
 	}
 }
@@ -78,11 +78,11 @@ void PlayerAttackingState::HandleKeyboard()
 {
 	if (keyCode[DIK_LEFT])
 	{
-		Player::GetInstance()->vx = _reverse ? -NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED / 2;
+		player->vx = _reverse ? -NINJA_WALKING_SPEED : -NINJA_WALKING_SPEED / 2;
 	}
 	else if (keyCode[DIK_RIGHT])
 	{
-		Player::GetInstance()->vx = !_reverse ? NINJA_WALKING_SPEED : NINJA_WALKING_SPEED / 2;
+		player->vx = !_reverse ? NINJA_WALKING_SPEED : NINJA_WALKING_SPEED / 2;
 	}
-	else Player::GetInstance()->vx = 0;
+	else player->vx = 0;
 }

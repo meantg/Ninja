@@ -1,13 +1,20 @@
 #include "Camera.h"
 
-Camera::Camera(int width, int height)
+
+Camera* Camera::_instance = NULL;
+Camera::Camera()
 {
-	cmWidth = width;
-	cmHeight = height;
+	cmWidth = SCREEN_WIDTH;
+	cmHeight = SCREEN_HEIGHT;
 	x = 0;
-	y = height;
+	y = SCREEN_HEIGHT;
 }
 
+Camera * Camera::GetInstance()
+{
+	if (_instance == NULL) _instance = new Camera();
+	return _instance;
+}
 
 Camera::~Camera()
 {
@@ -29,14 +36,14 @@ float Camera::GetPositionY() {
 	return y;
 }
 
-RECT Camera::GetBound()
+Rect Camera::GetBound()
 {
-	RECT bound;
+	Rect bound;
 
-	bound.left = x;
-	bound.right = bound.left + cmWidth;
-	bound.top = y;
-	bound.bottom = bound.top + cmHeight;
+	bound.x = x;
+	bound.width = cmWidth;
+	bound.y = y;
+	bound.height = cmHeight;
 
 	return bound;
 }
