@@ -149,6 +149,7 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GunManBullet.cpp" />
     <ClCompile Include="IHButterfly.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAttackingState.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GunManBullet.h" />
     <ClInclude Include="IHButterfly.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackingState.h" />

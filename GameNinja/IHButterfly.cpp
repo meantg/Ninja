@@ -10,6 +10,7 @@ IHButterfly::IHButterfly(float spawnX, float spawnY)
 	this->x = spawnX;
 	this->spawnX = x;
 	this->y = spawnY;
+	this->spawnY = y;
 	this->ChangeState(STANDING);
 }
 

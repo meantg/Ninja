@@ -71,23 +71,19 @@ void EEagle::UpdatePosition(float dt)
 	{
 		this->vy += 0.4;
 	}
+	this->dx = vx * dt;
+	this->dy = vy * dt;
 }
 
 void EEagle::Update(float dt)
 {
 	Enemy::Update(dt);
-	//if (isActive == true && isAttacked == false)
-	//{
-	//	if (isReverse == true)
-	//	{
-	//		vx = -ENEMY_EAGLE_SPEED;
-	//	}
-	//	else
-	//		vx = ENEMY_EAGLE_SPEED;
-	//	ChangeState(RUNNING);
-	//}
-	//else
-	//	ChangeState(DEAD);
+	if (isActive == true && isAttacked == false)
+	{
+		ChangeState(RUNNING);
+	}
+	else
+		ChangeState(DEAD);
 }
 
 void EEagle::ChangeState(State StateName)
@@ -115,9 +111,9 @@ void EEagle::ChangeState(State StateName)
 	}
 	case DEAD:
 	{
-		this->isDead = true;
-		//this->isActive = false;
-		this->isAttacked = false;
+		//this->isDead = true;
+		////this->isActive = false;
+		//this->isAttacked = false;
 		break;
 	}
 	}

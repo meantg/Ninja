@@ -17,8 +17,6 @@ PlayerAttackingState::PlayerAttackingState()
 void PlayerAttackingState::Update(float dt)
 {
 	this->HandleKeyboard();
-	if (player->y <= 56)
-		player->y = 56;
 
 	// Kiem tra xem danh xong chua
 	if (player->_curAnimation->isLastFrame)

@@ -26,8 +26,8 @@ void EPanther::UpdatePosition(float dt)
 {
 	this->isReverse = false;
 
-	this->x += vx * dt;
-	this->y += vy * dt;
+	//this->x += vx * dt;
+	//this->y += vy * dt;
 	this->dx = vx * dt;
 	this->dy = vy * dt;
 }

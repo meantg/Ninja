@@ -54,6 +54,8 @@
 #define ENEMY_EAGLE_HEIGHT 20
 #define ENEMY_EAGLE_SPEED 8.0f
 
+#define ITEM_SPEED_Y 4.0f
+
 
 	//BULLET
 

@@ -50,6 +50,9 @@
     <Filter Include="FrameWork\GameObjects\Entity\Enemy_Bullet">
       <UniqueIdentifier>{853b3917-be7b-41e1-be48-5cba269084f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Item">
+      <UniqueIdentifier>{07649fe4-8923-483d-ac30-31c33b7224c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -174,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="GunManBullet.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +311,9 @@
     </ClInclude>
     <ClInclude Include="GunManBullet.h">
       <Filter>FrameWork\GameObjects\Entity\Enemy_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

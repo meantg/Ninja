@@ -16,6 +16,11 @@ PlayerFallingState::PlayerFallingState()
 
 void PlayerFallingState::Update(float dt)
 {
+	if (player->y < 0)
+	{
+		player->x = 56;
+		player->y = 56;
+	}
 	if (player->vy == 0)
 	{
 		player->ChangeState(new PlayerStandingState());

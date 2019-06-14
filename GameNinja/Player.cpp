@@ -109,8 +109,6 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 	CollisionResult result;
 	result.nx = result.ny = 0;
 	result.entryTime = 1.0f;
-	if (_state == !INJURED)
-	{
 		for (auto o : gameObj)
 		{
 			result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
@@ -144,7 +142,6 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 					{
 						o->isAttacked = true;
 					}
-				}
 			}
 		}
 	}
