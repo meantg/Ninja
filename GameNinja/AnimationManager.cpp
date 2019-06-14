@@ -60,7 +60,7 @@ void AnimationManager::StartUp()
 	animations->Add(PLAYER, ATK_SIT, ani);
 
 	//Anim-Jumping [7]
-	ani = new Animation(100);
+	ani = new Animation(60);
 	ani->Add(50001);
 	ani->Add(50002);
 	ani->Add(50003);
@@ -194,6 +194,10 @@ void AnimationManager::StartUp()
 	ani->Add(17001);
 	ani->Add(17002);
 	animations->Add(IH_BUTTERFLY, RUNNING, ani);
+	ani = new Animation(500);
+	ani->Add(18001);
+	ani->Add(18002);
+	animations->Add(IH_BUTTERFLY, DEAD, ani);
 	
 }
 

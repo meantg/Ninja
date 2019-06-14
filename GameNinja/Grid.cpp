@@ -79,12 +79,20 @@ Grid::Grid(int mapWidth, int mapHeight)
 
 	//Walls
 	AddWall(new Wall(0, 160, 35, 160, 0));
-	//AddWall(new Wall(800, 61, 32, 32, 0));
-	//AddWall(new Wall(832, 91, 32, 32, 0));
-	//AddWall(new Wall(1410, 61, 32, 32, 0));
-	//AddWall(new Wall(1442, 91, 32, 32, 0));
-	//AddWall(new Wall(1474, 128, 32, 32, 0));
-	//AddWall(new Wall(2000, 170, 20, 170, 0));
+	
+	//Item
+	AddObject(new IBlueSpirit(330,80));
+	AddObject(new IBlueSpirit(430,80));
+	AddObject(new IRedSpirit(567, 80));
+	AddObject(new IGlassHour(631, 104));
+	AddObject(new IBlueShuriken(758, 121));
+	AddObject(new IRedBag(1146, 80));
+	AddObject(new IRedSpirit(884, 152));
+	AddObject(new IFireWheel(1174, 152));
+	AddObject(new IRedSpirit(1321, 152));
+	AddObject(new IRedBag(1655, 80));
+	AddObject(new IBlueBag(1850, 80));
+
 }
 
 Grid::~Grid()

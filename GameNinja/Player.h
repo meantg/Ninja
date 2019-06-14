@@ -24,7 +24,8 @@ public:
 	PlayerState* state;
 	Wall wallBound;
 	Rect _curGround;
-	bool isStanding = true, isOnGround;
+	TypeObject weaponType;
+	bool isStanding = true, isOnGround, isThrowing = false;
 	bool DetectGround(unordered_set<Rect*> grounds);
 	bool DetectWall(unordered_set<Wall*> walls);
 	void CheckGroundCollision(unordered_set<Rect*> grounds);
@@ -38,6 +39,8 @@ public:
 	void Render(float cameraX= 0, float cameraY= 0);
 	void AddAnimation(State _state);
 	void ChangeState(PlayerState * playerstate);
+
+	void SetWeapon(TypeObject weapon);
 
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keyCode);

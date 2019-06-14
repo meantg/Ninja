@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(float spawnX, float spawnY)
+Item::Item()
 {
 	this->type = ITEM;
 	this->tag = ITEM;
@@ -9,30 +9,27 @@ Item::Item(float spawnX, float spawnY)
 	this->vy = ITEM_SPEED_Y;
 }
 
-bool Item::DectectGround(unordered_set<Rect*>)
+void Item::DectectGround(unordered_set<Rect*> grounds)
 {
-	auto rbp = this->GetRect();					//rect broading-phase
-	auto bottom = rbp.y + rbp.height;
-	rbp.y = rbp.y + dy;
-	rbp.height = rbp.height - dy;
-	if (rbp.isContain(_curGround) && (bottom >= _curGround.y))
-		return true;
-
 	for (auto g : grounds)
 	{
-		if (rbp.isContain(*g) && (bottom >= g->y))
+		if (g->x < this->x && this->x < g->x + g->width
+			&& g->y >= groundBound.y && this->y > g->y)
 		{
-			_curGround = *g;
-			return true;
+			groundBound = *g;
 		}
 	}
-	return false;
+	this->spawnY = this->y = this->groundBound.y + (this->height >> 1);
+
 }
 
 void Item::Update(float dt)
 {
+	this->dx = vx * dt;
+	this->dy = vy * dt;
 }
 
 void Item::Render()
 {
+	_sprite->Draw(this->x, this->y);
 }

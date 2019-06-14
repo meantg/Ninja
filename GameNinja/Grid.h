@@ -4,14 +4,26 @@
 #include "Object.h"
 #include "Cell.h"
 #include "Camera.h"
-#include "ESwordMan.h"
 #include "Player.h"
+#include "ESwordMan.h"
 #include "ECloakMan.h"
 #include "EBazoka.h"
 #include "EEagle.h"
 #include "EPanther.h"
 #include "EGunMan.h"
+
 #include "IHButterfly.h"
+
+#include "IBlueBag.h"
+#include "IBlueShuriken.h"
+#include "IBlueSpirit.h"
+#include "IFireWheel.h"
+#include "IGlassHour.h"
+#include "IHealthPotion.h"
+#include "IRedBag.h"
+#include "IRedShuriken.h"
+#include "IRedSpirit.h"
+
 
 class Grid {
 private:

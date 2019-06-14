@@ -53,6 +53,9 @@
     <Filter Include="FrameWork\GameObjects\Entity\Item">
       <UniqueIdentifier>{07649fe4-8923-483d-ac30-31c33b7224c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameObjects\Entity\Player\Weapon">
+      <UniqueIdentifier>{3c1932cc-f6b6-4552-b418-82cb0b6a06d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -135,9 +138,6 @@
     </ClCompile>
     <ClCompile Include="ESwordMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="IHButterfly.cpp">
-      <Filter>FrameWork\GameObjects\Entity\Item Holder</Filter>
     </ClCompile>
     <ClCompile Include="ECloakMan.cpp">
       <Filter>FrameWork\GameObjects\Entity\Enemy</Filter>
@@ -314,6 +314,48 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlueSpirit.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IRedSpirit.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IGlassHour.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlueShuriken.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IRedBag.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IFireWheel.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlueBag.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IHealthPotion.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="IRedShuriken.h">
+      <Filter>FrameWork\GameObjects\Entity\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemHolder.h">
+      <Filter>FrameWork\GameObjects\Entity\Item Holder</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueShuriken.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="RedShuriken.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="FireWheel.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

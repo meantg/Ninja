@@ -6,12 +6,11 @@ class Item : public Object
 {
 public:
 	LPSPRITE _sprite;
-	Rect _curGround;
+	Rect groundBound;
 	float speedY;
 
-	Item(float spawnX, float spawnY);
-	~Item();
-	void DectectGround(unordered_set<Rect*>);
+	Item();
+	void DectectGround(unordered_set<Rect*> grounds);
 	void Update(float dt);
 	void Render();
 };

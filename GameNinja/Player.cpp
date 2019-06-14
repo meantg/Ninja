@@ -24,14 +24,18 @@ Player::Player()
 	this->width = NINJA_WIDTH;
 	this->height = NINJA_STANDING_HEIGHT;
 
-	_state = STANDING;
+	this->_state = STANDING;
 	//_curAnimation = animations[_state];
-	isOnGround = true;
+	this->isOnGround = true;
 
-	_allow[JUMPING] = true;
-	_allow[ATTACKING] = true;
-	_allow[RUNNING] = true;
-	_allow[THROWING] = true;
+	this->_allow[JUMPING] = true;
+	this->_allow[ATTACKING] = true;
+	this->_allow[RUNNING] = true;
+	this->_allow[THROWING] = true;
+	this->isThrowing = false;
+	this->vx = this->vy = this->dx = this->dy = 0;
+	this->isDead = false;
+	this->isReverse = false;
 }
 
 Player::~Player()
@@ -111,39 +115,56 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 	result.entryTime = 1.0f;
 	for (auto o : gameObj)
 	{
-		result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
-		if (result.entryTime > 0 && result.entryTime < 1.0f)
+		switch (o->tag)
 		{
-			if (_state != ATK_SIT && _state != ATK_STAND)
+		case ENEMY:
 			{
-				this->ChangeState(new PlayerInjuredState());
-				if (isReverse == true)
+			result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
+			if (result.entryTime > 0 && result.entryTime < 1.0f)
+			{
+				if (_state != ATK_SIT && _state != ATK_STAND)
 				{
-					if (result.nx > 0)
-						player->vx = NINJA_WALKING_SPEED;
-					else
+					this->ChangeState(new PlayerInjuredState());
+					if (isReverse == true)
 					{
-						player->vx = -NINJA_WALKING_SPEED;
-						Player::isReverse = false;
+						if (result.nx > 0)
+							player->vx = NINJA_WALKING_SPEED;
+						else
+						{
+							player->vx = -NINJA_WALKING_SPEED;
+							Player::isReverse = false;
+						}
+					}
+					else
+						if (result.nx > 0)
+						{
+							player->vx = NINJA_WALKING_SPEED;
+							player->isReverse = true;
+						}
+						else
+							player->vx = -NINJA_WALKING_SPEED;
+				}
+				else if (_state == ATK_SIT || _state == ATK_STAND)
+				{
+					if (_curAnimation->isLastFrame == false)
+					{
+						o->isAttacked = true;
 					}
 				}
-				else
-					if (result.nx > 0)
-					{
-						player->vx = NINJA_WALKING_SPEED;
-						player->isReverse = true;
-					}
-					else
-						player->vx = -NINJA_WALKING_SPEED;
 			}
-			else if (_state == ATK_SIT || _state == ATK_STAND)
+			switch (o->type)
 			{
-				if (_curAnimation->isLastFrame == false)
-				{
-					o->isAttacked = true;
-				}
+				case ITEMHOLDER:
+					if (this->GetRect().isContain(o->GetRect()))
+					{
+						o->isDead = true;
+						break;
+					}
 			}
 		}
+		
+		}
+		
 	}
 	if (x < 0)
 		x = 0;
@@ -247,6 +268,11 @@ void Player::ChangeState(PlayerState * playerstate)
 	state = playerstate;
 	_state = playerstate->StateName;
 	_curAnimation = animations[_state];
+}
+
+void Player::SetWeapon(TypeObject weapon)
+{
+	this->weaponType = weapon;
 }
 
 

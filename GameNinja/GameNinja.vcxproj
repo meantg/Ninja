@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{829F6512-2625-4881-BA5F-5BAD1CFA922B}</ProjectGuid>
     <RootNamespace>GameNinja</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -148,7 +148,6 @@
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GunManBullet.cpp" />
-    <ClCompile Include="IHButterfly.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -176,6 +175,11 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationManager.h" />
+    <ClInclude Include="BlueShuriken.h" />
+    <ClInclude Include="FireWheel.h" />
+    <ClInclude Include="IBlueBag.h" />
+    <ClInclude Include="IBlueShuriken.h" />
+    <ClInclude Include="IBlueSpirit.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
@@ -195,8 +199,15 @@
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GunManBullet.h" />
+    <ClInclude Include="IFireWheel.h" />
+    <ClInclude Include="IGlassHour.h" />
     <ClInclude Include="IHButterfly.h" />
+    <ClInclude Include="IHealthPotion.h" />
+    <ClInclude Include="IRedBag.h" />
+    <ClInclude Include="IRedShuriken.h" />
+    <ClInclude Include="IRedSpirit.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackingState.h" />
@@ -210,6 +221,7 @@
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="PlayerRunningState.h" />
+    <ClInclude Include="RedShuriken.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ScoreBoard.h" />
@@ -218,6 +230,7 @@
     <ClInclude Include="PlayerStandingState.h" />
     <ClInclude Include="CloakManBullet.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="MapReader\lv1.png" />
