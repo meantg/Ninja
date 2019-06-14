@@ -6,7 +6,6 @@ Player::Player()
 {
 	this->type = PLAYER;
 	this->tag = PLAYER;
-
 	this->AddAnimation(STANDING);
 	this->AddAnimation(ATK_STAND);
 	this->AddAnimation(ATK_SIT);
@@ -107,43 +106,46 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 {
 	_curAnimation->Update(dt);
 	state->Update(dt);
-
 	CollisionResult result;
 	result.nx = result.ny = 0;
 	result.entryTime = 1.0f;
-	for (auto o : gameObj)
+	if (_state == !INJURED)
 	{
-		result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
-		if (result.entryTime > 0 && result.entryTime < 1.0f)
+		for (auto o : gameObj)
 		{
-			if (_state != ATK_SIT && _state != ATK_STAND)
+			result = Collision::GetInstance()->SweptAABB(o->GetHitbox(), this->GetHitbox());
+			if (result.entryTime > 0 && result.entryTime < 1.0f)
 			{
-				this->ChangeState(new PlayerInjuredState());
-				if (isReverse == true)
+				if (_state != ATK_SIT && _state != ATK_STAND)
 				{
-					if (result.nx > 0)
-						player->vx = NINJA_WALKING_SPEED;
-					else
+					this->ChangeState(new PlayerInjuredState());
+					if (isReverse == true)
 					{
-						player->vx = -NINJA_WALKING_SPEED;
-						Player::isReverse = false;
+						if (result.nx > 0)
+							player->vx = NINJA_WALKING_SPEED;
+						else
+						{
+							player->vx = -NINJA_WALKING_SPEED;
+							Player::isReverse = false;
+						}
+					}
+					else
+						if (result.nx > 0)
+						{
+							player->vx = NINJA_WALKING_SPEED;
+							player->isReverse = true;
+						}
+						else
+							player->vx = -NINJA_WALKING_SPEED;
+				}
+				else if (_state == ATK_SIT || _state == ATK_STAND)
+				{
+					if (_curAnimation->isLastFrame == false)
+					{
+						o->isAttacked = true;
 					}
 				}
-				else
-					if (result.nx > 0)
-					{
-						player->vx = NINJA_WALKING_SPEED;
-						player->isReverse = true;
-					}
-					else
-						player->vx = -NINJA_WALKING_SPEED;
 			}
-			else if (_state == ATK_SIT || _state == ATK_STAND)
-			{
-				if (_curAnimation->isLastFrame == false)
-					o->isAttacked = true;
-			}
-
 		}
 	}
 	if (x < 0)
