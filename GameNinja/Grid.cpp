@@ -26,21 +26,22 @@ Grid::Grid(int mapWidth, int mapHeight)
 	//AddObject(new ECloakMan(820, 100));
 	//AddObject(new ECloakMan(1230, 120));
 
-		//Panther
-	/*AddObject(new EPanther(234, 46));
-	AddObject(new EPanther(912, 118));
-	AddObject(new EPanther(945, 118));
-	AddObject(new EPanther(1281, 46));*/
+	////	Panther
+	//AddObject(new EPanther(234, 46));
+	//AddObject(new EPanther(912, 118));
+	//AddObject(new EPanther(945, 118));
+	//AddObject(new EPanther(1281, 46));
 
 	//	//GunMan
-	//AddObject(new EGunMan(1373, 57));
+	/*AddObject(new EGunMan(1373, 57));*/
+	/*AddObject(new EGunMan(250, 57));*/
 
 	//	//Eagle
-	//AddObject(new EEagle(560, 140));
-	//AddObject(new EEagle(720, 140));
-	//AddObject(new EEagle(1060, 130));
-	//AddObject(new EEagle(1570, 125));
-	//AddObject(new EEagle(1730, 140));
+	AddObject(new EEagle(560, 140));
+	AddObject(new EEagle(720, 140));
+	AddObject(new EEagle(1060, 130));
+	AddObject(new EEagle(1570, 125));
+	AddObject(new EEagle(1730, 140));
 
 	//Insert ItemHolder
 		//Butterfly

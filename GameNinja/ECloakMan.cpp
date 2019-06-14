@@ -12,17 +12,14 @@ ECloakMan::ECloakMan(float spawnX, float spawnY)
 
 	this->width = ENEMY_SWORDMAN_WIDTH;
 	this->height = ENEMY_SWORDMAN_HEIGHT;
-	this->speed = 4.0f;
-
-	this->vy = 0;
-	this->x = spawnX;
-	this->spawnX = x;
-	this->y = spawnY;
-	this->vx = 2.5f;
-	this->spawnY = spawnY;
 	this->bulletTotal = bulletCount = BULLET_CLOAKMAN_COUNT;
 	this->delayTime = ENEMY_CLOAKMAN_DELAY;
-	ChangeState(STANDING);
+	this->speed = ENEMY_CLOAKMAN_SPEED;
+
+	this->spawnX = this->x = spawnX;
+	this->spawnY = this->y = spawnY;
+
+
 }
 
 void ECloakMan::UpdatePosition(float dt)

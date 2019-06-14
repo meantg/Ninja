@@ -13,13 +13,8 @@ EPanther::EPanther(float spawnX, float spawnY)
 	this->height = ENEMY_PANTHER_HEIGHT;
 	this->speed = ENEMY_PANTHER_SPEED;
 
-	this->vy = 0;
-	this->vx = speed;
-	this->x = spawnX;
-	this->spawnX = x;
-	this->y = spawnY;
-	this->spawnY = spawnY;
-	this->ChangeState(STANDING);
+	this->spawnX = this->x = spawnX;
+	this->spawnY = this->y = spawnY;
 }
 
 void EPanther::UpdatePosition(float dt)
