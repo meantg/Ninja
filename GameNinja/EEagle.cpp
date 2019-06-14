@@ -11,6 +11,7 @@ EEagle::EEagle(float spawnX, float spawnY)
 	this->width = ENEMY_EAGLE_WIDTH;
 	this->height = ENEMY_EAGLE_HEIGHT;
 	this->speed = ENEMY_EAGLE_SPEED;
+	this->score = ENEMY_EAGLE_SCORE;
 
 	this->vy = ENEMY_EAGLE_SPEED;
 	this->vx = speed;
@@ -108,9 +109,7 @@ void EEagle::ChangeState(State StateName)
 	}
 	case DEAD:
 	{
-		//this->isDead = true;
-		////this->isActive = false;
-		//this->isAttacked = false;
+		ScoreBoard::GetInstance()->score += score;
 		break;
 	}
 	}

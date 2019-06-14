@@ -1,10 +1,11 @@
 #include "Enemy.h"
-
+#include "ScoreBoard.h"
 Enemy::Enemy()
 {
 	this->tag = ENEMY;
 	isDead = false;
 	isActive = false;
+	this->score = ENEMY_DEFAULT_SCORE;
 }
 
 void Enemy::Render(float cameraX, float cameraY)
@@ -40,9 +41,6 @@ void Enemy::Update(float dt)
 			this->isActive = false;
 		}
 	}
-	if (this->_state == ATTACKING)
-		if (_curAnimation->isLastFrame)
-			isDoneAtk = true;
 }
 
 void Enemy::UpdatePosition(float dt)
@@ -64,6 +62,11 @@ void Enemy::DetectGround(unordered_set<Rect*> grounds)
 	this->spawnY = this->y = this->groundBound.y + (this->height >> 1);
 	
 	}
+
+bool Enemy::isFinishAttack()
+{
+	return (this->_state == ATTACKING && _curAnimation->isLastFrame);
+}
 
 Rect Enemy::GetSpawnRect()
 {
@@ -98,9 +101,7 @@ void Enemy::ChangeState(State StateName)
 	}
 	case DEAD:
 	{
-		//this->isDead = true;
-		////this->isActive = false;
-		//this->isAttacked = false;
+		ScoreBoard::GetInstance()->score += this->score;
 		break;
 	}
 	}

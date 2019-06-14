@@ -7,7 +7,7 @@
 #include "AnimationManager.h"
 #include "Collision.h"
 #include "GameGlobal.h"
-
+#include <unordered_set>
 using namespace std;
 
 class Object
@@ -23,7 +23,7 @@ public:
 	float dx, dy;
 	float spawnX, spawnY;
 	int width, height;
-	bool isDead,isAttacked = false, isReverse = false, isFrozen = false, isActive = false ;
+	bool isDead, isAttacked = false, isReverse = false, isFrozen = false, isActive = false ;
 	Rect GetRect();
 
 
@@ -42,6 +42,7 @@ public:
 		box.vy = vy;
 		return box;
 	};
+	virtual void DetectGround(unordered_set<Rect*> grounds) {}
 	virtual void Update(float dt);
 	virtual void Render(float cameraX, float cameraY);
 	void RenderBoundingBox(float x, float y);

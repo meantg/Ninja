@@ -11,5 +11,6 @@ public:
 	float activeDistance;
 	void UpdatePosition(float dt);
 	virtual void Update(float dt);
+	void DetectGround(unordered_set<Rect*> grounds) {}
 	void ChangeState(State StateName);
 };

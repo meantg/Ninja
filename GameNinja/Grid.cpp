@@ -13,6 +13,28 @@ Grid::Grid(int mapWidth, int mapHeight)
 		}
 		_cells.push_back(row);
 	}
+
+	//Grounds
+	AddGround(new Rect(0, 38, 540, 10));
+	AddGround(new Rect(580, 42, 22, 10));
+	AddGround(new Rect(644, 42, 22, 10));
+	AddGround(new Rect(708, 42, 22, 10));
+	AddGround(new Rect(772, 42, 22, 10));
+	AddGround(new Rect(800, 73, 32, 10));
+	AddGround(new Rect(836, 104, 128, 10));
+	AddGround(new Rect(1026, 42, 66, 10));
+	AddGround(new Rect(1125, 38, 280, 10));
+	AddGround(new Rect(1409, 78, 30, 10));
+	AddGround(new Rect(1440, 106, 30, 10));
+	AddGround(new Rect(1470, 136, 65, 10));
+	AddGround(new Rect(1603, 44, 18, 10));
+	AddGround(new Rect(1665, 44, 18, 10));
+	AddGround(new Rect(1729, 44, 18, 10));
+	AddGround(new Rect(1800, 38, 255, 10));
+	AddGround(new Rect(1213, 106, 34, 10));
+	AddGround(new Rect(1280, 106, 96, 10));
+
+	// Add Object
 	AddObject(new ESwordMan(255, 57));
 	AddObject(new ESwordMan(349, 57));
 	AddObject(new ESwordMan(445, 57));
@@ -33,7 +55,7 @@ Grid::Grid(int mapWidth, int mapHeight)
 	AddObject(new EPanther(1281, 46));
 
 	//	//GunMan
-	/*AddObject(new EGunMan(1373, 57));*/
+	AddObject(new EGunMan(1373, 57));
 	/*AddObject(new EGunMan(250, 57));*/
 
 	//	//Eagle
@@ -57,34 +79,11 @@ Grid::Grid(int mapWidth, int mapHeight)
 	AddObject(new IHButterfly(1655, 80));
 	AddObject(new IHButterfly(1850, 80));
 
-	//Grounds
-	AddGround(new Rect(0, 38, 540, 10));
-	AddGround(new Rect(580, 42, 22, 10));
-	AddGround(new Rect(644, 42, 22, 10));
-	AddGround(new Rect(708, 42, 22, 10));
-	AddGround(new Rect(772, 42, 22, 10));
-	AddGround(new Rect(800, 73, 32, 10));
-	AddGround(new Rect(836, 104, 128, 10));
-	AddGround(new Rect(1026, 42, 66, 10));
-	AddGround(new Rect(1125, 38, 280, 10));
-	AddGround(new Rect(1409, 78, 30, 10));
-	AddGround(new Rect(1440, 106, 30, 10));
-	AddGround(new Rect(1470, 136, 65, 10));
-	AddGround(new Rect(1603, 44, 18, 10));
-	AddGround(new Rect(1665, 44, 18, 10));
-	AddGround(new Rect(1729, 44, 18, 10));
-	AddGround(new Rect(1800, 38, 255, 10));
-	AddGround(new Rect(1213, 106, 34, 10));
-	AddGround(new Rect(1280, 106, 96, 10));
+	
 
 	//Walls
 	AddWall(new Wall(0, 160, 35, 160, 0));
-	//AddWall(new Wall(800, 61, 32, 32, 0));
-	//AddWall(new Wall(832, 91, 32, 32, 0));
-	//AddWall(new Wall(1410, 61, 32, 32, 0));
-	//AddWall(new Wall(1442, 91, 32, 32, 0));
-	//AddWall(new Wall(1474, 128, 32, 32, 0));
-	//AddWall(new Wall(2000, 170, 20, 170, 0));
+
 }
 
 Grid::~Grid()
@@ -149,6 +148,7 @@ void Grid::AddObject(Object * obj)
 	{
 		for (int x = LeftCell; x <= RightCell; ++x)
 		{
+			obj->DetectGround(this->GetColliableGrounds(obj));
 			_cells[y][x]->objects.insert(obj);
 		}
 	}

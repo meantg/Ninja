@@ -1,5 +1,5 @@
 #include "ScoreBoard.h"
-
+ScoreBoard *ScoreBoard::_instance = NULL;
 ScoreBoard::ScoreBoard()
 {
 	time = 140;
@@ -7,6 +7,14 @@ ScoreBoard::ScoreBoard()
 	health = 10;
 	mana = 10;
 	curTime = 0;
+}
+
+ScoreBoard * ScoreBoard::GetInstance()
+{
+	if (_instance == NULL) {
+		_instance = new ScoreBoard();
+	}
+	return _instance;
 }
 
 //ScoreBoard * ScoreBoard::GetInstance()
@@ -28,12 +36,7 @@ void ScoreBoard::Render()
 
 	SpriteManager::GetInstance()->GetSprite(Cross)->Draw(90, 10);
 
-	SpriteManager::GetInstance()->GetSprite(0)->DrawFont(100, 10);
-	SpriteManager::GetInstance()->GetSprite(0)->DrawFont(108, 10);
-	SpriteManager::GetInstance()->GetSprite(0)->DrawFont(116, 10);
-	SpriteManager::GetInstance()->GetSprite(0)->DrawFont(124, 10);
-	SpriteManager::GetInstance()->GetSprite(0)->DrawFont(132, 10);
-	SpriteManager::GetInstance()->GetSprite(0)->DrawFont(140, 10);
+	
 
 	//TIMER
 	SpriteManager::GetInstance()->GetSprite(T)->DrawFont(48, 22);
@@ -57,6 +60,21 @@ void ScoreBoard::Render()
 		SpriteManager::GetInstance()->GetSprite(k)->DrawFont(116, 22);
 	}
 
+	if (this->score > 0) {
+		int i = (score / 100000);
+		int j = ((score % 100000) / 10000);
+		int k = ((score % 100000) % 10000 / 1000);
+		int l = ((score % 100000) % 10000 % 1000/ 100);
+		int m = ((score % 100000) % 10000 % 1000 % 100/10);
+		int n = ((score % 100000) % 10000 % 1000 % 100 % 10);
+
+		SpriteManager::GetInstance()->GetSprite(i)->DrawFont(100, 10);
+		SpriteManager::GetInstance()->GetSprite(j)->DrawFont(108, 10);
+		SpriteManager::GetInstance()->GetSprite(k)->DrawFont(116, 10);
+		SpriteManager::GetInstance()->GetSprite(l)->DrawFont(124, 10);
+		SpriteManager::GetInstance()->GetSprite(m)->DrawFont(132, 10);
+		SpriteManager::GetInstance()->GetSprite(n)->DrawFont(140, 10);
+	}
 	//STAGE
 	SpriteManager::GetInstance()->GetSprite(S)->DrawFont(180, 10);
 	SpriteManager::GetInstance()->GetSprite(T)->DrawFont(188, 10);

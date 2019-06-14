@@ -60,7 +60,6 @@ public:
 			if (_curAnimation->isLastFrame)
 			{
 				this->isDead = true;
-				this->isActive = false;
 			}
 		}
 	}

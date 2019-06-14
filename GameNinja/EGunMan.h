@@ -9,5 +9,5 @@ public:
 	EGunMan(float spawnX, float spawnY);
 	~EGunMan() {};
 	void UpdatePosition(float dt);
-	virtual void Update(float dt);
+	void Update(float dt);
 };

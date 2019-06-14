@@ -65,6 +65,11 @@ void SpriteManager::StartUp()
 	{
 		sprites->Add(70000+ i, i*16, 0, 16*(i+1), 16, texStage1);
 	}
+	LPDIRECT3DTEXTURE9 texStage2 = TextureManager::GetInstance()->GetTexture(Stage3_2);
+	for (int i = 0; i < 79; i++) {
+		sprites->Add(71000 + i, i * 16, 0, 16 * (i + 1), 16, texStage2);
+	}
+
 
 	//------------------LoadSprite Enemy
 	LPDIRECT3DTEXTURE9 texEnemy = TextureManager::GetInstance()->GetTexture(Enemy_Texture);

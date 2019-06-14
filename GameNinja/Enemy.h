@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "EnemyBullet.h"
 #include <unordered_set>
+#include "ScoreBoard.h"
 class Enemy : public Object
 {
 
@@ -13,8 +14,8 @@ public:
 	Rect groundBound;
 
 	float speed;
+	int score;
 	State _state;
-	bool isDoneAtk;
 	int bulletCount, bulletTotal;
 	Enemy();
 	~Enemy() {};
@@ -23,6 +24,7 @@ public:
 	virtual void Update(float dt);
 	virtual void UpdatePosition(float dt);
 	virtual void DetectGround(unordered_set<Rect*> grounds);
+	bool isFinishAttack();
 	Rect GetSpawnRect();
 	bool isOutScreen;
 	virtual void ChangeState(State StateName);

@@ -14,6 +14,7 @@ class Player : public Object
 {
 private:
 	static Player * _instance;
+	
 	unordered_map<State, LPANIMATION> animations;
 public:
 	Player();
@@ -22,10 +23,18 @@ public:
 	LPANIMATION _curAnimation;
 	State _state;
 	PlayerState* state;
+
+	int health;
+	int energy;
+	int lives;
+
+	void SetHealth(int health);
+	void SetEnergy(int energy);
+
 	Wall wallBound;
 	Rect _curGround;
 	bool isStanding = true, isOnGround;
-	bool DetectGround(unordered_set<Rect*> grounds);
+	bool DetectCurGround(unordered_set<Rect*> grounds);
 	bool DetectWall(unordered_set<Wall*> walls);
 	void CheckGroundCollision(unordered_set<Rect*> grounds);
 	void CheckWallCollision(std::unordered_set<Wall*> walls);

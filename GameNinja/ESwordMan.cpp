@@ -19,7 +19,17 @@ ESwordMan::ESwordMan(float spawnX, float spawnY)
 void ESwordMan::UpdatePosition(float dt)
 {
 	this->dx = vx * dt;
-	this->dy = vy * dt;
+
+	if (vx > 0 && this->x + (this->width >> 1) >= groundBound.x + groundBound.width)
+	{
+		this->vx = -vx;
+		this->isReverse = true;
+	}
+	else if (vx < 0 && this->x - (this->width >> 1) <= groundBound.x)
+	{
+		this->vx = -vx;
+		this->isReverse = false;
+	}
 }
 
 void ESwordMan::Update(float dt)

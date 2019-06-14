@@ -15,6 +15,7 @@ ECloakMan::ECloakMan(float spawnX, float spawnY)
 	this->bulletTotal = bulletCount = BULLET_CLOAKMAN_COUNT;
 	this->delayTime = ENEMY_CLOAKMAN_DELAY;
 	this->speed = ENEMY_CLOAKMAN_SPEED;
+	this->score = ENEMY_CLOAKMAN_SCORE;
 
 	this->spawnX = this->x = spawnX;
 	this->spawnY = this->y = spawnY;
