@@ -28,16 +28,18 @@ void Enemy::Update(float dt)
 		this->UpdatePosition(dt);
 		_curAnimation->Update(dt);
 	}
-
-	if (this->_state == DEAD)
+	if (isAttacked == true)
 	{
-		this-> vx = this-> vy = 0;
-		if (isFrozen)
-			_curAnimation->Update(dt);
-		if (_curAnimation->isLastFrame)
+		if (this->_state == DEAD)
 		{
-			this->isDead = true;
-			this->isActive = false;
+			this->vx = this->vy = 0;
+			if (isFrozen)
+				_curAnimation->Update(dt);
+			if (_curAnimation->isLastFrame)
+			{
+				this->isDead = true;
+				this->isActive = false;
+			}
 		}
 	}
 	if (this->_state == ATTACKING)

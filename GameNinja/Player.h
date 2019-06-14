@@ -25,7 +25,7 @@ public:
 	Rect _curGround;
 	bool isStanding = true, isOnGround;
 	bool DetectGround(unordered_set<Rect*> grounds);
-
+	float delayInjured;
 	void CheckGroundCollision(unordered_set<Rect*> grounds);
 
 	unordered_map<State, bool> _allow;

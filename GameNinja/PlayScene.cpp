@@ -135,6 +135,13 @@ void PlayScene::UpdateObject(float dt)
 			}
 			}
 		}
+		case BULLET:
+		{
+			Bullet* b = (Bullet*)o;
+			b->Update(dt);
+			grid->MoveObject(b, b->x + b->dx, b->y + b->dy);
+			break;
+		}
 		}
 		++it;
 	}
