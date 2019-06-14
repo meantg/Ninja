@@ -29,6 +29,9 @@ public:
 	void RespawnEnemies();
 	void Update();
 	void UpdateVisibleCells(Rect viewport);
+
+	void AddGround(Rect *g);
+	void AddWall(Wall *w);
 	//void RespawnEnemies();
 	//Get nearby Object
 	unordered_set<Object*> GetColliableObjects(Object * obj);

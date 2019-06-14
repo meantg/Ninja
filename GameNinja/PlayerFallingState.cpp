@@ -16,17 +16,11 @@ PlayerFallingState::PlayerFallingState()
 
 void PlayerFallingState::Update(float dt)
 {
-	if (player->y <= 56)
+	if (player->vy == 0)
 	{
-		player->y = 56;
-		player->vy = 0;
 		player->ChangeState(new PlayerStandingState());
 		return;
 	}
-	/*if(player->isOnGround){
-		player->ChangeState(new PlayerStandingState());
-		return;
-	}*/
 
 	this->HandleKeyboard();
 }

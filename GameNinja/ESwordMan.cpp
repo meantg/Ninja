@@ -12,20 +12,12 @@ ESwordMan::ESwordMan(float spawnX, float spawnY)
 	this->height = ENEMY_SWORDMAN_HEIGHT;
 	this->speed = ENEMY_SWORDMAN_SPEED;
 
-	this->vy = 0;
-	this->vx = speed;
-	this->x = spawnX;
-	this->spawnX = x;
-	this->y = spawnY;
-	this->spawnY = spawnY;
-	this->ChangeState(STANDING);
+	this->spawnX = this->x = spawnX;
+	this->spawnY = this->y = spawnY;
 }
 
 void ESwordMan::UpdatePosition(float dt)
 {
-
-	//this->x += vx * dt;
-	//this->y += vy * dt;
 	this->dx = vx * dt;
 	this->dy = vy * dt;
 }

@@ -29,7 +29,7 @@ void Enemy::Update(float dt)
 		_curAnimation->Update(dt);
 	}
 
-	if (this->_state == DEAD)
+	if (_state == DEAD)
 	{
 		this-> vx = this-> vy = 0;
 		if (isFrozen)
@@ -79,6 +79,7 @@ void Enemy::ChangeState(State StateName)
 		this->isOutScreen = false;
 		this->isActive = false;
 		this->isDead = false;
+		this->isAttacked = false;
 		break;
 	}
 
@@ -89,9 +90,9 @@ void Enemy::ChangeState(State StateName)
 	}
 	case DEAD:
 	{
-		this->isDead = true;
-		//this->isActive = false;
-		this->isAttacked = false;
+		//this->isDead = true;
+		////this->isActive = false;
+		//this->isAttacked = false;
 		break;
 	}
 	}

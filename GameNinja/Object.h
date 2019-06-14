@@ -22,7 +22,7 @@ public:
 	float vx, vy;
 	float dx, dy;
 	float spawnX, spawnY;
-	float width, height;
+	int width, height;
 	bool isDead,isAttacked = false, isReverse = false, isFrozen = false, isActive = false ;
 	Rect GetRect();
 

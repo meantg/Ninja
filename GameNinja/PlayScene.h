@@ -22,9 +22,7 @@ private:
 
 	int MapWidth, MapHeight;
 
-	vector<Object*> enemy;
 	unordered_set<Object*> visibleObjects;
-	unordered_set<Rect*> grounds;
 
 	// Counter nhằm Update Scene sau một khoảng thời gian
 public:
@@ -33,7 +31,7 @@ public:
 	~PlayScene();
 
 	void LoadMap(const char *filePath);
-	virtual void Update(float dt);	// Update các thông số các đối tượng trong Scene
+	void Update(float dt);	// Update các thông số các đối tượng trong Scene
 	void UpdateObject(float dt);
 	void UpdatePlayer(float dt);
 	void Render();									// Tải Scene lên màn hình

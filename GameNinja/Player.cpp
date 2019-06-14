@@ -39,6 +39,7 @@ Player::~Player()
 {
 }
 
+//Phát hiện ground bằng cách tạo một broading-phase của player và check xem có chạm vào ground không
 bool Player::DetectGround(unordered_set<Rect*> grounds)
 {
 	auto rbp = this->GetRect();					//rect broading-phase
@@ -54,6 +55,30 @@ bool Player::DetectGround(unordered_set<Rect*> grounds)
 		{
 			_curGround = *g;
 			return true;
+		}
+	}
+	return false;
+}
+
+bool Player::DetectWall(unordered_set<Wall*> walls)
+{
+	auto r = this->GetRect();
+	r.x = dx > 0 ? r.x : r.x + dx;
+	r.width = dx > 0 ? dx + r.width : r.width - dx;
+
+	if (r.isContain(wallBound.wall))
+	{
+		return true;
+	}
+	else
+	{
+		for (auto w : walls)
+		{
+			if (w->wall.isContain(r))
+			{
+				wallBound = *w;
+				return true;
+			}
 		}
 	}
 	return false;
@@ -147,7 +172,10 @@ void Player::CheckGroundCollision(unordered_set<Rect*> grounds)
 		{
 			this->isOnGround = true;
 			this->vy = this->dy = 0;
-			this->x = _curGround.y + this->height;
+			this->y = _curGround.y + (this->height >> 1);
+
+			if (_state == ATK_STAND)
+				this->_allow[RUNNING] = false;
 		}
 	}
 
@@ -158,7 +186,44 @@ void Player::CheckGroundCollision(unordered_set<Rect*> grounds)
 	}
 }
 
+void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
+{
 
+	if (this->vx && this->DetectWall(walls))
+	{
+		float wallLeft = wallBound.wall.x;
+		float wallRight = wallLeft + wallBound.wall.width;
+		float playerLeft = this->x - (this->width >> 1);
+		float playerRight = this->x + (this->width >> 1);
+
+		if (this->vx > 0 && playerRight > wallLeft && playerRight < wallRight)
+		{
+			this->vx = this->dx = 0;
+			this->x = wallLeft - (this->width >> 1);
+
+			if (wallBound.climbable && this->vy
+				&& this->y + (this->height >> 1) <= wallBound.wall.y
+				&& this->y - (this->height >> 1) >= wallBound.wall.y - wallBound.wall.height)
+			{
+				this->isReverse = false;
+				this->ChangeState(new PlayerClingingState());
+			}
+		}
+		else if (this->vx < 0 && playerLeft < wallRight && playerLeft > wallLeft)
+		{
+			this->vx = this->dx = 0;
+			this->x = wallRight;
+
+			if (wallBound.climbable && this->vy
+				&& this->y + (this->height >> 1) <= wallBound.wall.y
+				&& this->y - (this->height >> 1) >= wallBound.wall.y - wallBound.wall.height)
+			{
+				this->isReverse = true;
+				this->ChangeState(new PlayerClingingState());
+			}
+		}
+	}
+}
 
 
 void Player::Render(float cameraX, float cameraY)
