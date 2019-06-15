@@ -162,7 +162,11 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 			{
 				if (_curAnimation->isLastFrame == false)
 				{
-					o->isAttacked = true;
+					switch (o->tag) {
+					case ENEMY:
+						auto e = (Enemy*)o;
+						e->ChangeState(DEAD);
+					}
 				}
 			}
 		}

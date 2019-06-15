@@ -17,22 +17,22 @@ Grid::Grid(int mapWidth, int mapHeight)
 	//Grounds
 	AddGround(new Rect(0, 38, 540, 10));
 	AddGround(new Rect(580, 42, 22, 10));
-	AddGround(new Rect(644, 42, 22, 10));
-	AddGround(new Rect(708, 42, 22, 10));
-	AddGround(new Rect(772, 42, 22, 10));
-	AddGround(new Rect(800, 73, 32, 10));
-	AddGround(new Rect(836, 104, 128, 10));
-	AddGround(new Rect(1026, 42, 66, 10));
-	AddGround(new Rect(1125, 38, 280, 10));
-	AddGround(new Rect(1409, 78, 30, 10));
-	AddGround(new Rect(1440, 106, 30, 10));
-	AddGround(new Rect(1470, 136, 65, 10));
-	AddGround(new Rect(1603, 44, 18, 10));
-	AddGround(new Rect(1665, 44, 18, 10));
-	AddGround(new Rect(1729, 44, 18, 10));
-	AddGround(new Rect(1800, 38, 255, 10));
-	AddGround(new Rect(1213, 106, 34, 10));
-	AddGround(new Rect(1280, 106, 96, 10));
+	AddGround(new Rect(652, 42, 22, 10));
+	AddGround(new Rect(716, 42, 22, 10));
+	AddGround(new Rect(780, 42, 22, 10));
+	AddGround(new Rect(808, 73, 32, 10));
+	AddGround(new Rect(844, 104, 128, 10));
+	AddGround(new Rect(1034, 42, 66, 10));
+	AddGround(new Rect(1133, 38, 280, 10));
+	AddGround(new Rect(1417, 78, 30, 10));
+	AddGround(new Rect(1448, 106, 30, 10));
+	AddGround(new Rect(1478, 136, 65, 10));
+	AddGround(new Rect(1611, 44, 18, 10));
+	AddGround(new Rect(1673, 44, 18, 10));
+	AddGround(new Rect(1737, 44, 18, 10));
+	AddGround(new Rect(1808, 38, 255, 10));
+	AddGround(new Rect(1221, 106, 34, 10));
+	AddGround(new Rect(1288, 106, 96, 10));
 
 	// Add Object
 	AddObject(new ESwordMan(255, 57));
@@ -49,21 +49,21 @@ Grid::Grid(int mapWidth, int mapHeight)
 	AddObject(new ECloakMan(1230, 120));
 
 	////	Panther
-	AddObject(new EPanther(234, 46));
-	AddObject(new EPanther(912, 118));
-	AddObject(new EPanther(945, 118));
-	AddObject(new EPanther(1281, 46));
+	AddObject(new EPanther(234, 46,1));
+	AddObject(new EPanther(912, 118,0));
+	AddObject(new EPanther(945, 118,1));
+	AddObject(new EPanther(1281, 46,0));
 
 	//	//GunMan
 	AddObject(new EGunMan(1373, 57));
-	/*AddObject(new EGunMan(250, 57));*/
+
 
 	//	//Eagle
-	AddObject(new EEagle(560, 140));
-	AddObject(new EEagle(720, 140));
-	AddObject(new EEagle(1060, 130));
-	AddObject(new EEagle(1570, 125));
-	AddObject(new EEagle(1730, 140));
+	AddObject(new EEagle(560, 140,0));
+	AddObject(new EEagle(720, 140,0 ));
+	AddObject(new EEagle(1060, 130,1));
+	AddObject(new EEagle(1570, 125,1));
+	AddObject(new EEagle(1730, 140,0));
 
 	//Insert ItemHolder
 		//Butterfly
@@ -374,7 +374,32 @@ unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 			if (x < 0 || x >= columns) continue;
 			//Tùy theo loại object (bullet, enemies, item) mà khởi tạo và insert vào objects
 			for (auto o : _cells[y][x]->objects) {
-				objs.insert(o);
+				switch (o->tag)
+				{
+				case ENEMY:
+				{
+					auto e = (Enemy*)o;
+					if (e->isActive && e->_state != DEAD)
+					{
+  						objs.insert(e);
+					}
+					break;
+				}
+				case BULLET:
+				{
+					auto b = (Bullet*)o;
+					if (b->_state != DEAD)
+					{
+						objs.insert(b);
+					}
+					break;
+				}
+				default:
+				{
+					objs.insert(o);
+					break;
+				}
+				}
 			}
 		}
 	}

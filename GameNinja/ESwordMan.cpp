@@ -32,20 +32,4 @@ void ESwordMan::UpdatePosition(float dt)
 	}
 }
 
-void ESwordMan::Update(float dt)
-{
-	Enemy::Update(dt);
-	if (isActive == true && isAttacked == false)
-	{
-		if (isReverse == true)
-		{
-			vx = -ENEMY_SWORDMAN_SPEED;
-		}
-		else
-			vx = ENEMY_SWORDMAN_SPEED;
-		ChangeState(RUNNING);	
-	}
-	else if(isAttacked == true)
-		ChangeState(DEAD);
-}
 

@@ -15,15 +15,11 @@ CloakManBullet::CloakManBullet()
 
 void CloakManBullet::UpdateDistance(float dt)
 {
-	vy -= 0.1f;
-	if (vy <= 0)
-	{
-		vy = -BULLET_CLOAKMAN_FALLING_SPEED;
-	}
-	//if (y < 0)
-	//	delete this;
-	x += vx * dt;
-	y += vy * dt;
+	vy -= 0.2f;
+	//if (vy <= 0)
+	//{
+	//	vy = -BULLET_CLOAKMAN_FALLING_SPEED;
+	//}
 	dx = vx * dt;
 	dy = vy * dt;
 }

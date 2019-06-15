@@ -13,7 +13,7 @@ EGunMan::EGunMan(float spawnX, float spawnY)
 	this->speed = ENEMY_GUNMAN_SPEED;
 	this->score = ENEMY_GUNMAN_SCORE;
 	this->bulletTotal = this->bulletCount = BULLET_GUNMAN_COUNT;
-	this->delayTime = 900;
+	this->delayTime = 1800;
 	this->spawnX = this->x = spawnX;
 	this->spawnY = this->y = spawnY;
 }
@@ -28,12 +28,6 @@ void EGunMan::UpdatePosition(float dt)
 	case RUNNING:
 	{
 		this->dx = vx * dt;
-
-		/*if ((vx > 0 && this->x + (this->width >> 1) >= groundBound.x + groundBound.width)
-			|| (vx < 0 && this->x - (this->width >> 1) <= groundBound.x))
-		{
-			this->vx = -vx;
-		}*/
 		if (vx > 0 && this->x + (this->width >> 1) >= groundBound.x + groundBound.width)
 		{
 			this->vx = -vx;
@@ -55,7 +49,7 @@ void EGunMan::UpdatePosition(float dt)
 	}
 	case ATTACKING:
 	{
-		this->vx = 0;
+		this->dx = 0;
 		break;
 	}
 	}
@@ -66,7 +60,7 @@ void EGunMan::Update(float dt)
 	Enemy::Update(dt);
 	if (this->isDead)
 	{
-		delayTime = 3000 >> 1;
+		delayTime = 1800;
 	}
 }
 

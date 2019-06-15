@@ -90,7 +90,6 @@ void Enemy::ChangeState(State StateName)
 		this->isOutScreen = false;
 		this->isActive = false;
 		this->isDead = false;
-		this->isAttacked = false;
 		break;
 	}
 
@@ -105,7 +104,6 @@ void Enemy::ChangeState(State StateName)
 		break;
 	}
 	}
-
 	this->_state = StateName;
 	this->_curAnimation = animations[StateName];
 }

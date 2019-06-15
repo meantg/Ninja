@@ -5,7 +5,7 @@
 class EEagle : public Enemy
 {
 public:
-	EEagle(float spawnX, float spawnY);
+	EEagle(float spawnX, float spawnY, bool isReverse);
 	~EEagle() {};
 	float delayTime;
 	float activeDistance;

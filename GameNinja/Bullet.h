@@ -22,15 +22,13 @@ public:
 
 	~Bullet() {}
 
+	void DetectGround(unordered_set<Rect*> grounds) {}
 	void Render(float cameraX, float cameraY)
 	{
 		screenX = x - cameraX;
 		screenY = cameraY - y;
-		if (isActive == true)
-		{
-			_curAnimation->isReverse = isReverse;
-			_curAnimation->Render(screenX, screenY);
-		}
+		_curAnimation->isReverse = isReverse;
+		_curAnimation->Render(screenX, screenY);
 		//this->RenderBoundingBox(screenX, screenY);
 	}
 
@@ -38,8 +36,6 @@ public:
 	{
 		this->dx = vx * dt;
 		this->dy = vy * dt;
-		this->x += dx;
-		this->y += dy;
 	}
 
 	virtual void Update(float dt)
@@ -56,7 +52,10 @@ public:
 		{
 			this->vx = this->vy = 0;
 			if (isFrozen)
+			{
 				_curAnimation->Update(dt);
+			}
+				
 			if (_curAnimation->isLastFrame)
 			{
 				this->isDead = true;

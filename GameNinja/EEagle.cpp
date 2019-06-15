@@ -1,6 +1,6 @@
 ﻿#include "EEagle.h"
 
-EEagle::EEagle(float spawnX, float spawnY)
+EEagle::EEagle(float spawnX, float spawnY, bool isReverse)
 {
 	this->type = E_EAGLE;
 	this->_state = STANDING;
@@ -17,8 +17,7 @@ EEagle::EEagle(float spawnX, float spawnY)
 	this->vx = speed;
 	this->spawnX = this->x = spawnX;
 	this->spawnY = this->y = spawnY;
-	this->ChangeState(STANDING);
-	this->activeDistance = 70.0f;
+	this->activeDistance = isReverse ? 70.0f : -70.0f;
 }
 
 void EEagle::UpdatePosition(float dt)
@@ -32,20 +31,20 @@ void EEagle::UpdatePosition(float dt)
 
 		if (player->x < this->x)
 		{
-			this->vx = min(-9.0f, dx);
+			this->vx = min(-6.0f, dx);
 		}
 		else
 		{
-			this->vx = max(9.0f, dx);
+			this->vx = max(6.0f, dx);
 		}
 
 		if (player->y < this->y)
 		{
-			this->vy = min(-9.0, dy);
+			this->vy = min(-6.0, dy);
 		}
-		else this->vy = max(9.0, dy);
+		else this->vy = max(6.0, dy);
 
-		delayTime = 3000;
+		delayTime = 1300;
 	}
 	else
 	{
@@ -64,23 +63,20 @@ void EEagle::UpdatePosition(float dt)
 
 	if (vy > 0 && this->y > player->y)
 	{
-		this->vy -= 0.4;
+		this->vy -= 0.3f;
 	}
 	else if (vy < 0 && this->y <= player->y)
 	{
-		this->vy += 0.4;
+		this->vy += 0.3f;
 	}
 }
 
 void EEagle::Update(float dt)
 {
 	Enemy::Update(dt);
-	if (isActive == true && isAttacked == false)
-	{
-		ChangeState(RUNNING);
+	if (this->isDead) {
+		delayTime = 1300 >> 1;
 	}
-	else if(isAttacked==true)
-		ChangeState(DEAD);
 }
 
 void EEagle::ChangeState(State StateName)
@@ -92,7 +88,6 @@ void EEagle::ChangeState(State StateName)
 		this->isOutScreen = false;
 		this->isActive = false;
 		this->isDead = false;
-		this->isAttacked = false;
 		break;
 	}
 
@@ -110,6 +105,7 @@ void EEagle::ChangeState(State StateName)
 	case DEAD:
 	{
 		ScoreBoard::GetInstance()->score += score;
+		delayTime = 1300 >> 2;
 		break;
 	}
 	}

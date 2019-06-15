@@ -1,10 +1,9 @@
 #include "EPanther.h"
 
-EPanther::EPanther(float spawnX, float spawnY)
+EPanther::EPanther(float spawnX, float spawnY, bool isReverse)
 {
 
 	this->type = E_PANTHER;
-	this->_state = STANDING;
 	this->AddAnimation(E_PANTHER, STANDING);
 	this->AddAnimation(E_PANTHER, RUNNING);
 	this->AddAnimation(E_PANTHER, DEAD);
@@ -100,22 +99,4 @@ void EPanther::ChangeState(State StateName)
 	}
 	this->_state = StateName;
 	this->_curAnimation = animations[StateName];
-}
-
-void EPanther::Update(float dt)
-{
-	Enemy::Update(dt);
-	if (isActive == true && isAttacked == false)
-	{
-		if (isReverse == true)
-		{
-			vx = -ENEMY_PANTHER_SPEED;
-		}
-		else
-			vx = ENEMY_PANTHER_SPEED;
-		ChangeState(RUNNING);
-	}
-	else
-		if(isAttacked == true)
-		ChangeState(DEAD);
 }

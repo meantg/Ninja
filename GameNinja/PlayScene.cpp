@@ -50,7 +50,7 @@ void PlayScene::UpdateObject(float dt)
 		{
 			auto e = (Enemy*)o;
 			e->Update(dt);
-			grid->MoveObject(e, e->x + e->vx*dt, e->y + e->vy*dt);
+			grid->MoveObject(e, e->x + e->dx, e->y + e->dy);
 
 			switch (e->type)
 			{
@@ -58,8 +58,8 @@ void PlayScene::UpdateObject(float dt)
 			case E_GUNMAN:
 			case E_BAZOKA:
 			{
-				if (e->isFinishAttack())
-				{
+ 				if (e->isFinishAttack())
+				{ 
 					auto bullet = EnemyBullet::CreateBullet(e->type);
 					bullet->isReverse = e->isReverse;
 					if (bullet->isReverse)
@@ -73,7 +73,7 @@ void PlayScene::UpdateObject(float dt)
 					if (e->bulletCount == 0)
 					{
 						e->bulletCount = e->bulletTotal;
-						e->ChangeState(RUNNING);
+ 						e->ChangeState(RUNNING);
 					}
 				}
 				break;
@@ -93,9 +93,9 @@ void PlayScene::UpdateObject(float dt)
 		}
 		case BULLET:
 		{
-			Bullet* bullet = (Bullet*)o;
+			auto* bullet = (Bullet*)o;
 			bullet->Update(dt);
-			grid->MoveObject(bullet, bullet->x + bullet->dx, bullet->y + bullet->dy);
+			grid->MoveObject(bullet, bullet->x + bullet->vx * dt, bullet->y + bullet->vy * dt);
 			break;
 		}
 		}

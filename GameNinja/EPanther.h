@@ -5,7 +5,7 @@ class EPanther : public Enemy
 {
 public :
 	float activeDistance;
-	EPanther(float spawnX, float spawnY);
+	EPanther(float spawnX, float spawnY, bool isReverse);
 	bool isOnGround;
 	Rect curGroundBound;
 	~EPanther() {};
@@ -13,5 +13,4 @@ public :
 	void DetectCurGround(unordered_set<Rect*> grounds);
 	void UpdatePosition(float dt);
 	void ChangeState(State StateName);
-	virtual void Update(float dt);
 };
