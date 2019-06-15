@@ -1,16 +1,15 @@
 #pragma once
 #include "Weapon.h"
 
-class BlueShuriken : public Weapon
+class JumpAtk : public Weapon
 {
-	BlueShuriken()
+	JumpAtk()
 	{
-		atkanim = AnimationManager::GetInstance()->Get(WEAPON, ATK_WITH_BLUESHURIKEN);
-		width = WEAPON_BLUESHURIKEN_WIDTH;
-		height = WEAPON_BLUESHURIKEN_HEIGHT;
-		vx = WEAPON_BLUESHURIKEN_SPEED;
-		vy = 0;
-		weapontype = BLUESHURIKEN;
+		atkanim = AnimationManager::GetInstance()->Get(WEAPON, ATK_WITH_ROUNDSWORD);
+		width = WEAPON_ROUNDSWORD_WIDTH;
+		height = WEAPON_ROUNDSWORD_HEIGHT;
+		vx = vy = 0;
+		weapontype = ROUNDSWORD;
 	}
 
 	void UpdateDistance(float dt)
@@ -33,7 +32,7 @@ class BlueShuriken : public Weapon
 				case BULLET:
 				{
 					auto bullet = (Bullet*)obj;
-					if (bullet->_state!= DEAD)
+					if (bullet->_state != DEAD)
 					{
 						bullet->ChangeState(DEAD);
 						this->isDead = true;
@@ -43,8 +42,8 @@ class BlueShuriken : public Weapon
 
 				case ENEMY:
 				{
-						auto enemy = (Enemy*)obj;
-						enemy->ChangeState(DEAD);
+					auto enemy = (Enemy*)obj;
+					enemy->ChangeState(DEAD);
 				}
 
 				case ITEMHOLDER:

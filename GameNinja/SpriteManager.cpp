@@ -55,6 +55,17 @@ void SpriteManager::StartUp()
 	sprites->Add(60003, 325, 45, 353, 77, texPeople);
 	sprites->Add(60004, 357, 45, 385, 77, texPeople);
 
+	//Weapon
+		//Sword
+		//Normal attack
+	sprites->Add(19001, 91, 7, 107, 26, texPeople);
+	sprites->Add(19002, 133, 7, 143, 26, texPeople);
+		//Jump atk 
+	sprites->Add(19003, 279, 49, 289, 69, texPeople);
+	sprites->Add(19004, 302, 67, 322, 77, texPeople);
+	sprites->Add(19005, 325, 57, 335, 77, texPeople);
+	sprites->Add(19006, 356, 49, 376, 59, texPeople);
+
 	////BBox
 	//LPDIRECT3DTEXTURE9 BBoxText = TextureManager::GetInstance()->GetTexture(BBox_Texture);
 	//sprites->Add(99999, 0, 0, 222, 118, BBoxText);
@@ -143,6 +154,19 @@ void SpriteManager::StartUp()
 	//DEAD sprite for Enemy
 	sprites->Add(18001, 363, 40, 397, 79, texItem);
 	sprites->Add(18002, 316, 0, 350, 39, texItem);
+
+	//Weapon
+		//FireWheel
+	sprites->Add(19007, 8, 83, 38, 115, texItem);
+	sprites->Add(19008, 49, 83, 79, 115, texItem);
+	sprites->Add(19009, 91, 83, 121, 115, texItem);
+	sprites->Add(19010, 133, 83, 163, 115, texItem);
+		//BlueShuriken
+	sprites->Add(19011, 174, 94, 187, 106, texItem);
+	sprites->Add(19012, 186, 94, 196, 106, texItem);
+		//RedShuriken
+	sprites->Add(19013, 202, 91, 218, 106, texItem);
+	sprites->Add(19014, 219, 91, 235, 106, texItem);
 
 	//----------------------LoadSprite Holder
 	LPDIRECT3DTEXTURE9 texHolder = TextureManager::GetInstance()->GetTexture(Item_Texture);

@@ -81,6 +81,37 @@ void AnimationManager::StartUp()
 	ani->Add(50001);
 	animations->Add(PLAYER, INJURED, ani);
 
+	//Anim-ATK WITH WEAPON
+
+	ani = new Animation(120);
+	ani->Add(19001);
+	ani->Add(19002);
+	animations->Add(WEAPON, ATK_WITH_SWORD, ani);
+
+	ani = new Animation(60);
+	ani->Add(19003);
+	ani->Add(19004);
+	ani->Add(19005);
+	ani->Add(19006);
+	animations->Add(WEAPON, ATK_WITH_ROUNDSWORD, ani);
+
+	ani = new Animation(100);
+	ani->Add(19007);
+	ani->Add(19008);
+	ani->Add(19009);
+	ani->Add(19010);
+	animations->Add(WEAPON, ATK_WITH_FIREWHEEL,ani);
+
+	ani = new Animation(100);
+	ani->Add(19011);
+	ani->Add(19012);
+	animations->Add(WEAPON, ATK_WITH_BLUESHURIKEN, ani);
+
+	ani = new Animation(100);
+	ani->Add(19013);
+	ani->Add(19014);
+	animations->Add(WEAPON, ATK_WITH_REDSHURIKEN, ani);
+
 	////--------------LoadAnimation ENEMY
 
 	////SwordMan

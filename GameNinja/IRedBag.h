@@ -6,6 +6,7 @@ class IRedBag : public Item
 public:
 	IRedBag(float spawnX, float spawnY)
 	{
+		this->itemID = REDBAG;
 		this->x = this->spawnX = spawnX;
 		this->y = this->spawnY = spawnY;
 		this->_sprite = SpriteManager::GetInstance()->GetSprite(16009);

@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "ItemHolder.h"
 #include "GameGlobal.h"
+
 class Weapon : public Object
 {
 protected:

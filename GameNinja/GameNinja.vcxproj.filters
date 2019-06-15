@@ -342,9 +342,6 @@
     <ClInclude Include="IRedShuriken.h">
       <Filter>FrameWork\GameObjects\Entity\Item</Filter>
     </ClInclude>
-    <ClInclude Include="ItemHolder.h">
-      <Filter>FrameWork\GameObjects\Entity\Item Holder</Filter>
-    </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
     </ClInclude>
@@ -355,6 +352,12 @@
       <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="FireWheel.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpAtk.h">
       <Filter>FrameWork\GameObjects\Entity\Player\Weapon</Filter>
     </ClInclude>
   </ItemGroup>

@@ -155,10 +155,13 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 			switch (o->type)
 			{
 				case ITEMHOLDER:
-					if (this->GetRect().isContain(o->GetRect()))
+					if (_state == ATK_SIT || _state == ATK_STAND)
 					{
-						o->isDead = true;
-						break;
+						if (this->GetRect().isContain(o->GetRect()))
+						{
+							o->isDead = true;
+							break;
+						}
 					}
 			}
 		}

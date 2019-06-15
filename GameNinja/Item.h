@@ -8,6 +8,7 @@ public:
 	LPSPRITE _sprite;
 	Rect groundBound;
 	float speedY;
+	TypeObject itemID;
 
 	Item();
 	void DectectGround(unordered_set<Rect*> grounds);
