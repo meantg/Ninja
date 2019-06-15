@@ -24,22 +24,9 @@ public:
 	void Update(float dt)
 	{
 		Enemy::Update(dt);
-		if (isActive == true && isAttacked == false)
-		{
-			ChangeState(RUNNING);
-		}
-		if (isDead == true)
-		{
-			switch ()
-			{
-			case BLUESPIRIT:
-
-			default:
-				break;
-			}
-		}
 		//else if (isAttacked == true)
 		//	ChangeState(DEAD);
 	}
+	void DetectGround(unordered_set<Rect*> grounds) {}
 
 };

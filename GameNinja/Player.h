@@ -35,7 +35,7 @@ public:
 	Rect _curGround;
 	TypeObject weaponType;
 	bool isStanding = true, isOnGround, isThrowing = false;
-	bool DetectGround(unordered_set<Rect*> grounds);
+	bool DetectCurGround(unordered_set<Rect*> grounds);
 	bool DetectWall(unordered_set<Wall*> walls);
 	void CheckGroundCollision(unordered_set<Rect*> grounds);
 	void CheckWallCollision(std::unordered_set<Wall*> walls);

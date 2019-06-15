@@ -39,9 +39,9 @@ void SpriteManager::StartUp()
 	sprites->Add(40000, 4, 52, 20, 77, texPeople);
 
 	//Attack-Sitting
-	sprites->Add(40001, 33, 52, 54, 77, texPeople);
-	sprites->Add(40002, 58, 52, 83, 77, texPeople);
-	sprites->Add(40003, 99, 52, 122, 77, texPeople);
+	sprites->Add(40001, 33, 52, 60, 77, texPeople);
+	sprites->Add(40002, 58, 52, 89, 77, texPeople);
+	sprites->Add(40003, 99, 52, 125, 77, texPeople);
 
 	//Jump
 	sprites->Add(50001, 142, 45, 158, 77, texPeople);
