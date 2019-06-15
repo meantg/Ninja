@@ -15,6 +15,7 @@ ECloakMan::ECloakMan(float spawnX, float spawnY)
 	this->bulletTotal = bulletCount = BULLET_CLOAKMAN_COUNT;
 	this->delayTime = ENEMY_CLOAKMAN_DELAY;
 	this->speed = ENEMY_CLOAKMAN_SPEED;
+	this->score = ENEMY_CLOAKMAN_SCORE;
 
 	this->spawnX = this->x = spawnX;
 	this->spawnY = this->y = spawnY;
@@ -24,23 +25,20 @@ ECloakMan::ECloakMan(float spawnX, float spawnY)
 
 void ECloakMan::UpdatePosition(float dt)
 {
-	delayTime -= dt * 100;
-	if (player->x - this->x < 0)
+ 	delayTime -= dt * 100;
+	if (player->x < this->x)
 		this->isReverse = true;
 	else
 		this->isReverse = false;
-	if (_state == RUNNING)
+	switch (this->_state) {
+	case RUNNING:
 	{
 		this->dx = vx * dt;
-		if (x > 1235)
+
+		if ((vx > 0 && this->x + (this->width >> 1) >= groundBound.x + groundBound.width)
+			|| (vx < 0 && this->x - (this->width >> 1) <= groundBound.x))
 		{
-			x = 1235;
-			vx = -ENEMY_CLOAKMAN_SPEED;
-		}
-		else if (x < 1225)
-		{
-			x = 1225;
-			vx = ENEMY_CLOAKMAN_SPEED;
+			this->vx = -vx;
 		}
 		if (delayTime <= 0)
 		{
@@ -49,42 +47,19 @@ void ECloakMan::UpdatePosition(float dt)
 			delayTime = ENEMY_CLOAKMAN_DELAY;
 		}
 	}
-	if (_state == ATTACKING)
+	case ATTACKING:
 	{
 		this->dx = 0;
-		if (x > 1235)
-		{
-			x = 1235;
-			vx = -ENEMY_CLOAKMAN_SPEED;
-		}
-		else if (x < 1225)
-		{
-			x = 1225;
-			vx = ENEMY_CLOAKMAN_SPEED;
-		}
+		break;
 	}
-	x += vx * dt;
+	}
 }
 
 void ECloakMan::Update(float dt)
 {
 	Enemy::Update(dt);
-	if (abs(player->x - this->x) <= 130)
-	{
-		if (abs(player->x - this->x) <= 60)
-		{
-			if (isActive == true && isAttacked == false)
-			{
-				ChangeState(ATTACKING);
-			}
-			else if(isAttacked == true)
-				ChangeState(DEAD);
-		}
-		else
-		{
-			ChangeState(RUNNING);
-			isAttacked = false;
-		}
+	if (this->isDead) {
+		delayTime = ENEMY_CLOAKMAN_DELAY;
 	}
 }
 

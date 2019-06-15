@@ -17,7 +17,6 @@ private:
 	float _timeCounter;			
 	
 	GameMap *mMap;
-	ScoreBoard *scoreboard;
 	Grid *grid;
 
 	int MapWidth, MapHeight;

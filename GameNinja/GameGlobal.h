@@ -26,10 +26,11 @@
 #define NINJA_STANDING_HEIGHT   26
 #define NINJA_SITTING_HEIGHT    18
 #define NINJA_WIDTH				18
+#define NINJA_HEALTH            16
 
 //State
-#define NINJA_ATK				10
-#define NINJA_RUN				11
+#define NINJA_ATK				
+#define NINJA_RUN				
 #define NINJA_STAND
 
 	//ENEMY
@@ -37,22 +38,24 @@
 #define ENEMY_SWORDMAN_HEIGHT 28
 #define ENEMY_SWORDMAN_SPEED 4.0f
 
-#define ENEMY_CLOAKMAN_DELAY 1500
-#define ENEMY_CLOAKMAN_SPEED 3.0f
+#define ENEMY_CLOAKMAN_DELAY 2800
+#define ENEMY_CLOAKMAN_SPEED 4.0f
 #define ENEMY_CLOAKMAN_WIDTH 18
 #define ENEMY_CLOAKMAN_HEIGHT 35
 
 #define ENEMY_PANTHER_WIDTH 35
 #define ENEMY_PANTHER_HEIGHT 20
 #define ENEMY_PANTHER_SPEED 7.0f
+#define ENEMY_PANTHER_ACTIVE_DISTANCE 90
+#define ENEMY_PANTHER_FALLING_SPEED 5
 
 #define ENEMY_GUNMAN_WIDTH 20
 #define ENEMY_GUNMAN_HEIGHT 30
-#define ENEMY_GUNMAN_SPEED 4.0
+#define ENEMY_GUNMAN_SPEED 4.0f
 
 #define ENEMY_EAGLE_WIDTH 20
 #define ENEMY_EAGLE_HEIGHT 20
-#define ENEMY_EAGLE_SPEED 8.0f
+#define ENEMY_EAGLE_SPEED 7.0f
 
 #define ITEM_SPEED_Y 4.0f
 
@@ -175,6 +178,7 @@ extern enum Tag
 {
 	Ninja_Text,
 	Stage3_1,
+	Stage3_2,
 	BBox_Texture,
 	Enemy_Texture,
 	Holder_Texture,

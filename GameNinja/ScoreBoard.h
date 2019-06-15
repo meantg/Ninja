@@ -5,15 +5,14 @@
 class ScoreBoard
 {
 private:
-	//static ScoreBoard* _instance;
+	static ScoreBoard* _instance;
 public:
 	ScoreBoard();
 	~ScoreBoard();
-
+	static ScoreBoard* GetInstance();
 	int time, score, health, mana;
 	float curTime ;
 
-	//static ScoreBoard* GetInstance();
 	void Render();
 	void Update(float dt);
 };

@@ -28,22 +28,40 @@ Player::Player()
 	//_curAnimation = animations[_state];
 	this->isOnGround = true;
 
-	this->_allow[JUMPING] = true;
-	this->_allow[ATTACKING] = true;
-	this->_allow[RUNNING] = true;
-	this->_allow[THROWING] = true;
-	this->isThrowing = false;
-	this->vx = this->vy = this->dx = this->dy = 0;
-	this->isDead = false;
-	this->isReverse = false;
+	_allow[JUMPING] = true;
+	_allow[ATTACKING] = true;
+	_allow[RUNNING] = true;
+	_allow[THROWING] = true;
+	this->SetHealth(NINJA_HEALTH);
+	this->SetEnergy(0);
 }
 
 Player::~Player()
 {
 }
 
+void Player::SetHealth(int health)
+{
+		this->health = health;
+		ScoreBoard::GetInstance()->health = health;
+
+		if (this->health <= 0)
+		{
+			ScoreBoard::GetInstance()->health = 0;
+			this->health = 0;
+			this->isDead = true;
+			this->lives--;
+		}
+}
+
+void Player::SetEnergy(int energy)
+{
+	this->energy = energy;
+	ScoreBoard::GetInstance()->mana = energy;
+}
+
 //Phát hiện ground bằng cách tạo một broading-phase của player và check xem có chạm vào ground không
-bool Player::DetectGround(unordered_set<Rect*> grounds)
+bool Player::DetectCurGround(unordered_set<Rect*> grounds)
 {
 	auto rbp = this->GetRect();					//rect broading-phase
 	auto bottom = rbp.y + rbp.height;
@@ -174,11 +192,6 @@ void Player::Update(float dt, unordered_set<Object*> gameObj)
 	if (x >= 2048 - 20)
 		x = 2048 - 20;
 
-	//if (_state != SITTING) {
-	//	if (y <= 56) {
-	//		y = 56;
-	//	}
-	//}
 }
 void Player::CheckGroundCollision(unordered_set<Rect*> grounds)
 {
@@ -189,7 +202,7 @@ void Player::CheckGroundCollision(unordered_set<Rect*> grounds)
 	}
 
 	// Tìm được vùng đất va chạm
-	if (DetectGround(grounds))
+	if (DetectCurGround(grounds))
 	{
 		if (this->vy < 0)
 		{

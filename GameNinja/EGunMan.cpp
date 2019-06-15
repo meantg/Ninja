@@ -3,7 +3,6 @@
 EGunMan::EGunMan(float spawnX, float spawnY)
 {
 	this->type = E_GUNMAN;
-	this->_state = STANDING;
 	this->AddAnimation(E_GUNMAN, STANDING);
 	this->AddAnimation(E_GUNMAN, RUNNING);
 	this->AddAnimation(E_GUNMAN, ATTACKING);
@@ -12,73 +11,56 @@ EGunMan::EGunMan(float spawnX, float spawnY)
 	this->width = ENEMY_GUNMAN_WIDTH;
 	this->height = ENEMY_GUNMAN_HEIGHT;
 	this->speed = ENEMY_GUNMAN_SPEED;
-
+	this->score = ENEMY_GUNMAN_SCORE;
+	this->bulletTotal = this->bulletCount = BULLET_GUNMAN_COUNT;
+	this->delayTime = 1800;
 	this->spawnX = this->x = spawnX;
 	this->spawnY = this->y = spawnY;
 }
 
 void EGunMan::UpdatePosition(float dt)
 {
-	delayTime -= dt * 100;
-	if (player->x - this->x < 0)
-		this->isReverse = true;
-	else
-		this->isReverse = false;
-	if (_state == RUNNING)
+	this->isReverse = (player->x < this->x);
+	delayTime -= dt*100;
+
+	switch (this->_state)
+	{
+	case RUNNING:
 	{
 		this->dx = vx * dt;
-		if (x > 1383)
+		if (vx > 0 && this->x + (this->width >> 1) >= groundBound.x + groundBound.width)
 		{
-			x = 1383;
-			vx = -ENEMY_CLOAKMAN_SPEED;
+			this->vx = -vx;
+			this->isReverse = true;
 		}
-		else if (x < 1363)
+		else if (vx < 0 && this->x - (this->width >> 1) <= groundBound.x)
 		{
-			x = 1363;
-			vx = ENEMY_CLOAKMAN_SPEED;
+			this->vx = -vx;
+			this->isReverse = false;
 		}
+
 		if (delayTime <= 0)
 		{
-			ChangeState(ATTACKING);
+			this->ChangeState(ATTACKING);
 			this->vx = -vx;
-			delayTime = ENEMY_CLOAKMAN_DELAY;
+			delayTime = 1800;
 		}
+		break;
 	}
-	if (_state == ATTACKING)
+	case ATTACKING:
 	{
 		this->dx = 0;
-		if (x > 1283)
-		{
-			x = 1283;
-			vx = -ENEMY_CLOAKMAN_SPEED;
-		}
-		else if (x < 1363)
-		{
-			x = 1363;
-			vx = ENEMY_CLOAKMAN_SPEED;
-		}
+		break;
 	}
-	x += vx * dt;
+	}
 }
 
 void EGunMan::Update(float dt)
 {
 	Enemy::Update(dt);
-	if (abs(player->x - this->x) <= 130)
+	if (this->isDead)
 	{
-		if (abs(player->x - this->x) <= 60)
-		{
-			if (isActive == true && isAttacked == false)
-			{
-				ChangeState(ATTACKING);
-			}
-			else if (isAttacked == true)
-				ChangeState(DEAD);
-		}
-		else
-		{
-			ChangeState(RUNNING);
-			isAttacked = false;
-		}
+		delayTime = 1800;
 	}
 }
+

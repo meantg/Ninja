@@ -6,7 +6,7 @@ PlayScene::PlayScene(AnimationManager* gAnimationManager)
 	_backColor = D3DCOLOR_XRGB(0, 255, 255);
 	_timeCounter = 0;
 	animations = gAnimationManager;
-	LoadMap("MapReader/Map1_matrix.txt");
+	LoadMap("MapReader/matrix1.txt");
 	MapWidth = 2048; MapHeight = 176;
 
 	grid = new Grid(MapWidth, MapHeight);
@@ -20,7 +20,6 @@ PlayScene::~PlayScene()
 void PlayScene::LoadMap(const char * filePath)
 {
 	mMap = new GameMap(filePath);
-	scoreboard = new ScoreBoard();
 
 	//Goc toa do camera la bottom left
 	mCamera->SetPosition(0, SCREEN_HEIGHT);
@@ -32,7 +31,7 @@ void PlayScene::Update(float dt)
 	mMap->Update(dt);
 	grid->Update();
 
-	scoreboard->Update(dt);
+	ScoreBoard::GetInstance()->Update(dt);
 
 	UpdateObject(dt);
 	UpdatePlayer(dt);
@@ -51,7 +50,7 @@ void PlayScene::UpdateObject(float dt)
 		{
 			auto e = (Enemy*)o;
 			e->Update(dt);
-			grid->MoveObject(e, e->x + e->vx*dt, e->y + e->vy*dt);
+			grid->MoveObject(e, e->x + e->dx, e->y + e->dy);
 
 			switch (e->type)
 			{
@@ -59,36 +58,44 @@ void PlayScene::UpdateObject(float dt)
 			case E_GUNMAN:
 			case E_BAZOKA:
 			{
-				if (e->isDoneAtk)
-				{
-					if (e->_state == ATTACKING && e->_curAnimation->isLastFrame)
-					{
-						auto bullet = EnemyBullet::CreateBullet(e->type);
-						bullet->isReverse = e->isReverse;
-						if (bullet->isReverse)
-							bullet->vx = -bullet->vx;
-						bullet->x = e->x + (e->isReverse ? -5 : 5);
-						bullet->y = e->y + 3;
-						bullet->ChangeState(ATK_WITH_WEAPON);
-						grid->AddObject(bullet);
-						e->bulletCount--;
+ 				if (e->isFinishAttack())
+				{ 
+					auto bullet = EnemyBullet::CreateBullet(e->type);
+					bullet->isReverse = e->isReverse;
+					if (bullet->isReverse)
+						bullet->vx = -bullet->vx;
+					bullet->x = e->x + (e->isReverse ? -5 : 5);
+					bullet->y = e->y + 3;
+					bullet->ChangeState(ATK_WITH_WEAPON);
+					grid->AddObject(bullet);
+					e->bulletCount--;
 
-						if (e->bulletCount == 0)
-						{
-							e->bulletCount = e->bulletTotal;
-							e->ChangeState(RUNNING);
-						}
+					if (e->bulletCount == 0)
+					{
+						e->bulletCount = e->bulletTotal;
+ 						e->ChangeState(RUNNING);
 					}
 				}
 				break;
 			}
+			case E_PANTHER:
+			{
+				auto p = (EPanther*)e;
+				if (!p->isOnGround)
+				{
+					p->vy = -ENEMY_PANTHER_FALLING_SPEED;
+					p->DetectCurGround(grid->GetVisibleGrounds());
+				}
+				break;
+			}
+
 			}
 		}
 		case BULLET:
 		{
-			Bullet* bullet = (Bullet*)o;
+			auto* bullet = (Bullet*)o;
 			bullet->Update(dt);
-			grid->MoveObject(bullet, bullet->x + bullet->dx, bullet->y + bullet->dy);
+			grid->MoveObject(bullet, bullet->x + bullet->vx * dt, bullet->y + bullet->vy * dt);
 			break;
 		}
 		}
@@ -110,7 +117,7 @@ void PlayScene::UpdatePlayer(float dt)
 void PlayScene::Render()
 {
 	mMap->Render();
-	scoreboard->Render();
+	ScoreBoard::GetInstance()->Render();
 	for (auto o : visibleObjects)
 		o->Render(mCamera->GetPositionX(), mCamera->GetPositionY());
 	player->Render(mCamera->GetPositionX(),mCamera->GetPositionY());
